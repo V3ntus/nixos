@@ -1,9 +1,13 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   console.keyMap = "us";
   time.timeZone = "America/Chicago";
 
   i18n = {
-    defaultLocale = lib.mkDefault "en_US.UTF-8";
+    defaultLocale = lib.mkDefault "en_US.UTF-8/UTF-8";
 
     extraLocaleSettings = lib.mkDefault {
       LC_ADDRESS = "en_US.UTF-8";
@@ -18,7 +22,7 @@
     };
 
     supportedLocales = lib.mkDefault [
-      "en_US.UTF-8"
+      config.i18n.defaultLocale
     ];
   };
 }

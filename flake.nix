@@ -29,7 +29,7 @@
       # Work laptop configuration
       joe-work = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = ["${self}/hosts/joe-work"];
+        modules = [./hosts/joe-work];
       };
     };
   };

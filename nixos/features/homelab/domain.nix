@@ -8,6 +8,6 @@
   };
 
   config = {
-    homelab.domain = (builtins.fromJSON (builtins.readFile ../../../../homelab.json)).domain;
+    homelab.domain = (builtins.fromJSON (builtins.readFile ../../../homelab.json)).domain;
   };
 }

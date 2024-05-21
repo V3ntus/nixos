@@ -1,3 +1,6 @@
 {...}: {
-  imports = [];
+  imports = [
+    ./domain.nix
+    ./networking.nix
+  ];
 }

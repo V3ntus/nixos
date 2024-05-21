@@ -1,8 +1,14 @@
 {config, ...}: {
   imports = [
     ./hardware-configuration.nix
+
+    # Users
     ../root.nix
     ../ventus.nix
+
+    # Common imports
+    ../../nixos/features/common
+    ../../nixos/features/homelab
   ];
 
   # Boot

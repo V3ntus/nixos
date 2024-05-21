@@ -1,9 +1,10 @@
-{}: {
+{...}: {
   services.openssh = {
     enable = true;
-    passwordAuthentication = true;
-    permitRootLogin = "no";
-
-    security.pan.enableSSHAgentAuth = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "no";
+    };
   };
+  security.pam.sshAgentAuth.enable = true;
 }
