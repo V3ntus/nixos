@@ -9,6 +9,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    apple-fonts = {
+      url = "github:adamcstephens/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Currently, there is no support between sops and age-plugin-yubikey
     # See https://github.com/Mic92/sops-nix/issues/377
     # sops-nix = {
@@ -21,6 +32,8 @@
     self,
     nixpkgs,
     home-manager,
+    plasma-manager,
+    apple-fonts,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -29,7 +42,17 @@
       # Work laptop configuration
       joe-work = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/joe-work];
+        modules = [
+          ./hosts/joe-work
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.users.ventus = import ./nixos/home-manager/hosts/joe-work;
+          }
+        ];
       };
     };
   };
