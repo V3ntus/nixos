@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./features/starship.nix
     ./features/zsh.nix

@@ -1,6 +1,10 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ../default.nix
+  ];
+
+  home.packages = with pkgs; [
+    teams-for-linux
   ];
 
   programs.plasma = {
