@@ -3,10 +3,6 @@
   config,
   ...
 }: {
-  environment.variables = {
-    ZSH_COLORIZE_TOOL = "chroma";
-  };
-
   programs.thefuck.enable = true;
 
   programs = {
@@ -76,6 +72,7 @@
       '';
 
       sessionVariables = {
+        ZSH_COLORIZE_TOOL = "chroma";
         GREP_COLORS = "ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36";
       };
     };

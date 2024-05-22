@@ -3,20 +3,9 @@
   pkgs,
   ...
 }: {
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    apple-fonts
+    apple-fonts.packages.x86_64-linux.sf-pro
     meslo-lgs-nf
   ];
-
-  fontProfiles = {
-    enable = true;
-    regular = {
-      family = "SF Pro Apple Font";
-      package = apple-fonts.sf-pro;
-    };
-    monospace = {
-      family = "Meslo LGS NF";
-      package = pkgs.meslo-lgs-nf;
-    };
-  };
 }
