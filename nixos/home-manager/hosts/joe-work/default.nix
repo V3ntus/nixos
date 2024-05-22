@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../default.nix
+    ../../default.nix
   ];
 
   home.packages = with pkgs; [

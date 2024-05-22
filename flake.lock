@@ -1,5 +1,44 @@
 {
   "nodes": {
+    "apple-fonts": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1690223130,
+        "narHash": "sha256-/a7Cz30LQuLw5m528M9yv930Je9T7M2CPSIj2xAzQMU=",
+        "owner": "adamcstephens",
+        "repo": "apple-fonts.nix",
+        "rev": "0f83821330101d102e1b90864ab376434ec0689a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adamcstephens",
+        "repo": "apple-fonts.nix",
+        "type": "github"
+      }
+    },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
+      "locked": {
+        "lastModified": 1687762428,
+        "narHash": "sha256-DIf7mi45PKo+s8dOYF+UlXHzE0Wl/+k3tXUyAoAnoGE=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "37dd7bb15791c86d55c5121740a1887ab55ee836",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -36,10 +75,53 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1685564631,
+        "narHash": "sha256-8ywr3AkblY4++3lIVxmrWZFzac7+f32ZEhH/A8pNscI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4f53efe34b3a8877ac923b9350c874e3dcd5dc0a",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716145823,
+        "narHash": "sha256-S2cfXdWCRf6Z+Gas6GN1kMSYqG01583uuJKITDVQp0o=",
+        "owner": "pjones",
+        "repo": "plasma-manager",
+        "rev": "5db76cbb4d66231769cd8939472ae00c55c24a44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pjones",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "apple-fonts": "apple-fonts",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plasma-manager": "plasma-manager"
       }
     }
   },
