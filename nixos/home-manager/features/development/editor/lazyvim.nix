@@ -10,7 +10,6 @@
       nodejs
 
       pyright
-      rnix-lsp
 
       nodePackages.pyright
       nodePackages.typescript-language-server
@@ -39,8 +38,8 @@
 
     extraConfig = ''
       lua << EOF
-        ${builtins.readFile lua/init.lua}
-        ${builtins.readFile lua/web-icons.lua}
+        ${builtins.readFile ./lua/init.lua}
+        ${builtins.readFile ./lua/web-icons.lua}
       EOF
     '';
   };

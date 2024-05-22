@@ -3,9 +3,9 @@
   config,
   ...
 }: {
-  programs.thefuck.enable = true;
-
   programs = {
+    thefuck.enable = true;
+    atuin.enable = true;
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -22,7 +22,7 @@
         path = "${config.xdg.dataHome}/zsh/zsh_history";
       };
 
-      ohMyZsh = {
+      oh-my-zsh = {
         enable = true;
         plugins = [
           "git"
@@ -77,11 +77,4 @@
       };
     };
   };
-
-  services.atuin.enable = true;
-
-  programs.nano.nanorc = ''
-    set tabstospaces
-    set tabsize 2
-  '';
 }

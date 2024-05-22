@@ -13,4 +13,12 @@
     dmidecode
     sops
   ];
+
+  programs.nano = {
+    enable = true;
+    nanorc = ''
+      set tabstospaces
+      set tabsize 2
+    '';
+  };
 }

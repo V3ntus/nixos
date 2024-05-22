@@ -7,4 +7,8 @@
     ./security.nix
     ./sshd.nix
   ];
+
+  programs = {
+    zsh.enable = true;
+  };
 }
