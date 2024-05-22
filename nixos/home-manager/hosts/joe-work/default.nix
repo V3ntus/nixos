@@ -1,6 +1,13 @@
 {pkgs, ...}: {
   imports = [
     ../../default.nix
+    ../common.nix
+
+    ../../common/packages.nix
+    ../../features/terminal/base.nix
+    ../../features/development/base.nix
+    ../../features/desktop/common/base.nix
+    ../../features/desktop/wayland
   ];
 
   home.packages = with pkgs; [

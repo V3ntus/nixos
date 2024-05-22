@@ -52,6 +52,8 @@
         cat = "${pkgs.bat}/bin/bat --style=plain";
         ip = "ip -color=auto";
         grep = "grep --color=auto";
+        mtr = "trippy";
+        tracert = "trippy";
       };
 
       profileExtra = ''
