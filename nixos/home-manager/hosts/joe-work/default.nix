@@ -6,6 +6,8 @@
     ../../common/packages.nix
     ../../features/terminal/base.nix
     ../../features/development/base.nix
+    ../../features/development/editor/jetbrains/pycharm.nix
+    ../../features/development/editor/jetbrains/android-studio.nix
     ../../features/desktop/common/base.nix
     ../../features/desktop/wayland
   ];

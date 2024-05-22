@@ -34,7 +34,7 @@
     gimp
 
     discord
-    libreoffice
+    libreoffice-qt
 
     wireguard-tools
   ];

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    vlc
-    kate
+    jetbrains.pycharm-professional
   ];
 }
