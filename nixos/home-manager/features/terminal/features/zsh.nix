@@ -7,6 +7,8 @@
     ZSH_COLORIZE_TOOL = "chroma";
   };
 
+  programs.thefuck.enable = true;
+
   programs = {
     zsh = {
       enable = true;
@@ -32,6 +34,7 @@
           "z"
           "fzf"
           "grc"
+          "thefuck"
         ];
       };
 
