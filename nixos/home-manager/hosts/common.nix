@@ -29,7 +29,10 @@
     nodejs
     tree-sitter
 
+    dig
     trippy # mtr alternative
+    atuin
+    thefuck
 
     gimp
 

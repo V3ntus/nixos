@@ -16,7 +16,7 @@
     };
 
     apple-fonts = {
-      url = "github:adamcstephens/apple-fonts.nix";
+      url = "github:V3ntus/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

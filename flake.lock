@@ -8,15 +8,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1690223130,
-        "narHash": "sha256-/a7Cz30LQuLw5m528M9yv930Je9T7M2CPSIj2xAzQMU=",
-        "owner": "adamcstephens",
+        "lastModified": 1716388087,
+        "narHash": "sha256-N0p3iK84DzJbeKs38cm99lJwtvaC5qlU3C8vdllFTEI=",
+        "owner": "V3ntus",
         "repo": "apple-fonts.nix",
-        "rev": "0f83821330101d102e1b90864ab376434ec0689a",
+        "rev": "f32a96a002b622688683529d3cdd4209a5d9abfc",
         "type": "github"
       },
       "original": {
-        "owner": "adamcstephens",
+        "owner": "V3ntus",
         "repo": "apple-fonts.nix",
         "type": "github"
       }
