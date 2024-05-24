@@ -1,5 +1,4 @@
 # NixOS Configs
-Based on the extensive repo from [badele/nix-homelab](https://github.com/badele/nix-homelab).
 
 ## Usage
 

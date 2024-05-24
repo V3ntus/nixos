@@ -1,8 +1,0 @@
-keys:
-  # - &ventus age1yubikey1qfjjgpnf5vcs73hwtmxgna4wd5sgqrstsg8kc7z9u63jxnhzhz77xynwasz
-  - &ventus age1mnkz8j9d30e6ttkmft025v6dhetkdpmv6xdh02xzn4lkdpa5h34qn9fcjp
-creation_rules:
-  - path_regex: hosts\/[\w\/\-\.]+\.(yaml|json|env|ini)$
-    key_groups:
-    - age:
-      - *ventus
