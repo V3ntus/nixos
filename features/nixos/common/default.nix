@@ -2,8 +2,8 @@
   imports = [
     ./hardware.nix
     ./nix.nix
-    ./sops.nix
     ./security.nix
+    ./sops.nix
     ./virtualization.nix
   ];
 

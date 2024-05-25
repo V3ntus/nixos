@@ -43,6 +43,12 @@
         modules = [
           ./hosts/ventus-pc
           sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ventus = import ./hosts/ventus-pc/home.nix;
+          }
         ];
       };
     };
