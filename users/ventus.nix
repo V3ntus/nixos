@@ -25,6 +25,7 @@ in {
   };
 
   users.users.ventus = {
+    name = "ventus";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets."users/ventus/password".path;
     openssh.authorizedKeys.keys = [

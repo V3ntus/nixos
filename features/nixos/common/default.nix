@@ -1,12 +1,11 @@
 {
   imports = [
-    ./sops.nix
     ./hardware.nix
+    ./nix.nix
+    ./sops.nix
   ];
 
   programs.zsh.enable = true;
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   system.stateVersion = "23.11";
 }
