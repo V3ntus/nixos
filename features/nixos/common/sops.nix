@@ -3,4 +3,5 @@ let
 in {
   sops.age.keyFile = "/home/ventus/repos/nixos/secret.key";
   sops.defaultSopsFile = defaultUsersSopsFile;
+  sops.defaultSopsFormat = "yaml";
 }
