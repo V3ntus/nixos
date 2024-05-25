@@ -37,6 +37,14 @@
           sops-nix.nixosModules.sops
         ];
       };
+
+      ventus-pc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/ventus-pc
+          sops-nix.nixosModules.sops
+        ];
+      };
     };
   };
 }
