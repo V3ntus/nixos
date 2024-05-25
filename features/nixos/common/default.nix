@@ -3,6 +3,8 @@
     ./hardware.nix
     ./nix.nix
     ./sops.nix
+    ./security.nix
+    ./virtualization.nix
   ];
 
   programs.zsh.enable = true;
