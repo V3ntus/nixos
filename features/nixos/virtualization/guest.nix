@@ -8,6 +8,10 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
+  environment.sessionVariables = {
+    WLR_RENDERER_ALLOW_SOFTWARE = "1";
+  };
+
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
