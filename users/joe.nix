@@ -18,18 +18,18 @@
     ];
 in {
   sops.secrets = {
-    "users/ventus/password" = {
+    "users/joe/password" = {
       sopsFile = ./secrets.yaml;
       neededForUsers = true;
     };
   };
 
-  users.users.ventus = {
-    name = "ventus";
+  users.users.joe = {
+    name = "joe";
     isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets."users/ventus/password".path;
+    hashedPasswordFile = config.sops.secrets."users/joe/password".path;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAduLznqkN0rvDysKrE2FQLegyeRzWyVu1Z71VPs2N7y ventus@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAduLznqkN0rvDysKrE2FQLegyeRzWyVu1Z71VPs2N7y joe@nixos"
     ];
     inherit extraGroups;
 

@@ -5,6 +5,6 @@
     ../../features/home-manager/terminal/kitty.nix
   ];
 
-  home.username = "ventus";
-  home.homeDirectory = "/home/ventus";
+  home.username = "joe";
+  home.homeDirectory = "/home/joe";
 }

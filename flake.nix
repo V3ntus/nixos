@@ -47,7 +47,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.ventus = import ./hosts/ventus-pc/home.nix;
+            home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
         ];
       };
