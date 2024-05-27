@@ -3,6 +3,7 @@
     ./audio.nix
     ./fonts.nix
     ./hardware.nix
+    ./locale.nix
     ./nix.nix
     ./security.nix
     ./sops.nix
