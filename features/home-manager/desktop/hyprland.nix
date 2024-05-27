@@ -1,5 +1,6 @@
 {
   imports = [
+    ./common.nix
     ./addons/waybar.nix
   ];
 

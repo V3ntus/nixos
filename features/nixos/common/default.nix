@@ -14,6 +14,10 @@
     wget
     curl
   ];
+  programs.nano.nanorc = ''
+    set tabstospaces
+    set tabsize 2
+  '';
 
   system.stateVersion = "23.11";
 }
