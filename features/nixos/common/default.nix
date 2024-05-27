@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./audio.nix
     ./fonts.nix
     ./hardware.nix
     ./nix.nix
