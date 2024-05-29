@@ -147,20 +147,24 @@
           tooltip = false;
         };
         "clock#3" = {
-          format = "{:%m:%d}";
+          format = "{:%m-%d}";
           tooltip = false;
         };
 
+        network = {
+          interval = 3;
+          format = "{ifname} -> {ipaddr}/{cidr} | {bandwidthUpBytes} / {bandwidthDownBytes}";
+        };
         memory = {
           interval = 5;
           format = "RAM {}%";
         };
         cpu = {
-          interval = 5;
+          interval = 3;
           format = "CPU {usage:2}%";
         };
         disk = {
-          interval = 5;
+          interval = 30;
           format = "Disk {percentage_used:2}%";
           path = "/";
         };
