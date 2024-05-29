@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ../../features/home-manager/base.nix
     ../../features/home-manager/desktop/hyprland.nix
@@ -11,4 +11,8 @@
 
   home.username = "joe";
   home.homeDirectory = "/home/joe";
+
+  home.packages = with pkgs; [
+    alsa-scarlett-gui
+  ];
 }
