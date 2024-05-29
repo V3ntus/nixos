@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     fzf
+    fastfetch
   ];
 
   programs.atuin = {
@@ -42,6 +43,7 @@
 
   programs.zsh = {
     enable = true;
+    promptInit = "fastfetch";
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
