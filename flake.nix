@@ -46,7 +46,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit gako358-neovim;};
-            home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
+            home-manager.users.joe = import ./hosts/joe-work/home.nix;
           }
         ];
       };
