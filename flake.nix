@@ -18,6 +18,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gako358-neovim = {
+      url = "github:Gako358/neovim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -26,6 +31,7 @@
     home-manager,
     apple-fonts,
     sops-nix,
+    gako358-neovim,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -47,6 +53,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit gako358-neovim;};
             home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
         ];
