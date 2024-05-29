@@ -48,6 +48,7 @@
 
     shellAliases = {
       cat = "bat";
+      lg = "lazygit";
     };
 
     oh-my-zsh = {
