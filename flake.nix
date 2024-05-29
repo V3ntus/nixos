@@ -41,6 +41,13 @@
         modules = [
           ./hosts/joe-work
           sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit gako358-neovim;);
+            home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
+          }
         ];
       };
 
