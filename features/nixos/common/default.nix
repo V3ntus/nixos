@@ -4,6 +4,7 @@
     ./fonts.nix
     ./hardware.nix
     ./locale.nix
+    ./networking.nix
     ./nix.nix
     ./security.nix
     ./sops.nix
