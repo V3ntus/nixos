@@ -43,7 +43,7 @@
 
   programs.zsh = {
     enable = true;
-    promptInit = "fastfetch";
+    initExtra = "fastfetch";
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
