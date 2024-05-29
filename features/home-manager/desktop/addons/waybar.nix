@@ -7,7 +7,7 @@
 
       * {
         font-size: 12px;
-        font-family: monospace;
+        font-family: "MesloLGS NF", monospace;
       }
 
       window#waybar {

@@ -4,6 +4,15 @@
     ./addons/waybar.nix
   ];
 
+  services.gnome-keyring = {
+    enable = true;
+    components = [
+      "ssh"
+      "secrets"
+      "pkcs11"
+    ];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -15,11 +24,13 @@
 
       # Variables - Programs
       "$terminal" = "kitty";
+      "$menu" = "wofi --show drun";
 
       # Autostart
       exec-once = [
         "$terminal"
         "waybar &"
+        "wl-paste -t text -w xclip -selection clipboard"
       ];
 
       # General
@@ -113,7 +124,15 @@
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+
+	"$mod, R, exec, $menu"
       ];
+
+      binde = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+	", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+      ];
+
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
