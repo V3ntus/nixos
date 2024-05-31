@@ -14,6 +14,7 @@
     };
   };
 
+  # This isn't working with starship currently
   programs.thefuck = {
     enable = true;
     enableInstantMode = true;
@@ -41,9 +42,12 @@
     ];
   };
 
+  programs.yazi = {
+    enable = true;
+  };
+
   programs.zsh = {
     enable = true;
-    initExtra = "fastfetch";
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
