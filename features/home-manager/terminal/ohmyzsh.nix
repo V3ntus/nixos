@@ -22,6 +22,29 @@
 
   programs.bat = {
     enable = true;
+    config = {
+      pager = "less -FR";
+      theme = "gruvbox-dark";
+    };
+  };
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "dracula";
+    };
+  };
+
+  programs.git = {
+    enable = true;
+
+    userName = "V3ntus";
+    userEmail = "29584664+V3ntus@users.noreply.github.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+      credential.helper = "store";
+    };
   };
 
   programs.lazygit = {
@@ -46,6 +69,10 @@
     enable = true;
   };
 
+  programs.zoxide = {
+    enable = true;
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -55,6 +82,7 @@
     shellAliases = {
       cat = "bat";
       lg = "lazygit";
+      cd = "z";
     };
 
     oh-my-zsh = {

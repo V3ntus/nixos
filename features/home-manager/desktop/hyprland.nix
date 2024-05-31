@@ -1,8 +1,12 @@
-{
+{pkgs, ...}: {
   imports = [
     ./common.nix
     ./addons/hyprlock.nix
     ./addons/waybar.nix
+  ];
+
+  home.packages = with pkgs; [
+    playerctl
   ];
 
   services.gnome-keyring = {
@@ -69,7 +73,7 @@
         rounding = 10;
 
         active_opacity = 1.0;
-        inactive_opacity = 0.9;
+        inactive_opacity = 0.66;
 
         drop_shadow = true;
         shadow_range = 4;
@@ -91,8 +95,8 @@
 
         bezier = "myBezier, 0.3, 0, 0, 1";
         animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
+          "windows, 1, 5, myBezier"
+          "windowsOut, 1, 5, default, popin 80%"
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
           "fade, 1, 7, default"
@@ -124,10 +128,41 @@
         "CTRL_ALT,T,exec,$terminal"
         "CTRL,Q,killactive,"
 
+        "$mod, Space, toggleFloating,"
+        "$mod, F, fullscreen, 0"
+        "$mod SHIFT, F, fullscreen, 1"
+
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+
+        "$mod SHIFT, 1, movetoworkspacesilent, 1"
+        "$mod SHIFT, 2, movetoworkspacesilent, 2"
+        "$mod SHIFT, 3, movetoworkspacesilent, 3"
+
+        "$mod SHIFT, left, movewindow, l"
+        "$mod SHIFT, right, movewindow, r"
+        "$mod SHIFT, up, movewindow, u"
+        "$mod SHIFT, down, movewindow, d"
+        "$mod CTRL, left, resizeactive, -80 0"
+        "$mod CTRL, right, resizeactive, 80 0"
+        "$mod CTRL, up, resizeactive, 0 -80"
+        "$mod CTRL, down, resizeactive, 0 80"
+        "$mod ALT, left, moveactive,  -80 0"
+        "$mod ALT, right, moveactive, 80 0"
+        "$mod ALT, up, moveactive, 0 -80"
+        "$mod ALT, down, moveactive, 0 80"
+
+        ",XF86AudioMute,exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86AudioPlay,exec, playerctl play-pause"
+        ",XF86AudioNext,exec, playerctl next"
+        ",XF86AudioPrev,exec, playerctl previous"
+        ",XF86AudioStop, exec, playerctl stop"
 
         "$mod, R, exec, $menu"
         "$mod, L, exec, $lock"
@@ -146,12 +181,31 @@
       # Misc
       misc = {
         disable_hyprland_logo = true;
-        animate_mouse_windowdragging = false;
-        animate_manual_resizes = false;
+        animate_mouse_windowdragging = true;
+        animate_manual_resizes = true;
+        enable_swallow = true;
+        focus_on_activate = true;
       };
 
       # Window Rules
-      windowrulev2 = "suppressevent maximize, class:.*";
+      windowrulev2 = [
+        "float, title:^(Picture-in-Picture)$"
+        "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
+        "pin, title:^(Picture-in-Picture)$"
+        "idleinhibit fullscreen, class:^(google-chrome)$"
+        "suppressevent maximize, class:.*"
+        "float,class:^(file_progress)$"
+        "float,class:^(confirm)$"
+        "float,class:^(dialog)$"
+        "float,class:^(download)$"
+        "float,class:^(notification)$"
+        "float,class:^(error)$"
+        "float,class:^(confirmreset)$"
+        "float,title:^(Open File)$"
+        "float,title:^(branchdialog)$"
+        "float,title:^(Confirm to replace files)$"
+        "float,title:^(File Operation Progress)$"
+      ];
     };
   };
 }

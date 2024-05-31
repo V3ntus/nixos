@@ -104,7 +104,8 @@
         ];
         modules-right = [
           "custom/left-arrow-dark"
-          # "pulseaudio"
+          "cava"
+          "pulseaudio"
           "custom/left-arrow-light"
           "custom/left-arrow-dark"
           "memory"
@@ -151,6 +152,21 @@
           tooltip = false;
         };
 
+        "hyprland/workspaces" = {
+          active-only = false;
+          disable-scroll = true;
+          format = "{icon}";
+          on-click = "activate";
+        };
+
+        cava = {
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+          bar_delimiter = 0;
+          method = "pipewire";
+          noise_reduction = 0.4;
+          input_delay = 5;
+          bars = 12;
+        };
         network = {
           interval = 3;
           format = "{ifname} -> {ipaddr}/{cidr} | {bandwidthUpBytes} / {bandwidthDownBytes}";
