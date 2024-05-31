@@ -1,6 +1,7 @@
 {
   imports = [
     ./common.nix
+    ./addons/hyprlock.nix
     ./addons/waybar.nix
   ];
 
