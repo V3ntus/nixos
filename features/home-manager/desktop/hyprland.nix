@@ -7,6 +7,10 @@
 
   home.packages = with pkgs; [
     playerctl
+    wl-clipboard
+    grim
+    slurp
+    swappy
   ];
 
   services.gnome-keyring = {
@@ -37,6 +41,7 @@
         "$terminal"
         "waybar &"
         "wl-paste -t text -w xclip -selection clipboard"
+        "hyprctl setcursor WhiteSur-cursors 22 &"
       ];
 
       # General
@@ -44,7 +49,7 @@
         gaps_in = 5;
         gaps_out = 20;
 
-        border_size = 2;
+        border_size = 1;
 
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
@@ -164,6 +169,8 @@
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
 
+        "$mod, Print, exec, grim -g \"$(slurp -d)\" - | swappy -f - -o - | wl-copy"
+
         "$mod, R, exec, $menu"
         "$mod, L, exec, $lock"
       ];
@@ -189,9 +196,9 @@
 
       # Window Rules
       windowrulev2 = [
-        "float, title:^(Picture-in-Picture)$"
-        "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
+        "float, title:^(Picture in Picture)$"
+        "opacity 1.0 override 1.0 override, title:^(Picture in Picture)$"
+        "pin, title:^(Picture in Picture)$"
         "idleinhibit fullscreen, class:^(google-chrome)$"
         "suppressevent maximize, class:.*"
         "float,class:^(file_progress)$"
