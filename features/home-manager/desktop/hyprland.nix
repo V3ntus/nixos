@@ -26,6 +26,7 @@
       # Variables - Programs
       "$terminal" = "kitty";
       "$menu" = "wofi --show drun";
+      "$lock" = "hyprlock";
 
       # Autostart
       exec-once = [
@@ -129,6 +130,7 @@
         "$mod, down, movefocus, d"
 
         "$mod, R, exec, $menu"
+        "$mod, L, exec, $lock"
       ];
 
       binde = [

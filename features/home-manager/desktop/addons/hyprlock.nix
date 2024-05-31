@@ -11,6 +11,13 @@
         hide_cursor = true;
       };
 
+      background = [
+        {
+          blur_passes = 2;
+          blur_size = 6;
+        }
+      ];
+
       input-field = [
         {
           size = "250, 60";
