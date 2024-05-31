@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./nvidia.nix
 
     ../../features/nixos/common
     ../../features/nixos/desktop/hyprland.nix
