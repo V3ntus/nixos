@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../features/home-manager/base.nix
     ../../features/home-manager/desktop/hyprland.nix
@@ -17,6 +21,20 @@
     httpie
     postman
     remmina
-    dbeaver
+    dbeaver-bin
   ];
+
+  wayland.windowManager.hyprland.settings = {
+    env = [
+      "LIBVA_DRIVER_TYPE,nvidia"
+      "GBM_BACKEND,nvidia-drm"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+    ];
+
+    monitor = lib.mkForce [
+      "DP-5, 2560x1440@143.97, 0x0, 1"
+      "HDMI-A-1, 2560x1440@143.97, 2560x0, 1"
+      "eDP-1, 1920x1080@60, 5120x720, 1"
+    ];
+  };
 }
