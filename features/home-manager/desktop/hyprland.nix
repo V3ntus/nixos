@@ -127,12 +127,12 @@
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
 
-	"$mod, R, exec, $menu"
+        "$mod, R, exec, $menu"
       ];
 
       binde = [
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-	", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
       bindm = [

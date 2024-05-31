@@ -1,4 +1,8 @@
-{lib, config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   # Add NVIDIA package
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
@@ -16,7 +20,7 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 
-    open = false;
+    open = true;
 
     nvidiaSettings = true;
 
