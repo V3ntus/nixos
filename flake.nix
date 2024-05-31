@@ -38,6 +38,9 @@
       # Work laptop configuration
       joe-work = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           ./hosts/joe-work
           sops-nix.nixosModules.sops
@@ -45,7 +48,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit gako358-neovim;};
+            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts;};
             home-manager.users.joe = import ./hosts/joe-work/home.nix;
           }
         ];
@@ -53,6 +56,9 @@
 
       ventus-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           ./hosts/ventus-pc
           sops-nix.nixosModules.sops
@@ -60,7 +66,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit gako358-neovim;};
+            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts;};
             home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
         ];
