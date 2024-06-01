@@ -48,7 +48,7 @@
         "wl-paste -t text -w cliphist store"
         "wl-paste -t image -w cliphist store"
         "hyprctl setcursor WhiteSur-cursors 22 &"
-        "${config.xdg.dataFile."change_wallpaper.sh".source} &"
+        "sleep 5; ${config.xdg.dataFile."change_wallpaper.sh".source} &"
       ];
 
       # General
