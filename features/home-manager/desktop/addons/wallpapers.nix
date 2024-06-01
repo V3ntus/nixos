@@ -20,7 +20,7 @@ in {
             --transition-bezier .3,0,0,.99 \
             --transition-angle 135 || true
         else
-          swww-daemon 1>/dev/null 2>/dev/null & || true
+          (swww-daemon 1>/dev/null 2>/dev/null &) || true
         fi
         sleep 1800
       done
