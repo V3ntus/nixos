@@ -189,8 +189,8 @@
       # Misc
       misc = {
         disable_hyprland_logo = true;
-        animate_mouse_windowdragging = true;
-        animate_manual_resizes = true;
+        animate_mouse_windowdragging = false;
+        animate_manual_resizes = false;
         enable_swallow = true;
         focus_on_activate = true;
       };
