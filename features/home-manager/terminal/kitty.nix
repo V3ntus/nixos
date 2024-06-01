@@ -11,7 +11,7 @@
     theme = "Gruvbox Material Dark Medium";
 
     settings = {
-      background_opacity = "0.55";
+      background_opacity = "0.75";
       window_padding_width = 10;
       scrollback_lines = 10000;
       enable_audio_bell = false;

@@ -85,7 +85,7 @@
         rounding = 10;
 
         active_opacity = 1.0;
-        inactive_opacity = 0.66;
+        inactive_opacity = 0.8;
 
         drop_shadow = true;
         shadow_range = 4;
@@ -95,7 +95,7 @@
         blur = {
           enabled = true;
           new_optimizations = "on";
-          size = 1;
+          size = 4;
           passes = 2;
           vibrancy = 0.1696;
         };
