@@ -1,191 +1,240 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [cliphist];
   programs.waybar = {
     enable = true;
 
     style = ''
       ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
-
-      * {
-        font-size: 12px;
-        font-family: "MesloLGS NF", monospace;
-      }
-
-      window#waybar {
-        background: #292b2e;
-        color: #fdf6e3;
-      }
-
-      #custom-right-arrow-light,
-      #custom-left-arrow-light {
-      	color: #292b2e;
-      	background: #1a1a1a;
-      }
-
-      #workspaces,
-      #clock.1,
-      #clock.2,
-      #clock.3,
-      #pulseaudio,
-      #memory,
-      #cpu,
-      #battery,
-      #disk,
-      #tray {
-      	background: #1a1a1a;
-      }
-
-      #workspaces button {
-      	padding: 0 2px;
-      	color: #fdf6e3;
-      }
-      #workspaces button.focused {
-      	color: #268bd2;
-      }
-      #workspaces button:hover {
-      	box-shadow: inherit;
-      	text-shadow: inherit;
-      }
-      #workspaces button:hover {
-      	background: #1a1a1a;
-      	border: #1a1a1a;
-      	padding: 0 3px;
-      }
-
-      #pulseaudio {
-      	color: #268bd2;
-      }
-      #memory {
-      	color: #2aa198;
-      }
-      #cpu {
-      	color: #6c71c4;
-      }
-      #battery {
-      	color: #859900;
-      }
-      #disk {
-      	color: #b58900;
-      }
-
-      #clock,
-      #pulseaudio,
-      #memory,
-      #cpu,
-      #battery,
-      #disk {
-      	padding: 0 10px;
-      }
+      ${builtins.readFile ./waybar.style.css}
     '';
 
     settings = [
       {
         layer = "top";
-        position = "top";
-        height = 30;
-        tray = {
-          spacing = 10;
-        };
+        margin-top = 0;
+        margin-bottom = 0;
+        margin-left = 0;
+        margin-right = 0;
+        spacing = 0;
 
         modules-left = [
+          "custom/appmenuicon"
           "hyprland/workspaces"
+          "wlr/taskbar"
           "hyprland/window"
-          "custom/right-arrow-dark"
-        ];
-        modules-center = [
-          "custom/left-arrow-dark"
-          "clock#1"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
-          "clock#2"
-          "custom/right-arrow-dark"
-          "custom/right-arrow-light"
-          "clock#3"
-          "custom/right-arrow-dark"
-        ];
-        modules-right = [
-          "custom/left-arrow-dark"
-          "cava"
-          "pulseaudio"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
-          "memory"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
-          "cpu"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
-          "network"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
-          "disk"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
-          "tray"
+          "custom/empty"
         ];
 
-        "custom/left-arrow-dark" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/left-arrow-light" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/right-arrow-dark" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/right-arrow-light" = {
-          format = "";
-          tooltip = false;
-        };
-        "clock#1" = {
-          format = "{:%a}";
-          tooltip = false;
-        };
-        "clock#2" = {
-          format = "{:%H:%M}";
-          tooltip = false;
-        };
-        "clock#3" = {
-          format = "{:%m-%d}";
-          tooltip = false;
-        };
+        modules-center = [
+          "cava"
+        ];
+
+        modules-right = [
+          "pulseaudio"
+          "bluetooth"
+          "battery"
+          "network"
+          "group/hardware"
+          "custom/cliphist"
+          "idle_inhibitor"
+          "tray"
+          "clock"
+        ];
 
         "hyprland/workspaces" = {
           active-only = false;
           disable-scroll = true;
-          format = "{icon}";
+          all-outputs = true;
+          format = "{}";
+          format-icons = {
+            urgent = "";
+            active = "";
+            default = "";
+          };
           on-click = "activate";
+          persistent-workspaces = {
+            "*" = 5;
+          };
+        };
+
+        "wlr/taskbar" = {
+          format = "{icon}";
+          icon-size = 18;
+          tooltip-format = "{title}";
+          on-click = "activate";
+          on-click-middle = "close";
+        };
+
+        "hyprland/window" = {
+          rewrite = {
+            "(.*) - Google Chrome" = "$1";
+            "(.*) - Outlook" = "$1";
+            "(.*) Microsoft Teams" = "$1";
+          };
+          separate-outputs = true;
+        };
+
+        "custom/empty" = {
+          format = "";
+        };
+
+        "custom/cliphist" = {
+          format = "";
+          on-click = "sleep 0.1 && pkill wofi || cliphist list | wofi --dmenu | cliphist decode | wl-copy";
+          on-click-right = "sleep 0.1 && pkill wofi || cliphist list | wofi --dmenu | cliphist delete";
+        };
+
+        "custom/appmenu" = {
+          format = "Apps";
+          on-click = "sleep 0.2; pkill wofi || wofi --show drun";
+          tooltip = false;
+        };
+
+        "custom/appmenuicon" = {
+          format = "";
+          on-click = "pkill wofi || wofi --show drun";
+          tooltip = false;
+        };
+
+        keyboard-state = {
+          numlock = true;
+          capslock = true;
+          format = "{name} {icon}";
+          format-icons = {
+            locked = "";
+            unlocked = "";
+          };
+        };
+
+        tray = {
+          icon-size = 21;
+          spacing = 10;
+        };
+
+        clock = {
+          format = "{:%H:%M %a}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = "{:%Y-%m-%d}";
+        };
+
+        "custom/system" = {
+          format = "󰻠";
+          tooltip = false;
+        };
+
+        cpu = {
+          format = "/ C {usage}% ";
+          on-click = "kitty btop";
+        };
+
+        memory = {
+          format = "/ M {}% ";
+          on-click = "kitty btop";
+        };
+
+        disk = {
+          interval = 30;
+          format = "D {percentage_used}% ";
+          path = "/";
+          on-click = "kitty btop";
+        };
+
+        "hyprland/language" = {
+          format = "/ K {short}";
+        };
+
+        "group/hardware" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 300;
+            children-class = "not-memory";
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/system"
+            "disk"
+            "cpu"
+            "memory"
+            "hyprland/language"
+          ];
+        };
+
+        network = {
+          format = "{ifname}";
+          format-wifi = "   {signalStrength} %";
+          format-ethernet = "  {ifname}";
+          format-disconnected = "Disconnected";
+          tooltip-format-wifi = "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}";
+          tooltip-format-ethernet = " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}";
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+          on-click = "kitty nmtui";
+        };
+
+        battery = {
+          state = {
+            good = 95;
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon}   {capacity}%";
+          format-charging = "  {capacity}%";
+          format-plugged = "  {capacity}%";
+          format-alt = "{icon}  {time}";
+          format-icons = [" " " " " " " " " "];
+        };
+
+        pulseaudio = {
+          format = "{icon}   {volume}%";
+          format-bluetooth = "{volume}%  {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = "{volume}% ";
+          format-source-muted = "";
+          format-icons = {
+            headphone = " ";
+            hands-free = " ";
+            headset = " ";
+            phone = " ";
+            portable = " ";
+            car = " ";
+            default = [" " " " " "];
+          };
+          on-click = "kitty alsamixer";
+        };
+
+        bluetooth = {
+          format = " {status}";
+          format-disabled = "";
+          format-off = "";
+          interval = 30;
+          # on-click = "blueman-manager";
+          format-no-control = "";
+        };
+
+        user = {
+          format = "{user}";
+          interval = 60;
+          icon = false;
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          tooltip = true;
+          format-icons = {
+            activated = "✓";
+            deactivated = "";
+          };
+          on-click-right = "hyprlock";
         };
 
         cava = {
           format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           bar_delimiter = 0;
           method = "pipewire";
-          noise_reduction = 0.4;
+          noise_reduction = 0.77;
           input_delay = 5;
-          bars = 12;
-        };
-        network = {
-          interval = 3;
-          format = "{ifname} -> {ipaddr}/{cidr} | {bandwidthUpBytes} / {bandwidthDownBytes}";
-        };
-        memory = {
-          interval = 5;
-          format = "RAM {}%";
-        };
-        cpu = {
-          interval = 3;
-          format = "CPU {usage:2}%";
-        };
-        disk = {
-          interval = 30;
-          format = "Disk {percentage_used:2}%";
-          path = "/";
-        };
-        tray = {
-          icon-size = 20;
+          bars = 24;
         };
       }
     ];

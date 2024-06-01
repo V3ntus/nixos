@@ -40,7 +40,8 @@
       exec-once = [
         "$terminal"
         "waybar &"
-        "wl-paste -t text -w xclip -selection clipboard"
+        "wl-paste -t text -w cliphist store"
+        "wl-paste -t image -w cliphist store"
         "hyprctl setcursor WhiteSur-cursors 22 &"
       ];
 
