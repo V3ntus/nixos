@@ -23,6 +23,8 @@
       url = "github:Gako358/neovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    swww.url = "github:LGFae/swww";
   };
 
   outputs = {
@@ -32,6 +34,7 @@
     apple-fonts,
     sops-nix,
     gako358-neovim,
+    swww,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -48,7 +51,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts;};
+            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts swww;};
             home-manager.users.joe = import ./hosts/joe-work/home.nix;
           }
         ];
@@ -66,7 +69,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts;};
+            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts swww;};
             home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
         ];
