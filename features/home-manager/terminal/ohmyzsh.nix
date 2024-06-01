@@ -79,6 +79,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    sessionVariables = {
+      EDITOR = "vim";
+    };
+
     shellAliases = {
       cat = "bat";
       lg = "lazygit";
