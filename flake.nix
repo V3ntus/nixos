@@ -25,6 +25,11 @@
     };
 
     swww.url = "github:LGFae/swww";
+
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -57,6 +62,7 @@
         ];
       };
 
+      # Gaming PC at home
       ventus-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
