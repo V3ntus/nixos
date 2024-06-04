@@ -1,12 +1,14 @@
 {
   modulesPath,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
   boot.extraModulePackages = [];
   boot.initrd.kernelModules = [];
   boot.loader.systemd-boot.enable = true;
