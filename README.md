@@ -3,6 +3,7 @@
 ![image](https://github.com/V3ntus/nixos/assets/29584664/e2580fc9-7c6b-483e-bd1d-e8c8dc65e887)
 
 ## Features
+- Zen kernel
 - Hyprland + Waybar config
 - Kitty + Oh-my-zsh + starship
 - Gruvbox theming
