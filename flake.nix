@@ -30,6 +30,11 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    thorium = {
+      url = "github:V3ntus/nix-thorium/f592c6d8e3cda35f5d0b8da39c5f06fa5b774e35";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

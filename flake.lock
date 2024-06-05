@@ -1375,7 +1375,8 @@
         "niri-flake": "niri-flake",
         "nixpkgs": "nixpkgs_3",
         "sops-nix": "sops-nix",
-        "swww": "swww"
+        "swww": "swww",
+        "thorium": "thorium"
       }
     },
     "rust-overlay": {
@@ -1518,6 +1519,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "thorium": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1717446197,
+        "narHash": "sha256-8QBtb9b/PH+ivZd5qxm80piGD1JRK1w17rIZ9wuOA8w=",
+        "owner": "V3ntus",
+        "repo": "nix-thorium",
+        "rev": "f592c6d8e3cda35f5d0b8da39c5f06fa5b774e35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "V3ntus",
+        "repo": "nix-thorium",
+        "rev": "f592c6d8e3cda35f5d0b8da39c5f06fa5b774e35",
         "type": "github"
       }
     },

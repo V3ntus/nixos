@@ -1,4 +1,8 @@
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./nvidia.nix
@@ -8,5 +12,9 @@
     ../../features/nixos/desktop/sddm.nix
 
     ../../users/joe.nix
+  ];
+
+  users.users.joe.packages = [
+    inputs.thorium.packages.x86_64-linux.thorium-avx
   ];
 }
