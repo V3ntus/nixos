@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     fzf
     fastfetch
+    delta
   ];
 
   programs.atuin = {
@@ -44,6 +45,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       credential.helper = "store";
+      diff.tool = "delta";
     };
   };
 
