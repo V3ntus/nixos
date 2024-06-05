@@ -16,5 +16,6 @@
 
   users.users.joe.packages = [
     inputs.thorium.packages.x86_64-linux.thorium-avx
+    pkgs.jetbrains.pycharm-professional
   ];
 }
