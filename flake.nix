@@ -26,7 +26,7 @@
 
     swww.url = "github:LGFae/swww";
 
-    niri-flake = {
+    niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -45,8 +45,12 @@
     sops-nix,
     gako358-neovim,
     swww,
+    niri,
     ...
   } @ inputs: {
+    nixpkgs.overlays = [
+      niri.overlays.niri
+    ];
     nixosConfigurations = {
       # Work laptop configuration
       joe-work = nixpkgs.lib.nixosSystem {
@@ -62,7 +66,12 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts swww;};
-            home-manager.users.joe = import ./hosts/joe-work/home.nix;
+            home-manager.users.joe = {
+              imports = [
+                niri.homeModules.niri
+                ./hosts/joe-work/home.nix
+              ];
+            };
           }
         ];
       };

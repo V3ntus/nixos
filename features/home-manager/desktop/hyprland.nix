@@ -176,7 +176,7 @@
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
 
-        "$mod, Print, exec, grim -g \"$(slurp -d)\" - | swappy -f - -o - | wl-copy"
+        "$mod, Print, exec, grim -g \"$(slurp -d)\" - | tee >(swappy -f - -o - | wl-copy) | wl-copy"
 
         "$mod, R, exec, $menu"
         "$mod, L, exec, $lock"
