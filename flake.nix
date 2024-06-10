@@ -60,6 +60,7 @@
         };
         modules = [
           ./hosts/joe-work
+          niri.nixosModules.niri
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
