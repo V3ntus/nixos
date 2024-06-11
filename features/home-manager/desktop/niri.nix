@@ -12,7 +12,6 @@
   ];
 
   programs.niri = {
-    enable = true;
     settings = {
       # Input
       input = {

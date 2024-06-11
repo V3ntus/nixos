@@ -11,6 +11,7 @@
     ../../features/nixos/common
     ../../features/nixos/common/wireguard.nix
     ../../features/nixos/desktop/hyprland.nix
+    ../../features/nixos/desktop/niri.nix
     ../../features/nixos/desktop/sddm.nix
 
     ../../users/joe.nix
