@@ -4,7 +4,7 @@
 
 ## Features
 - Zen kernel
-- Hyprland + Waybar config
+- Hyprland/Niri(?) + Waybar config
 - Kitty + Oh-my-zsh + starship
 - Gruvbox theming
 - Autorotating wallpaper using swww
