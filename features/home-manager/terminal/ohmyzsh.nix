@@ -88,6 +88,7 @@
     shellAliases = {
       cat = "bat";
       lg = "lazygit";
+      nano = "vim";
     };
 
     oh-my-zsh = {
