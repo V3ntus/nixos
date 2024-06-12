@@ -4,7 +4,7 @@
   ...
 }: {
   # Add NVIDIA package
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   hardware.opengl = {
     enable = true;
@@ -20,7 +20,7 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
 
-    open = false;
+    open = true;
 
     nvidiaSettings = true;
 

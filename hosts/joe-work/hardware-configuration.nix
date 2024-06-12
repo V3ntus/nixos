@@ -4,6 +4,9 @@
   ...
 }: {
   boot.kernelModules = ["kvm-intel"];
+  boot.extraModprobeConfig = ''
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1
+  '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/e7667778-f6f6-4942-9698-2700c4bd1547";

@@ -48,9 +48,11 @@
     niri,
     ...
   } @ inputs: {
-    nixpkgs.overlays = [
-      niri.overlays.niri
-    ];
+    overlays.niri = (
+      final: prev: {
+        niri = niri.overlays.niri;
+      }
+    );
 
     nixosConfigurations = {
       # Work laptop configuration
@@ -70,7 +72,7 @@
             home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts swww;};
             home-manager.users.joe = {
               imports = [
-               ./hosts/joe-work/home.nix
+                ./hosts/joe-work/home.nix
               ];
             };
           }

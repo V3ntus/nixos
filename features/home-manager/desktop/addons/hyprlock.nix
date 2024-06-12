@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  osConfig,
   ...
 }: {
   programs.hyprlock = {
@@ -54,17 +55,25 @@
         before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
       };
 
-      listener = [
-        {
-          timeout = 300;
-          on-timeout = "${lib.getExe pkgs.hyprlock}";
-        }
-        {
-          timeout = 305;
-          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-        }
-      ];
+      listener =
+        [
+          {
+            timeout = 300;
+            on-timeout = "${lib.getExe pkgs.hyprlock}";
+          }
+        ]
+        ++ (
+          if osConfig.hardware.nvidia.modesetting.enable
+          then []
+          else [
+            # This causes problems with Nvidia, only use if no modesetting
+            {
+              timeout = 305;
+              on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+              on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+            }
+          ]
+        );
     };
   };
 }
