@@ -1,8 +1,10 @@
 # NixOS Configs
+
 ![image](https://github.com/V3ntus/nixos/assets/29584664/73c56423-7a90-4565-bd47-219a4a7982ed)
 ![image](https://github.com/V3ntus/nixos/assets/29584664/e2580fc9-7c6b-483e-bd1d-e8c8dc65e887)
 
 ## Features
+
 - Zen kernel
 - Hyprland/Niri(?) + Waybar config
 - Kitty + Oh-my-zsh + starship
@@ -27,4 +29,11 @@ Example:
 
 ```
 # nixos-rebuild test --flake .#<hostname> --show-trace --option eval-cache false
+```
+
+Or to build a VM:
+
+```
+nixos-rebuild build-vm --flake .#<hostname>
+QEMU_OPTS="-serial mon:stdio" QEMU_KERNEL_PARAMS=console=ttyS0 ./result/bin/run-nixos-vm
 ```
