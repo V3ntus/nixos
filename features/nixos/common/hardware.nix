@@ -8,6 +8,9 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  # Configure gaming mice/peripherals
+  services.ratbagd.enable = true;
+
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
   boot.extraModulePackages = [];
   boot.initrd.kernelModules = [];
