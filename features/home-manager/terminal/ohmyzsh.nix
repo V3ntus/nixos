@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     fzf
     fastfetch
@@ -25,14 +29,14 @@
     enable = true;
     config = {
       pager = "less -FR";
-      theme = "gruvbox-dark";
+      theme = lib.mkDefault "gruvbox-dark";
     };
   };
 
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "gruvbox_dark_v2";
+      color_theme = lib.mkDefault "gruvbox_dark_v2";
     };
   };
 

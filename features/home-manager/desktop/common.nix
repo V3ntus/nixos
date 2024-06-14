@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./gtk.nix
+    ./stylix.nix
   ];
   home.packages = with pkgs; [
     discord

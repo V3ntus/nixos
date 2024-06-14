@@ -3,6 +3,11 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./common.nix
+    ./addons/waybar.nix
+  ];
+
   home.packages = with pkgs; [
     playerctl
     wl-clipboard

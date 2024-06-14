@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix.url = "github:danth/stylix";
+
     apple-fonts = {
       url = "github:V3ntus/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,6 +43,7 @@
     self,
     nixpkgs,
     home-manager,
+    stylix,
     apple-fonts,
     sops-nix,
     gako358-neovim,
@@ -63,6 +66,7 @@
         };
         modules = [
           ./hosts/joe-work
+          stylix.nixosModules.stylix
           niri.nixosModules.niri
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
@@ -86,7 +90,9 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/ventus-pc
+          ./hosts/ventus-pc.nix
+          stylix.nixosModules.stylix
+          niri.nixosModules.niri
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {

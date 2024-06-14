@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{lib, pkgs, ...}: {
   programs.kitty = {
     enable = true;
 
-    font = {
+    font = lib.mkDefault {
       name = "Meslo LGS NF";
       package = pkgs.meslo-lgs-nf;
       size = 13;
@@ -11,7 +11,7 @@
     theme = "Gruvbox Material Dark Medium";
 
     settings = {
-      background_opacity = "0.75";
+      background_opacity = lib.mkForce "0.75";
       window_padding_width = 10;
       scrollback_lines = 10000;
       enable_audio_bell = false;

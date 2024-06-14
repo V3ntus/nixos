@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   ...
@@ -52,7 +53,7 @@
       ];
 
       # General
-      general = {
+      general = lib.mkDefault {
         gaps_in = 5;
         gaps_out = 20;
 
@@ -81,7 +82,7 @@
       ];
 
       # Decoration
-      decoration = {
+      decoration = lib.mkForce {
         rounding = 10;
 
         active_opacity = 1.0;

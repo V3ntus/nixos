@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   gtk = {
     enable = true;
     font = {
@@ -16,13 +20,13 @@
     cursorTheme = {
       name = "WhiteSur-cursors";
       package = pkgs.whitesur-cursors;
-      size = 22;
+      size = lib.mkDefault 22;
     };
   };
 
   home.pointerCursor = {
     name = "WhiteSur-cursors";
     package = pkgs.whitesur-cursors;
-    size = 22;
+    size = lib.mkDefault 22;
   };
 }
