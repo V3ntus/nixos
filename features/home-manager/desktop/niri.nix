@@ -9,6 +9,7 @@
   ];
 
   home.packages = with pkgs; [
+    wlsunset
     playerctl
     wl-clipboard
     grim
@@ -18,6 +19,24 @@
 
   programs.niri = {
     settings = {
+      hotkey-overlay.skip-at-startup = true;
+      environment = {
+        XCURSOR_SIZE = "24";
+        XDG_SESSION_TYPE = "wayland";
+        NIXOS_OZONE_WL = "1";
+        MOZ_ENABLE_WAYLAND = "1";
+        WLR_NO_HARDWARE_CURSORS = "1";
+      };
+
+      spawn-at-startup = [
+        {command = ["wlsunset" "-t" "2500" "-T" "2501"];}
+        {command = ["kitty"];}
+        {command = ["waybar"];}
+        {command = ["wl-paste" "-t" "text" "-w" "cliphist" "store"];}
+        {command = ["wl-paste" "-t" "image" "-w" "cliphist" "store"];}
+        {command = ["bash" "${config.xdg.dataFile."change_wallpaper.sh".source}"];}
+      ];
+
       # Input
       input = {
         keyboard = {
@@ -37,10 +56,42 @@
         # Define outputs in host configurations
       };
 
+      # Layout
+      layout = {
+        center-focused-column = "always";
+        border = {
+          enable = false;
+        };
+        focus-ring = {
+          enable = true;
+          width = 2;
+        };
+        struts = {
+          top = 64;
+          bottom = 64;
+          left = 64;
+          right = 64;
+        };
+      };
+
+      # Window rules
+      window-rules = [
+        {
+          draw-border-with-background = false;
+          clip-to-geometry = true;
+          geometry-corner-radius = {
+            bottom-left = 14.0;
+            bottom-right = 14.0;
+            top-left = 14.0;
+            top-right = 14.0;
+          };
+        }
+      ];
+
       # Keybinds
       binds = with config.lib.niri.actions; let
         sh = spawn "sh" "-c";
-        screenshot = ''grim -g \"$(slurp -d)\" - | tee >(swappy -f - -o - | wl-copy) | wl-copy'';
+        screenshot = ''grim -g "$(slurp -d)" - | tee >(swappy -f - -o - | wl-copy) | wl-copy'';
         terminal = "kitty";
         menu = ["wofi" "--show" "drun"];
         lock = "hyprlock";
@@ -54,9 +105,7 @@
         "Mod+Print".action = sh screenshot;
 
         # Actions
-        "Ctrl+Q".action = quit {
-          skip-confirmation = true;
-        };
+        "Ctrl+Q".action = close-window;
 
         # Windows/Columns - Window Management
         "Mod+WheelScrollDown" = {
@@ -79,6 +128,14 @@
         "Mod+Shift+Right".action = move-column-right;
         "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
         "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
+        "Mod+Ctrl+Left".action = move-window-to-monitor-left;
+        "Mod+Ctrl+Right".action = move-window-to-monitor-right;
+        "Mod+Ctrl+Up".action = move-window-to-monitor-up;
+        "Mod+Ctrl+Down".action = move-window-to-monitor-down;
+        "Mod+Alt+Left".action = focus-monitor-left;
+        "Mod+Alt+Right".action = focus-monitor-right;
+        "Mod+Alt+Up".action = focus-monitor-up;
+        "Mod+Alt+Down".action = focus-monitor-down;
         "Mod+F".action = fullscreen-window;
         "Mod+Return".action = center-column;
         # -- inherits Hyprland-like Mod+RightClick resizing built-in
