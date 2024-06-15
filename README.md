@@ -2,11 +2,13 @@
 
 ![image](https://github.com/V3ntus/nixos/assets/29584664/73c56423-7a90-4565-bd47-219a4a7982ed)
 ![image](https://github.com/V3ntus/nixos/assets/29584664/e2580fc9-7c6b-483e-bd1d-e8c8dc65e887)
+![image](https://github.com/V3ntus/nixos/assets/29584664/78f03d92-5ecb-4d3d-b75d-e440c4accfd1)
+
 
 ## Features
 
 - Zen kernel
-- Hyprland/Niri(?) + Waybar config
+- Hyprland/Niri + Waybar config
 - Kitty + Oh-my-zsh + starship
 - Gruvbox theming
 - Autorotating wallpaper using swww
