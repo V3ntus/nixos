@@ -1,4 +1,6 @@
-{
+let
+  preferredOutput = "DP-1";
+in {
   imports = [
     ./disks.nix
     ./hardware-configuration.nix
@@ -11,5 +13,13 @@
     ../../features/nixos/desktop/stylix.nix
 
     ../../users/joe.nix
+  ];
+
+  programs.steam.gamescopeSession.args = [
+    "-O ${preferredOutput}"
+  ];
+
+  programs.gamescope.args = [
+    "-O ${preferredOutput}"
   ];
 }
