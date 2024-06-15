@@ -11,6 +11,7 @@
       "wheel"
     ]
     ++ ifTheyExist [
+      "input"
       "network"
       "networkmanager"
       "plugdev"

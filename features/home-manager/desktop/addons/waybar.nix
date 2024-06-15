@@ -31,12 +31,13 @@
 
         modules-right = [
           "pulseaudio"
-          "bluetooth"
+          # "bluetooth"
           "battery"
           "network"
           "group/hardware"
           "custom/cliphist"
           "idle_inhibitor"
+          "keyboard-state"
           "tray"
           "clock"
         ];
