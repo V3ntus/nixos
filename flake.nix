@@ -90,7 +90,7 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/ventus-pc.nix
+          ./hosts/ventus-pc
           stylix.nixosModules.stylix
           niri.nixosModules.niri
           sops-nix.nixosModules.sops
