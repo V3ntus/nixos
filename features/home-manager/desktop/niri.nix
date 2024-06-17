@@ -47,7 +47,7 @@
 
         # Input flags
         warp-mouse-to-focus = true;
-        focus-follows-mouse = true;
+        focus-follows-mouse = false;
         workspace-auto-back-and-forth = true;
       };
 
