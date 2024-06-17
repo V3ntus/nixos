@@ -21,8 +21,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    gako358-neovim = {
-      url = "github:Gako358/neovim";
+    neovim = {
+      url = "github:nicolas-goudry/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -46,7 +46,7 @@
     stylix,
     apple-fonts,
     sops-nix,
-    gako358-neovim,
+    neovim,
     swww,
     niri,
     ...
@@ -73,7 +73,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts swww;};
+            home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww;};
             home-manager.users.joe = {
               imports = [
                 ./hosts/joe-work/home.nix
@@ -98,7 +98,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit gako358-neovim apple-fonts swww;};
+            home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww;};
             home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
         ];
