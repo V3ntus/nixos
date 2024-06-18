@@ -90,6 +90,7 @@
     };
 
     shellAliases = {
+      y = "yazi";
       cat = "bat";
       lg = "lazygit";
       nano = "vim";
