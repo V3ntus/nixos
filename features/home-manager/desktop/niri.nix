@@ -58,7 +58,7 @@
 
       # Layout
       layout = {
-        center-focused-column = "always";
+        center-focused-column = "on-overflow";
         border = {
           enable = false;
         };
@@ -67,10 +67,10 @@
           width = 2;
         };
         struts = {
-          top = 64;
-          bottom = 64;
-          left = 64;
-          right = 64;
+          top = 24;
+          bottom = 24;
+          left = 24;
+          right = 24;
         };
       };
 
@@ -137,7 +137,15 @@
         "Mod+Alt+Up".action = focus-monitor-up;
         "Mod+Alt+Down".action = focus-monitor-down;
         "Mod+F".action = fullscreen-window;
+        "Mod+Shift+F".action = maximize-column;
         "Mod+Return".action = center-column;
+        "Mod+Space".action = set-column-width "100%";
+        "Mod+comma".action = consume-window-into-column;
+        "Mod+period".action = expel-window-from-column;
+        "Mod+minus".action = set-column-width "-5%";
+        "Mod+equal".action = set-column-width "+5%";
+        "Mod+Shift+minus".action = set-window-height "-5%";
+        "Mod+Shift+equal".action = set-window-height "+5%";
         # -- inherits Hyprland-like Mod+RightClick resizing built-in
 
         # Workspaces
