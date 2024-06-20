@@ -94,6 +94,9 @@
       cat = "bat";
       lg = "lazygit";
       nano = "vim";
+      # Network tools reminders
+      traceroute = "echo 'Use trip instead'";
+      mtr = "echo 'Use trip instead'";
     };
 
     oh-my-zsh = {
