@@ -650,15 +650,15 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1718578797,
-        "narHash": "sha256-fdq1HW4XDNi0OI46W5cIiwnhopK8r79wj89JMUfM7u0=",
-        "owner": "nicolas-goudry",
+        "lastModified": 1718914720,
+        "narHash": "sha256-/kE8OheKYXGEqmIQJG//S3f/awAVr0mlCLftOX+Z+WE=",
+        "owner": "V3ntus",
         "repo": "nixvim-config",
-        "rev": "1ff2f4e92971f8afa027219f909373ff04147520",
+        "rev": "100f1a58b78ee2b80818fa20e8806fbd3b91563b",
         "type": "github"
       },
       "original": {
-        "owner": "nicolas-goudry",
+        "owner": "V3ntus",
         "repo": "nixvim-config",
         "type": "github"
       }

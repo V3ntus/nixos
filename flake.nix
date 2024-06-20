@@ -22,7 +22,7 @@
     };
 
     neovim = {
-      url = "github:nicolas-goudry/nixvim-config";
+      url = "github:V3ntus/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
