@@ -94,6 +94,8 @@
       cat = "bat";
       lg = "lazygit";
       nano = "vim";
+      vim = "neovide";
+
       # Network tools reminders
       traceroute = "echo 'Use trip instead'";
       mtr = "echo 'Use trip instead'";
