@@ -37,6 +37,11 @@
       url = "github:V3ntus/nix-thorium/f592c6d8e3cda35f5d0b8da39c5f06fa5b774e35";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    srvos = {
+      url = "github:nix-community/srvos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -49,6 +54,7 @@
     neovim,
     swww,
     niri,
+    srvos
     ...
   } @ inputs: {
     overlays.niri = (
@@ -101,6 +107,20 @@
             home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww;};
             home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
+        ];
+      };
+
+      # AI/LLM machine at home
+      ai = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          srvos.nixosModules.server
+          srvos.nixosModules.mixins-terminfo
+          srvos.nixosModules.mixins-systemd-boot
+          srvos.nixosModules.mixins-trusted-nix-caches
+          srvos.nixosModules.mixins-nix-experimental
+          
+          ./hosts/ai
         ];
       };
     };
