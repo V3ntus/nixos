@@ -4,6 +4,7 @@
   ];
 
   programs.gamescope = {
+    capSysNice = true;
     enable = true;
     args = [
       "--hdr-enabled"

@@ -54,7 +54,7 @@
     neovim,
     swww,
     niri,
-    srvos
+    srvos,
     ...
   } @ inputs: {
     overlays.niri = (
