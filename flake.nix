@@ -123,6 +123,6 @@
           ./hosts/ai
         ];
       };
-    };
+    } // import ./hosts/homelab;
   };
 }

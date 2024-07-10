@@ -1,8 +1,0 @@
-{
-    "domain": "gladiusso.com",
-    "hosts": {
-        "joe-gaming": {
-            "ipv4": "192.168.2.2"
-        }
-    }
-}

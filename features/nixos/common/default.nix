@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   imports = [
     ./audio.nix
     ./desktop.nix
@@ -24,5 +24,5 @@
     set tabsize 2
   '';
 
-  system.stateVersion = "23.11";
+  system.stateVersion = lib.mkDefault "23.11";
 }
