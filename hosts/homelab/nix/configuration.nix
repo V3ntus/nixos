@@ -4,6 +4,7 @@
 
     ../../../features/nixos/common/sops.nix
     ../../../users/root.nix
+    ../../../users/joe.nix
   ];
 
   sops.secrets = {
