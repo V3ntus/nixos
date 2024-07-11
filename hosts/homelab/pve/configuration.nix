@@ -49,6 +49,9 @@
         };
       };
     };
+    defaultGateway = {
+      address = "192.168.2.1";
+    };
     firewall = {
       interfaces = {
         enp4s0f0 = {
