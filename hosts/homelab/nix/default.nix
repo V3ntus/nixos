@@ -5,7 +5,7 @@
     sops-nix.nixosModules.sops
 
     srvos.nixosModules.server
-    srvos.nixosModules.mixins-trusted-nixos-caches
+    srvos.nixosModules.mixins-trusted-nix-caches
     srvos.nixosModules.mixins-nix-experimental
 
     ./configuration.nix
