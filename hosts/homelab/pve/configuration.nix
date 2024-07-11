@@ -3,8 +3,8 @@
     ../../../features/nixos/common/locale.nix
     ../../../features/nixos/common/networking.nix
     ../../../features/nixos/common/nix.nix
-    ../../../features/nixos/common/security.nix
     ../../../features/nixos/common/sops.nix
+    ../ssh.nix
     ./hardware-configuration.nix
   ];
 

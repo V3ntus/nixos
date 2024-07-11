@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../ssh.nix
 
     ../../../features/nixos/common/sops.nix
     ../../../users/root.nix
