@@ -44,7 +44,7 @@
     };
 
     proxmox-nixos = {
-      url = "github:SaumonNet/proxmox-nixos";
+      url = "github:V3ntus/proxmox-nixos";
     };
   };
 

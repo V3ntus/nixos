@@ -12,6 +12,8 @@
     enable = true;
   };
 
+  programs.git.enable = true;
+
   services.openssh = {
     enable = true;
     settings = {
@@ -20,15 +22,18 @@
   };
 
   networking = {
+    usePredictableInterfaceNames = lib.mkForce true;
+    hostName = "pve";
     # LAN bridge for Proxmox
     bridges = {
       vmbr0.interfaces = [
-        "enp4s0f0"
+        "eno1"
       ];
     };
     interfaces = {
       # LAN
       vmbr0 = {
+	useDHCP = false;
         ipv4 = {
           addresses = [{
             address = "192.168.2.3";
@@ -37,8 +42,8 @@
         };
       };
       # WAN (unused)
-      enp4s0f1 = {
-        useDHCP = true;
+      eno2 = {
+        useDHCP = false;
         ipv4 = {
           addresses = [];
         };
