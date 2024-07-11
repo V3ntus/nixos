@@ -1,4 +1,4 @@
-{config, ...}: rec {
+{lib, config, ...}: rec {
   imports = [
     ./hardware-configuration.nix
 
@@ -9,8 +9,8 @@
   sops.secrets = {
     "certificates/cache-server/priv" = {
       mode = "0400";
-      owner = "nix-serve";
-      group = "nix-serve";
+      owner = "root";
+      group = "root";
       path = "/var/lib/nix-state/secrets/cache-server-priv.pem";
     };
   };

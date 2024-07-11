@@ -1,7 +1,12 @@
-{lib, ...}: {
+{lib, modulesPath, ...}: {
   imports = [
-    ../../../features/nixos/common/hardware.nix
+    (modulesPath + "/virtualisation/proxmox-lxc.nix")
   ];
+
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "megaraid_sas" "uas" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/mapper/array-vm--101--disk--0";
