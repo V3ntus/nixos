@@ -6,7 +6,7 @@
   # Add NVIDIA package
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 

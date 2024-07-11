@@ -25,6 +25,8 @@ in {
     };
   };
 
+  programs.zsh.enable = true;
+
   users.users.joe = {
     name = "joe";
     isNormalUser = true;

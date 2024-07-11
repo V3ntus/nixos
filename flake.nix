@@ -42,6 +42,10 @@
       url = "github:nix-community/srvos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    proxmox-nixos = {
+      url = "github:SaumonNet/proxmox-nixos";
+    };
   };
 
   outputs = {
@@ -55,6 +59,7 @@
     swww,
     niri,
     srvos,
+    proxmox-nixos,
     ...
   } @ inputs: {
     overlays.niri = (
@@ -119,10 +124,11 @@
           srvos.nixosModules.mixins-systemd-boot
           srvos.nixosModules.mixins-trusted-nix-caches
           srvos.nixosModules.mixins-nix-experimental
+          sops-nix.nixosModules.sops
           
           ./hosts/ai
         ];
       };
-    } // import ./hosts/homelab;
+    } // import ./hosts/homelab {inherit nixpkgs; inherit srvos; inherit proxmox-nixos; inherit sops-nix;};
   };
 }

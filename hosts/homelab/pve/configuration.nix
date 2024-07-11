@@ -27,14 +27,8 @@
       ];
     };
     interfaces = {
-      # Proxmox bridge
-      vmbr0 = {
-        useDHCP = lib.mkDefault true;
-      };
-
       # LAN
-      enp4s0f0 = {
-        useDHCP = false;
+      vmbr0 = {
         ipv4 = {
           addresses = [{
             address = "192.168.2.3";
@@ -60,4 +54,6 @@
       };
     };
   };
+
+  system.stateVersion = "24.11";
 }

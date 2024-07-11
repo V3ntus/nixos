@@ -5,9 +5,13 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./services.nix
+      ../../users/joe.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
+
+  # TODO: waiting on this PR https://github.com/NixOS/nixpkgs/pull/325224
+  nixpkgs.config.allowBroken = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.kernelParams = [ "console=ttyS0" ];
@@ -37,16 +41,6 @@
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
   services.xserver.xkb.layout = "us";
-
-  # User & Packages
-  users.users.ventus = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      dig
-      tree
-    ];
-  };
 
   environment.systemPackages = with pkgs; [
     neovim
