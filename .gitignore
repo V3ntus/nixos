@@ -1,4 +1,5 @@
 **/result
 **/*.key
+**/*.pem
 **/*.qcow2
 .obsidian/
