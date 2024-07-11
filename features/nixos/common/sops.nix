@@ -1,7 +1,21 @@
 let
   defaultUsersSopsFile = ../../users/secrets.yaml;
 in {
-  sops.age.keyFile = "/home/joe/repos/nixos/secret.key";
-  sops.defaultSopsFile = defaultUsersSopsFile;
-  sops.defaultSopsFormat = "yaml";
+  systemd.tmpfiles.settings = {
+    "10-nix-state" = {
+      "/var/lib/nix-state/secrets" = {
+        d = {
+          group = "root";
+          mode = "0600";
+          user = "root";
+        };
+      };
+    };
+  };
+
+  sops = {
+    age.keyFile = "/var/lib/nix-state/secrets/secret.key";
+    defaultSopsFile = defaultUsersSopsFile;
+    defaultSopsFormat = "yaml";
+  };
 }

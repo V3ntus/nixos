@@ -20,10 +20,10 @@
   };
 
   # This isn't working with starship currently
-  programs.thefuck = {
-    enable = true;
-    enableInstantMode = true;
-  };
+  # programs.thefuck = {
+  #   enable = true;
+  #   enableInstantMode = true;
+  # };
 
   programs.bat = {
     enable = true;
