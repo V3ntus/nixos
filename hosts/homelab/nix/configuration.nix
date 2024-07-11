@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
 
     ../../../features/nixos/common/sops.nix
+    ../../../users/root.nix
   ];
 
   sops.secrets = {
