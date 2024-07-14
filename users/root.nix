@@ -13,7 +13,7 @@
   programs.zsh.enable = true;
 
   users.users.root = {
-    name = "joe";
+    name = "root";
     isSystemUser = true;
     hashedPasswordFile = config.sops.secrets."users/root/password".path;
     shell = pkgs.zsh;
