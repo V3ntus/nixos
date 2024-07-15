@@ -1,4 +1,4 @@
-{lib, config, ...}: rec {
+rec {
   imports = [
     ./hardware-configuration.nix
     ../ssh.nix
