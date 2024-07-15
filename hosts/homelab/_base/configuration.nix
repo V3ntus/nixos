@@ -1,4 +1,4 @@
-{lib, modulesPath}: {
+{modulesPath, ...}: {
   # Baseline configuration for initial remote deployment.
   # This is manually uploaded to a new host and switched to.
   imports = [
