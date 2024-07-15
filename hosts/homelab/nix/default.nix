@@ -6,6 +6,7 @@
 
     srvos.nixosModules.server
     srvos.nixosModules.mixins-trusted-nix-caches
+    # Enabling this experimental mixin causes auto UID assignment to cause problems for build users.
     # srvos.nixosModules.mixins-nix-experimental
 
     ./configuration.nix

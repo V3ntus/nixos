@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hardware-configuration.nix
+    ../lxc-hardware-configuration.nix
     ../ssh.nix
 
     ../../../features/nixos/common/sops.nix
@@ -11,5 +11,10 @@
   services.technitium-dns-server = {
     enable = true;
     openFirewall = true;
+  };
+
+  fileSystems."/" = {
+    device = "/dev/mapper/array-vm--100--disk--0";
+    fsType = "ext4";
   };
 }

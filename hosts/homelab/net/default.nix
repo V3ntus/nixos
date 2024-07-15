@@ -6,7 +6,6 @@
 
     srvos.nixosModules.server
     srvos.nixosModules.mixins-trusted-nix-caches
-    srvos.nixosModules.mixins-nix-experimental
 
     ./configuration.nix
   ];
