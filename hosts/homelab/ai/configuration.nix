@@ -1,4 +1,4 @@
-{pkgs, ...}: rec {
+{pkgs, config, ...}: rec {
   imports = [
     ../vm-hardware-configuration.nix
     ../ssh.nix
@@ -11,22 +11,23 @@
     ../../../users/joe.nix
   ];
 
-  # NVIDIA vGPU guest configuration
-  hardware.nvidia.vgpu = {
-    enable = true;
+  hardware.graphics.enable = true;
 
-    useMyDriver = {
-      enable = true;
-      name = "NVIDIA-Linux-x86_64-535.161.07-grid.run";
-      sha256 = "sha256-o8dyPjc09cdigYWqkWJG6H/AP71bH65pfwFTS/7V9GM=";
-      driver-version = "535.161.07";
-      getFromRemote = pkgs.fetchurl {
-        name = hardware.nvidia.vgpu.useMyDriver.name;
-        url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-535.161.07-grid.run";
-        sha256 = hardware.nvidia.vgpu.useMyDriver.sha256;
-      };
+  # NVIDIA vGPU guest configuration
+  hardware.nvidia = {
+    modesetting.enable = true;
+
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+
+    nvidiaSettings = false;
+
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "535.161.07";
+      sha256_64bit = "sha256-o8dyPjc09cdigYWqkWJG6H/AP71bH65pfwFTS/7V9GM=";
+      url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-${hardware.nvidia.version}-grid.run";
     };
-  };
+  }; 
 
   # Static IP assignment
   networking.hostName = "ai";

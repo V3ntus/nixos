@@ -1,4 +1,4 @@
-{nixpkgs, srvos, sops-nix, nvidia-vgpu, ...}: nixpkgs.lib.nixosSystem {
+{nixpkgs, srvos, sops-nix, ...}: nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
 
   modules = [
@@ -7,8 +7,6 @@
     srvos.nixosModules.server
     srvos.nixosModules.mixins-trusted-nix-caches
     srvos.nixosModules.mixins-nix-experimental
-
-    nvidia-vgpu.nixosModules.nvidia-vgpu
 
     ./configuration.nix
   ];

@@ -168,7 +168,7 @@
     },
     "crane": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1717383740,
@@ -959,18 +959,6 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1720031269,
-        "narHash": "sha256-rwz8NJZV+387rnWpTYcXaRNvzUSnnF9aHONoJIYmiUQ=",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/9f4128e00b0ae8ec65918efeba59db998750ead6.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/9f4128e00b0ae8ec65918efeba59db998750ead6.tar.gz"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
         "lastModified": 1714656196,
         "narHash": "sha256-kjQkA98lMcsom6Gbhw8SYzmwrSo+2nruiTcTZp5jK7o=",
         "owner": "NixOS",
@@ -985,7 +973,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1718208800,
         "narHash": "sha256-US1tAChvPxT52RV8GksWZS415tTS7PV42KTc2PNDBmc=",
@@ -1000,7 +988,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1714912032,
         "narHash": "sha256-clkcOIkg8G4xuJh+1onLG4HPMpbtzdLv4rHxFzgsH9c=",
@@ -1016,7 +1004,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1716509168,
         "narHash": "sha256-4zSIhSRRIoEBwjbPm3YiGtbd8HDWzFxJjw5DYSDy1n8=",
@@ -1092,25 +1080,6 @@
         "type": "gitlab"
       }
     },
-    "nvidia-vgpu": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_4"
-      },
-      "locked": {
-        "lastModified": 1720783003,
-        "narHash": "sha256-Rw8yz0I6/hKgpROgySuFCEtYAN/nD+730immc4ShuFw=",
-        "owner": "Yeshey",
-        "repo": "nixos-nvidia-vgpu",
-        "rev": "a2cee9baadb61763c46514462874f3e9910f08b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Yeshey",
-        "ref": "development",
-        "repo": "nixos-nvidia-vgpu",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -1149,7 +1118,7 @@
       "inputs": {
         "crane": "crane",
         "flake-compat": "flake-compat_3",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "utils": "utils"
       },
@@ -1174,7 +1143,6 @@
         "neovim": "neovim",
         "niri": "niri",
         "nixpkgs": "nixpkgs_3",
-        "nvidia-vgpu": "nvidia-vgpu",
         "proxmox-nixos": "proxmox-nixos",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
@@ -1237,7 +1205,7 @@
         "flake-compat": "flake-compat_4",
         "gnome-shell": "gnome-shell",
         "home-manager": "home-manager_3",
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1718292734,
@@ -1256,7 +1224,7 @@
     "swww": {
       "inputs": {
         "flake-compat": "flake-compat_5",
-        "nixpkgs": "nixpkgs_8",
+        "nixpkgs": "nixpkgs_7",
         "utils": "utils_2"
       },
       "locked": {

@@ -50,11 +50,7 @@
 
     proxmox-nixos = {
       url = "github:V3ntus/proxmox-nixos";
-    };
-
-    nvidia-vgpu = {
-      url = "github:Yeshey/nixos-nvidia-vgpu/development";
-    };
+    }; 
   };
 
   outputs = {
@@ -69,8 +65,7 @@
     swww,
     niri,
     srvos,
-    proxmox-nixos,
-    nvidia-vgpu,
+    proxmox-nixos, 
     ...
   } @ inputs: {
     overlays.niri = (
@@ -140,6 +135,6 @@
       #     ./hosts/ai
       #   ];
       # };
-    } // import ./hosts/homelab {inherit nixpkgs srvos proxmox-nixos sops-nix nvidia-vgpu;};
+    } // import ./hosts/homelab {inherit nixpkgs srvos proxmox-nixos sops-nix;};
   };
 }
