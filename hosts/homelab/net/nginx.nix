@@ -15,6 +15,7 @@ let
   };
   virtualHosts = {
     "dns.gladiusso.com" = proxy "127.0.0.1" 5380;
+    "home.gladiusso.com" = proxy "127.0.0.1" 8082;
   };
 in {
   networking.firewall.allowedTCPPorts = [

@@ -4,6 +4,8 @@
     ../ssh.nix
 
     ./nginx.nix
+    ./homepage.nix
+
     ../../../features/nixos/common/sops.nix
     ../../../users/root.nix
     ../../../users/joe.nix
