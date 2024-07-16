@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
@@ -10,6 +10,8 @@
     ../../../users/root.nix
     ../../../users/joe.nix
   ];
+
+  services.resolved.enable = lib.mkForce false;
 
   services.technitium-dns-server = {
     enable = true;
