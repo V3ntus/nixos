@@ -1,4 +1,6 @@
-{pkgs, config, ...}: rec {
+{config, ...}: let
+  nvidiaVersion = "535.161.07";
+in rec {
   imports = [
     ../vm-hardware-configuration.nix
     ../ssh.nix
@@ -12,6 +14,8 @@
   ];
 
   hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   # NVIDIA vGPU guest configuration
   hardware.nvidia = {
@@ -23,9 +27,11 @@
     nvidiaSettings = false;
 
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "535.161.07";
+      version = nvidiaVersion;
+      url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-${nvidiaVersion}-grid.run";
       sha256_64bit = "sha256-o8dyPjc09cdigYWqkWJG6H/AP71bH65pfwFTS/7V9GM=";
-      url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-${hardware.nvidia.version}-grid.run";
+      useSettings = false;
+      usePersistenced = false;
     };
   }; 
 
