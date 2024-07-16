@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{waybar, pkgs, ...}: {
   home.packages = with pkgs; [cliphist];
   programs.waybar = {
     enable = true;
+    package = waybar.packages.${pkgs.system}.waybar;
 
     style = ''
       ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
@@ -53,9 +54,6 @@
             default = "";
           };
           on-click = "activate";
-          persistent-workspaces = {
-            "*" = 5;
-          };
         };
 
         "wlr/taskbar" = {

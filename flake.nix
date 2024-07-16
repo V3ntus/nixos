@@ -11,6 +11,11 @@
 
     stylix.url = "github:danth/stylix";
 
+    waybar = {
+      url = "github:Alexays/Waybar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     apple-fonts = {
       url = "github:V3ntus/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,6 +58,7 @@
     nixpkgs,
     home-manager,
     stylix,
+    waybar,
     apple-fonts,
     sops-nix,
     neovim,
@@ -84,7 +90,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww;};
+            home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww waybar;};
             home-manager.users.joe = {
               imports = [
                 ./hosts/joe-work/home.nix
