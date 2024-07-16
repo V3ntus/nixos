@@ -3,6 +3,7 @@
     ../lxc-hardware-configuration.nix
     ../ssh.nix
 
+    ./nginx.nix
     ../../../features/nixos/common/sops.nix
     ../../../users/root.nix
     ../../../users/joe.nix
