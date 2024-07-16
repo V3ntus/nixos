@@ -115,7 +115,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww;};
+            home-manager.extraSpecialArgs = {inherit neovim apple-fonts swww waybar;};
             home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
           }
         ];
