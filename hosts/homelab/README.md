@@ -32,3 +32,12 @@
 - [TrueNAS](http://192.168.2.4/)
 - [Wazuh](https://192.168.2.11/)
 - [AI (Ollama, Stable Diffusion)](http://192.168.2.12:8081/)
+
+## Operating Procedures
+### Deploying a new LXC/VM
+
+A baseline configuration is included in [`_base/configuration.nix`](./_base/configuration.nix) which should only be used for initial remote deployment. 
+This preps the machine for accepting SSH connections to allow `nixos-rebuild` to transfer closures.  
+
+> [!IMPORTANT]
+> Ensure `nixos-generate-config` is ran before switching to the baseline config to generate the required `hardware-configuration.nix` file.
