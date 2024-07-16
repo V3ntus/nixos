@@ -51,6 +51,10 @@
     proxmox-nixos = {
       url = "github:V3ntus/proxmox-nixos";
     };
+
+    nvidia-vgpu = {
+      url = "github:Yeshey/nixos-nvidia-vgpu/development";
+    };
   };
 
   outputs = {
@@ -66,6 +70,7 @@
     niri,
     srvos,
     proxmox-nixos,
+    nvidia-vgpu,
     ...
   } @ inputs: {
     overlays.niri = (
@@ -122,19 +127,19 @@
       };
 
       # AI/LLM machine at home
-      ai = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          srvos.nixosModules.server
-          srvos.nixosModules.mixins-terminfo
-          srvos.nixosModules.mixins-systemd-boot
-          srvos.nixosModules.mixins-trusted-nix-caches
-          srvos.nixosModules.mixins-nix-experimental
-          sops-nix.nixosModules.sops
+      # ai_old = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     srvos.nixosModules.server
+      #     srvos.nixosModules.mixins-terminfo
+      #     srvos.nixosModules.mixins-systemd-boot
+      #     srvos.nixosModules.mixins-trusted-nix-caches
+      #     srvos.nixosModules.mixins-nix-experimental
+      #     sops-nix.nixosModules.sops
           
-          ./hosts/ai
-        ];
-      };
-    } // import ./hosts/homelab {inherit nixpkgs; inherit srvos; inherit proxmox-nixos; inherit sops-nix;};
+      #     ./hosts/ai
+      #   ];
+      # };
+    } // import ./hosts/homelab {inherit nixpkgs srvos proxmox-nixos sops-nix nvidia-vgpu;};
   };
 }

@@ -5,11 +5,10 @@
 
     ../../../features/nixos/common/sops.nix
     ../../../features/nixos/common/locale.nix
+    ../../../features/nixos/common/nix.nix
 
     ../../../users/root.nix
     ../../../users/joe.nix
-
-    (builtins.getFlake "https://github.com/Yeshey/nixos-nvidia-vgpu/archive/refs/heads/development.zip").nixosModules.nvidia-vgpu
   ];
 
   # NVIDIA vGPU guest configuration
@@ -21,7 +20,7 @@
       name = "NVIDIA-Linux-x86_64-535.161.07-grid.run";
       sha256 = "sha256-o8dyPjc09cdigYWqkWJG6H/AP71bH65pfwFTS/7V9GM=";
       driver-version = "535.161.07";
-      getFromRemote = pkgs.fetchUrl {
+      getFromRemote = pkgs.fetchurl {
         name = hardware.nvidia.vgpu.useMyDriver.name;
         url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-535.161.07-grid.run";
         sha256 = hardware.nvidia.vgpu.useMyDriver.sha256;
@@ -30,7 +29,7 @@
   };
 
   # Static IP assignment
-  networking.hostname = "ai";
+  networking.hostName = "ai";
   networking.networkmanager.enable = true;
   networking.interfaces.ens18 = {
     ipv4.addresses = [
