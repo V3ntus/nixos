@@ -13,6 +13,7 @@
 
   services.resolved.enable = lib.mkForce false;
 
+  networking.hostName = "net";
   networking.nameservers = [
     "9.9.9.9"
   ];

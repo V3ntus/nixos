@@ -42,7 +42,7 @@
           {
             "Mikrotik" = {
               icon = "mikrotik.png";
-              description = "Mikrotik network router";
+              description = "Mikrotik Network Router";
               href = "http://192.168.2.1";
               widget = {
                 type = "mikrotik";
@@ -68,8 +68,16 @@
           { 
             "Technitium" = {
               icon = "azure-dns.png";
-              description = "DNS server";
+              description = "Technitium DNS server and network adblocker";
               href = "http://dns.gladiusso.com";
+            };
+          }
+        ];
+        "Apps" = [
+          {
+            "Open WebUI" = {
+              icon = "ollama.png";
+              description = "ChatGPT-like LLM interface for Ollama";
             };
           }
         ];
