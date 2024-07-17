@@ -120,21 +120,6 @@
           }
         ];
       };
-
-      # AI/LLM machine at home
-      # ai_old = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     srvos.nixosModules.server
-      #     srvos.nixosModules.mixins-terminfo
-      #     srvos.nixosModules.mixins-systemd-boot
-      #     srvos.nixosModules.mixins-trusted-nix-caches
-      #     srvos.nixosModules.mixins-nix-experimental
-      #     sops-nix.nixosModules.sops
-          
-      #     ./hosts/ai
-      #   ];
-      # };
     } // import ./hosts/homelab {inherit nixpkgs srvos proxmox-nixos sops-nix;};
   };
 }
