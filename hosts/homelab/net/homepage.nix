@@ -85,6 +85,24 @@
           }
         ];
       }
+      {
+        "Media" = [
+          {
+            "TrueNAS" = {
+              icon = "truenas.png";
+              description = "Network attached storage";
+              href = "http://files.gladiusso.com/";
+              widget = {
+                type = "truenas";
+                url = "http://files.gladiusso.com";
+                key = "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
+                enablePools = true;
+                nasType = "scale";
+              };
+            };
+          }
+        ];
+      }
     ];
   };
 }
