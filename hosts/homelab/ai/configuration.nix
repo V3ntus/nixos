@@ -1,6 +1,6 @@
-{config, ...}: let
+{pkgs, config, ...}: let
   nvidiaVersion = "535.161.07";
-in rec {
+in {
   imports = [
     ../vm-hardware-configuration.nix
     ../ssh.nix
@@ -11,8 +11,15 @@ in rec {
 
     ../../../users/root.nix
     ../../../users/joe.nix
+
+    ./ai_services.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    nvtopPackages.nvidia
+  ];
+
+  # Use NVIDIA drivers
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.nvidia.acceptLicense = true;
@@ -26,6 +33,7 @@ in rec {
 
     nvidiaSettings = false;
 
+    # Explicitly use the GRID drivers from NVIDIA
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = nvidiaVersion;
       url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-${nvidiaVersion}-grid.run";
