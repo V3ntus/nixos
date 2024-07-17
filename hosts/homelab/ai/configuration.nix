@@ -58,6 +58,9 @@ in {
     address = "192.168.2.1";
     interface = "ens18";
   };
+  networking.firewall.allowedTCPPorts = [
+    config.services.open-webui.port
+  ];
 
   # GRUB definition for BIOS legacy
   boot.loader.grub = {
@@ -69,4 +72,6 @@ in {
     device = "/dev/disk/by-uuid/357b03f5-d461-47cf-93e2-8fa1c50ef723";
     fsType = "ext4";
   };
+
+  system.stateVersion = "24.11";
 }
