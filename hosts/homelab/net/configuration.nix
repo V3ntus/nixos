@@ -11,7 +11,9 @@
     ../../../users/joe.nix
   ];
 
-  services.resolved.enable = lib.mkForce false;
+  networking.nameservers = [
+    "9.9.9.9"
+  ];
 
   services.technitium-dns-server = {
     enable = true;
