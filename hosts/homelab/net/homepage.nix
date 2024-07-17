@@ -73,11 +73,14 @@
             };
           }
         ];
+      }
+      {
         "Apps" = [
           {
             "Open WebUI" = {
               icon = "ollama.png";
               description = "ChatGPT-like LLM interface for Ollama";
+              href = "http://chatgpt.gladiusso.com";
             };
           }
         ];
