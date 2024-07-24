@@ -18,6 +18,7 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
+    file
   ];
   programs.nano.nanorc = ''
     set tabstospaces
