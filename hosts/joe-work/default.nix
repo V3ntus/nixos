@@ -14,6 +14,7 @@
     ../../features/nixos/desktop/niri.nix
     ../../features/nixos/desktop/stylix.nix
     ../../features/nixos/desktop/sddm.nix
+    ../../features/nixos/virtualization/docker.nix
 
     ../../users/joe.nix
   ];
