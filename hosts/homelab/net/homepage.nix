@@ -114,6 +114,18 @@
 	      };
             };
           }
+	  {
+	    "Prowlarr" = {
+	      icon = "prowlarr.png";
+	      description = "Indexer manager/proxy";
+	      href = "http://prowlarr.gladiusso.com/";
+	      widget = {
+		type = "prowlarr";
+		url = "http://192.168.2.4:9696";
+		key = "81a1edaecee6409982dad1ca3679702b";
+	      };
+	    };
+	  }
         ];
       }
     ];

@@ -20,6 +20,7 @@ let
     "chatgpt.gladiusso.com" = proxy "192.168.2.12" 8081;
 
     "transmission.gladiusso.com" = proxy "192.168.2.4" 9091;
+    "prowlarr.gladiusso.com" = proxy "192.168.2.4" 9696;
   };
 in {
   networking.firewall.allowedTCPPorts = [
