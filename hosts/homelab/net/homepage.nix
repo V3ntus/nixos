@@ -101,6 +101,19 @@
               };
             };
           }
+	  {
+	    "Transmission" = {
+	      icon = "flood.png";
+	      description = "Transmission Torrent client daemon";
+	      href = "http://transmission.gladiusso.com/";
+	      widget = {
+		type = "transmission";
+		url = "http://192.168.2.4:9091";
+		username = "transmission";
+		password = "transmission";
+	      };
+            };
+          }
         ];
       }
     ];
