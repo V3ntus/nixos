@@ -126,6 +126,18 @@
 	      };
 	    };
 	  }
+	  {
+	    "Radarr" = {
+	      icon = "radarr.png";
+	      description = "Movie tracker";
+	      href = "http://radarr.gladiusso.com/";
+	      widget = {
+		type = "radarr";
+		url = "http://192.168.2.4:7878";
+		key = "0b48ea3ce99b41b3b6c9fd188ee57ecf";
+	      };
+	    };
+	  }
         ];
       }
     ];

@@ -21,6 +21,7 @@ let
 
     "transmission.gladiusso.com" = proxy "192.168.2.4" 9091;
     "prowlarr.gladiusso.com" = proxy "192.168.2.4" 9696;
+    "radarr.gladiusso.com" = proxy "192.168.2.4" 7878;
   };
 in {
   networking.firewall.allowedTCPPorts = [
