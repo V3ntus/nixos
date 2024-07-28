@@ -9,6 +9,7 @@
 
     ./mounts.nix
     ./transmission.nix
+    ./arr.nix
   ];
 
   boot.loader.grub = {
