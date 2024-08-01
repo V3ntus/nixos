@@ -1,4 +1,9 @@
 {
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.radarr = {
     enable = true;
     openFirewall = true;

@@ -87,6 +87,21 @@
       }
       {
         "Media" = [
+	  {
+	    "Jellyfin" = {
+	      icon = "jellyfin.png";
+	      description = "Media library management";
+	      href = "http://jellyfin.gladiusso.com";
+	      widget = {
+		type = "jellyfin";
+		url = "http://192.168.2.4:8096";
+		key = "a3355f333d504432b10ed80828bac800";
+		enableBlocks = true;
+		enableUser = true;
+		showEpisodeNumber = true;
+	      };
+	    };
+	  }
           {
             "TrueNAS" = {
               icon = "truenas.png";
