@@ -87,6 +87,21 @@
       }
       {
         "Media" = [
+	  {
+	    "Jellyfin" = {
+	      icon = "jellyfin.png";
+	      description = "Media library management";
+	      href = "http://jellyfin.gladiusso.com";
+	      widget = {
+		type = "jellyfin";
+		url = "http://192.168.2.4:8096";
+		key = "a3355f333d504432b10ed80828bac800";
+		enableBlocks = true;
+		enableUser = true;
+		showEpisodeNumber = true;
+	      };
+	    };
+	  }
           {
             "TrueNAS" = {
               icon = "truenas.png";
@@ -101,6 +116,43 @@
               };
             };
           }
+	  {
+	    "Transmission" = {
+	      icon = "flood.png";
+	      description = "Transmission Torrent client daemon";
+	      href = "http://transmission.gladiusso.com/";
+	      widget = {
+		type = "transmission";
+		url = "http://192.168.2.4:9091";
+		username = "transmission";
+		password = "transmission";
+	      };
+            };
+          }
+	  {
+	    "Prowlarr" = {
+	      icon = "prowlarr.png";
+	      description = "Indexer manager/proxy";
+	      href = "http://prowlarr.gladiusso.com/";
+	      widget = {
+		type = "prowlarr";
+		url = "http://192.168.2.4:9696";
+		key = "81a1edaecee6409982dad1ca3679702b";
+	      };
+	    };
+	  }
+	  {
+	    "Radarr" = {
+	      icon = "radarr.png";
+	      description = "Movie tracker";
+	      href = "http://radarr.gladiusso.com/";
+	      widget = {
+		type = "radarr";
+		url = "http://192.168.2.4:7878";
+		key = "0b48ea3ce99b41b3b6c9fd188ee57ecf";
+	      };
+	    };
+	  }
         ];
       }
     ];

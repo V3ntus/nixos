@@ -50,7 +50,7 @@
 
     proxmox-nixos = {
       url = "github:V3ntus/proxmox-nixos";
-    }; 
+    };
   };
 
   outputs = {
@@ -65,7 +65,7 @@
     swww,
     niri,
     srvos,
-    proxmox-nixos, 
+    proxmox-nixos,
     ...
   } @ inputs: {
     overlays.niri = (

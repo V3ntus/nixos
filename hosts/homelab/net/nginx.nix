@@ -18,6 +18,11 @@ let
     "dns.gladiusso.com" = proxy "127.0.0.1" 5380;
     "home.gladiusso.com" = proxy "127.0.0.1" 8082;
     "chatgpt.gladiusso.com" = proxy "192.168.2.12" 8081;
+
+    "jellyfin.gladiusso.com" = proxy "192.168.2.4" 8096;
+    "transmission.gladiusso.com" = proxy "192.168.2.4" 9091;
+    "prowlarr.gladiusso.com" = proxy "192.168.2.4" 9696;
+    "radarr.gladiusso.com" = proxy "192.168.2.4" 7878;
   };
 in {
   networking.firewall.allowedTCPPorts = [
