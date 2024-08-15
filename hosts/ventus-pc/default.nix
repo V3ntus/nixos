@@ -1,5 +1,5 @@
 let
-  preferredOutput = "DP-1";
+  preferredOutput = "DP-4";
 in {
   imports = [
     ./disks.nix
