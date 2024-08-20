@@ -17,4 +17,16 @@
   home.packages = with pkgs; [
     alsa-scarlett-gui
   ];
+
+  programs.niri.settings.outputs = {
+    "DP-4" = {
+      enable = true;
+      mode = {
+        width = 3440;
+        height = 1440;
+        refresh = 165.0;
+      };
+      variable-refresh-rate = true;
+    };
+  };
 }
