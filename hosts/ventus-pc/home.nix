@@ -21,14 +21,14 @@
   ];
 
   programs.niri.settings.outputs = {
-    "DP-4" = {
+    "DP-3" = {
       enable = true;
       mode = {
         width = 3440;
         height = 1440;
-        refresh = 165.0;
+        refresh = 164.90;
       };
-      variable-refresh-rate = true;
+      # variable-refresh-rate = true;
     };
   };
 }
