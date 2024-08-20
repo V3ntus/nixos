@@ -16,6 +16,8 @@
 
   home.packages = with pkgs; [
     alsa-scarlett-gui
+    teams-for-linux
+    tidal-hifi
   ];
 
   programs.niri.settings.outputs = {
