@@ -3,7 +3,7 @@
     enable = true;
 
     settings = {
-      title = "Joe's Homepage";
+      title = "Joe and Danielle's Homepage";
       startUrl = "https://home.gladiusso.com";
 
       background = {
@@ -83,6 +83,18 @@
               href = "http://chatgpt.gladiusso.com";
             };
           }
+	  {
+	    "Immich" = {
+	      icon = "immich.png";
+	      description = "Photos and videos library";
+	      href = "http://photos.gladiusso.com";
+	      widget = {
+		type = "immich";
+		url = "http://photos.gladiusso.com";
+		key = "uHsYBMJcMMTimCN0waLJTJz7YH8x2TZyN48kq1LbnnU";
+	      };
+	    };
+	  }
         ];
       }
       {
