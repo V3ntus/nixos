@@ -8,13 +8,35 @@
 
       background = {
         image =
-          "https://github.com/V3ntus/nixos/blob/main/wallpapers/forest.jpg?raw=true";
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/640px-Moraine_Lake_17092005.jpg";
         blur = "sm";
-        brightness = 80;
+        brightness = 50;
+        opacity = 50;
       };
       theme = "dark";
-      color = "amber";
-      headerStyle = "boxedWidgets";
+      color = "slate";
+      headerStyle = "clean";
+      hideVersion = true;
+      useEqualHeights = true;
+
+      layout = {
+        Apps = {
+          tab = "Apps";
+          style = "row";
+          columns = 3;
+          header = false;
+        };
+        Media = {
+          tab = "Apps";
+          style = "row";
+          columns = 3;
+        };
+        Network = {
+          tab = "System";
+          style = "row";
+          columns = 3;
+        };
+      };
     };
 
     widgets = [
@@ -73,6 +95,46 @@
               href = "http://dns.gladiusso.com";
             };
           }
+          {
+            "TrueNAS" = {
+              icon = "truenas.png";
+              description = "Network attached storage";
+              href = "http://files.gladiusso.com/";
+              widget = {
+                type = "truenas";
+                url = "http://files.gladiusso.com";
+                key =
+                  "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
+                enablePools = true;
+                nasType = "scale";
+              };
+            };
+          }
+          {
+            "Transmission" = {
+              icon = "flood.png";
+              description = "Transmission Torrent client daemon";
+              href = "http://transmission.gladiusso.com/";
+              widget = {
+                type = "transmission";
+                url = "http://192.168.2.4:9091";
+                username = "transmission";
+                password = "transmission";
+              };
+            };
+          }
+          {
+            "Prowlarr" = {
+              icon = "prowlarr.png";
+              description = "Indexer manager/proxy";
+              href = "http://prowlarr.gladiusso.com/";
+              widget = {
+                type = "prowlarr";
+                url = "http://192.168.2.4:9696";
+                key = "81a1edaecee6409982dad1ca3679702b";
+              };
+            };
+          }
         ];
       }
       {
@@ -112,46 +174,6 @@
                 enableBlocks = true;
                 enableUser = true;
                 showEpisodeNumber = true;
-              };
-            };
-          }
-          {
-            "TrueNAS" = {
-              icon = "truenas.png";
-              description = "Network attached storage";
-              href = "http://files.gladiusso.com/";
-              widget = {
-                type = "truenas";
-                url = "http://files.gladiusso.com";
-                key =
-                  "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
-                enablePools = true;
-                nasType = "scale";
-              };
-            };
-          }
-          {
-            "Transmission" = {
-              icon = "flood.png";
-              description = "Transmission Torrent client daemon";
-              href = "http://transmission.gladiusso.com/";
-              widget = {
-                type = "transmission";
-                url = "http://192.168.2.4:9091";
-                username = "transmission";
-                password = "transmission";
-              };
-            };
-          }
-          {
-            "Prowlarr" = {
-              icon = "prowlarr.png";
-              description = "Indexer manager/proxy";
-              href = "http://prowlarr.gladiusso.com/";
-              widget = {
-                type = "prowlarr";
-                url = "http://192.168.2.4:9696";
-                key = "81a1edaecee6409982dad1ca3679702b";
               };
             };
           }
