@@ -1,9 +1,9 @@
-{modulesPath, ...}: {
+{ modulesPath, ... }: {
   # Baseline configuration for initial remote deployment.
   # This is manually uploaded to a new host and switched to.
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
-    ./hardware-configuration.nix  # make sure to run nixos-generate-config to get the hardware config
+    ./hardware-configuration.nix # make sure to run nixos-generate-config to get the hardware config
   ];
 
   system.stateVersion = "24.11";

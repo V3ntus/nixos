@@ -1,22 +1,16 @@
-{pkgs, ...}: {
-  environment.systemPackages = [
-    pkgs.mangohud
-  ];
+{ pkgs, ... }: {
+  environment.systemPackages = [ pkgs.mangohud ];
 
   programs.gamescope = {
     capSysNice = true;
     enable = true;
-    args = [
-      "--hdr-enabled"
-    ];
+    args = [ "--hdr-enabled" ];
   };
 
   programs.steam = {
     gamescopeSession = {
       enable = true;
-      args = [
-        "--hdr-enabled"
-      ];
+      args = [ "--hdr-enabled" ];
     };
     enable = true;
   };

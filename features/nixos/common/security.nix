@@ -1,9 +1,7 @@
 {
   users.mutableUsers = true;
 
-  programs.ssh.startAgent = true; 
+  programs.ssh.startAgent = true;
 
-  security.pam.services = {
-    hyprlock = {};
-  };
+  security.pam.services = { hyprlock = { }; };
 }

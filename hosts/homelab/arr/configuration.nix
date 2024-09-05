@@ -17,10 +17,7 @@
     device = "/dev/vda";
   };
 
-  networking.nameservers = [
-    "192.168.2.6"
-    "9.9.9.9"
-  ];
+  networking.nameservers = [ "192.168.2.6" "9.9.9.9" ];
 
   networking.defaultGateway = {
     address = "192.168.2.1";

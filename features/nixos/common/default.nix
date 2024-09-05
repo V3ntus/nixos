@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: {
+{ pkgs, lib, ... }: {
   imports = [
     ./audio.nix
     ./desktop.nix
@@ -15,11 +15,7 @@
   # Baseline shell operations
   programs.zsh.enable = true;
   programs.git.enable = true;
-  environment.systemPackages = with pkgs; [
-    wget
-    curl
-    file
-  ];
+  environment.systemPackages = with pkgs; [ wget curl file ];
   programs.nano.nanorc = ''
     set tabstospaces
     set tabsize 2

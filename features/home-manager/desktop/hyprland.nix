@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: {
+{ lib, pkgs, config, ... }: {
   imports = [
     ./common.nix
     ./addons/wallpapers.nix
@@ -11,21 +6,11 @@
     ./addons/waybar.nix
   ];
 
-  home.packages = with pkgs; [
-    playerctl
-    wl-clipboard
-    grim
-    slurp
-    swappy
-  ];
+  home.packages = with pkgs; [ playerctl wl-clipboard grim slurp swappy ];
 
   services.gnome-keyring = {
     enable = true;
-    components = [
-      "ssh"
-      "secrets"
-      "pkcs11"
-    ];
+    components = [ "ssh" "secrets" "pkcs11" ];
   };
 
   wayland.windowManager.hyprland = {
@@ -33,9 +18,7 @@
     systemd.enable = true;
     settings = {
       # Monitors
-      monitor = [
-        ",preferred,auto,auto"
-      ];
+      monitor = [ ",preferred,auto,auto" ];
 
       # Variables - Programs
       "$terminal" = "kitty";
@@ -75,7 +58,7 @@
         "XDG_SESSION_TYPE,wayland"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "NIXOS_OZONE_WL,\"1\""
+        ''NIXOS_OZONE_WL,"1"''
         "MOZ_ENABLE_WAYLAND,1"
         "WLR_NO_HARDWARE_CURSORS,1"
         "HYPRCURSOR_SIZE,24"
@@ -118,10 +101,8 @@
       };
 
       # Dwindle Layout
-      dwindle = {
-        pseudotile = true;
-      };
- 
+      dwindle = { pseudotile = true; };
+
       # Input
       input = {
         kb_layout = "us";
@@ -171,7 +152,8 @@
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
 
-        "$mod, Print, exec, grim -g \"$(slurp -d)\" - | tee >(swappy -f - -o - | wl-copy) | wl-copy"
+        ''
+          $mod, Print, exec, grim -g "$(slurp -d)" - | tee >(swappy -f - -o - | wl-copy) | wl-copy''
 
         "$mod, R, exec, $menu"
         "$mod, L, exec, $lock"
@@ -182,10 +164,7 @@
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
 
       # Misc
       misc = {

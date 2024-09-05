@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.transmission = {
     enable = true;
     webHome = pkgs.flood-for-transmission;

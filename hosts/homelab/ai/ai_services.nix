@@ -42,17 +42,12 @@
         limiter = false;
         image_proxy = true;
       };
-      ui = {
-        static_use_hash = true;
-      };
+      ui = { static_use_hash = true; };
       search = {
         safe_search = 0;
         autocomplete = "";
         default_lang = "";
-        formats = [
-          "html"
-          "json"
-        ];
+        formats = [ "html" "json" ];
       };
     };
   };

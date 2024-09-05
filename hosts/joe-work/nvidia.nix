@@ -1,16 +1,10 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{ lib, config, ... }: {
   # Add NVIDIA package
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics = { enable = true; };
 
-  services.xserver.videoDrivers = lib.mkForce ["nvidia"];
+  services.xserver.videoDrivers = lib.mkForce [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;

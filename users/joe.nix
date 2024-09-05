@@ -1,22 +1,9 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-  extraGroups =
-    [
-      "audio"
-      "video"
-      "wheel"
-    ]
-    ++ ifTheyExist [
-      "input"
-      "network"
-      "networkmanager"
-      "plugdev"
-      "docker"
-    ];
+{ pkgs, config, ... }:
+let
+  ifTheyExist = groups:
+    builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+  extraGroups = [ "audio" "video" "wheel" ]
+    ++ ifTheyExist [ "input" "network" "networkmanager" "plugdev" "docker" ];
 in {
   sops.secrets = {
     "users/joe/password" = {

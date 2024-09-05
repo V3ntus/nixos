@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    dig  # dns lookup
-    trippy  # traceroute/mtr alternative
+    dig # dns lookup
+    trippy # traceroute/mtr alternative
   ];
 
   networking.networkmanager.enable = true;

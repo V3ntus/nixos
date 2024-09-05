@@ -1,16 +1,19 @@
-{swww, ...}: let
-  wallpaper_filenames = builtins.map (name: ../../../../wallpapers + "/${name}") (builtins.filter (f: builtins.match "^.*\\.(jpg|jpeg|png)$" f != null) (builtins.attrNames (builtins.readDir ../../../../wallpapers)));
+{ swww, ... }:
+let
+  wallpaper_filenames = builtins.map (name: ../../../../wallpapers + "/${name}")
+    (builtins.filter (f: builtins.match "^.*\\.(jpg|jpeg|png)$" f != null)
+      (builtins.attrNames (builtins.readDir ../../../../wallpapers)));
 in {
-  home.packages = [
-    swww.packages."x86_64-linux".swww
-  ];
+  home.packages = [ swww.packages."x86_64-linux".swww ];
 
   xdg.dataFile."change_wallpaper.sh" = {
     enable = true;
     text = ''
       set -e
       while true; do
-        BG=`find ${../../../../wallpapers} -name "*.jpg" -o -name "*.png" | shuf -n1`
+        BG=`find ${
+          ../../../../wallpapers
+        } -name "*.jpg" -o -name "*.png" | shuf -n1`
         if pgrep swww-daemon >/dev/null; then
           swww img "$BG" \
             --transition-fps 60 \

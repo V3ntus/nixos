@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  osConfig,
-  ...
-}: {
+{ lib, pkgs, osConfig, ... }: {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -12,19 +7,15 @@
         hide_cursor = true;
       };
 
-      background = [
-        {
-          blur_passes = 2;
-          blur_size = 6;
-        }
-      ];
+      background = [{
+        blur_passes = 2;
+        blur_size = 6;
+      }];
 
-      input-field = [
-        {
-          size = "250, 60";
-          placeholder_text = "";
-        }
-      ];
+      input-field = [{
+        size = "250, 60";
+        placeholder_text = "";
+      }];
 
       label = [
         {
@@ -55,25 +46,20 @@
         before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
       };
 
-      listener =
+      listener = [{
+        timeout = 300;
+        on-timeout = "${lib.getExe pkgs.hyprlock}";
+      }] ++ (if osConfig.hardware.nvidia.modesetting.enable then
+        [ ]
+      else
         [
+          # This causes problems with Nvidia, only use if no modesetting
           {
-            timeout = 300;
-            on-timeout = "${lib.getExe pkgs.hyprlock}";
+            timeout = 305;
+            on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+            on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
           }
-        ]
-        ++ (
-          if osConfig.hardware.nvidia.modesetting.enable
-          then []
-          else [
-            # This causes problems with Nvidia, only use if no modesetting
-            {
-              timeout = 305;
-              on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-              on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-            }
-          ]
-        );
+        ]);
     };
   };
 }

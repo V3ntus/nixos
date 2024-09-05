@@ -7,7 +7,8 @@
       startUrl = "https://home.gladiusso.com";
 
       background = {
-        image = "https://github.com/V3ntus/nixos/blob/main/wallpapers/forest.jpg?raw=true";
+        image =
+          "https://github.com/V3ntus/nixos/blob/main/wallpapers/forest.jpg?raw=true";
         blur = "sm";
         brightness = 80;
       };
@@ -17,7 +18,7 @@
     };
 
     widgets = [
-      { logo = {}; }
+      { logo = { }; }
       {
         search = {
           provider = "google";
@@ -65,7 +66,7 @@
               };
             };
           }
-          { 
+          {
             "Technitium" = {
               icon = "azure-dns.png";
               description = "Technitium DNS server and network adblocker";
@@ -83,37 +84,37 @@
               href = "http://chatgpt.gladiusso.com";
             };
           }
-	  {
-	    "Immich" = {
-	      icon = "immich.png";
-	      description = "Photos and videos library";
-	      href = "http://photos.gladiusso.com";
-	      widget = {
-		type = "immich";
-		url = "http://photos.gladiusso.com";
-		key = "uHsYBMJcMMTimCN0waLJTJz7YH8x2TZyN48kq1LbnnU";
-	      };
-	    };
-	  }
+          {
+            "Immich" = {
+              icon = "immich.png";
+              description = "Photos and videos library";
+              href = "http://photos.gladiusso.com";
+              widget = {
+                type = "immich";
+                url = "http://photos.gladiusso.com";
+                key = "uHsYBMJcMMTimCN0waLJTJz7YH8x2TZyN48kq1LbnnU";
+              };
+            };
+          }
         ];
       }
       {
         "Media" = [
-	  {
-	    "Jellyfin" = {
-	      icon = "jellyfin.png";
-	      description = "Media library management";
-	      href = "http://jellyfin.gladiusso.com";
-	      widget = {
-		type = "jellyfin";
-		url = "http://192.168.2.4:8096";
-		key = "a3355f333d504432b10ed80828bac800";
-		enableBlocks = true;
-		enableUser = true;
-		showEpisodeNumber = true;
-	      };
-	    };
-	  }
+          {
+            "Jellyfin" = {
+              icon = "jellyfin.png";
+              description = "Media library management";
+              href = "http://jellyfin.gladiusso.com";
+              widget = {
+                type = "jellyfin";
+                url = "http://192.168.2.4:8096";
+                key = "a3355f333d504432b10ed80828bac800";
+                enableBlocks = true;
+                enableUser = true;
+                showEpisodeNumber = true;
+              };
+            };
+          }
           {
             "TrueNAS" = {
               icon = "truenas.png";
@@ -122,49 +123,50 @@
               widget = {
                 type = "truenas";
                 url = "http://files.gladiusso.com";
-                key = "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
+                key =
+                  "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
                 enablePools = true;
                 nasType = "scale";
               };
             };
           }
-	  {
-	    "Transmission" = {
-	      icon = "flood.png";
-	      description = "Transmission Torrent client daemon";
-	      href = "http://transmission.gladiusso.com/";
-	      widget = {
-		type = "transmission";
-		url = "http://192.168.2.4:9091";
-		username = "transmission";
-		password = "transmission";
-	      };
+          {
+            "Transmission" = {
+              icon = "flood.png";
+              description = "Transmission Torrent client daemon";
+              href = "http://transmission.gladiusso.com/";
+              widget = {
+                type = "transmission";
+                url = "http://192.168.2.4:9091";
+                username = "transmission";
+                password = "transmission";
+              };
             };
           }
-	  {
-	    "Prowlarr" = {
-	      icon = "prowlarr.png";
-	      description = "Indexer manager/proxy";
-	      href = "http://prowlarr.gladiusso.com/";
-	      widget = {
-		type = "prowlarr";
-		url = "http://192.168.2.4:9696";
-		key = "81a1edaecee6409982dad1ca3679702b";
-	      };
-	    };
-	  }
-	  {
-	    "Radarr" = {
-	      icon = "radarr.png";
-	      description = "Movie tracker";
-	      href = "http://radarr.gladiusso.com/";
-	      widget = {
-		type = "radarr";
-		url = "http://192.168.2.4:7878";
-		key = "0b48ea3ce99b41b3b6c9fd188ee57ecf";
-	      };
-	    };
-	  }
+          {
+            "Prowlarr" = {
+              icon = "prowlarr.png";
+              description = "Indexer manager/proxy";
+              href = "http://prowlarr.gladiusso.com/";
+              widget = {
+                type = "prowlarr";
+                url = "http://192.168.2.4:9696";
+                key = "81a1edaecee6409982dad1ca3679702b";
+              };
+            };
+          }
+          {
+            "Radarr" = {
+              icon = "radarr.png";
+              description = "Movie tracker";
+              href = "http://radarr.gladiusso.com/";
+              widget = {
+                type = "radarr";
+                url = "http://192.168.2.4:7878";
+                key = "0b48ea3ce99b41b3b6c9fd188ee57ecf";
+              };
+            };
+          }
         ];
       }
     ];

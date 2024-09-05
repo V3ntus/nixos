@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ../../features/home-manager/base.nix
     ../../features/home-manager/desktop/hyprland.nix
@@ -18,6 +18,7 @@
     alsa-scarlett-gui
     teams-for-linux
     tidal-hifi
+    jetbrains.pycharm-professional
   ];
 
   programs.niri.settings.outputs = {
@@ -26,7 +27,7 @@
       mode = {
         width = 3440;
         height = 1440;
-        refresh = 164.90;
+        refresh = 164.9;
       };
       # variable-refresh-rate = true;
     };

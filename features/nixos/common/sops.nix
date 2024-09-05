@@ -1,5 +1,4 @@
-let
-  defaultUsersSopsFile = ../../../users/secrets.yaml;
+let defaultUsersSopsFile = ../../../users/secrets.yaml;
 in {
   systemd.tmpfiles.settings = {
     "10-nix-state" = {

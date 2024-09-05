@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{ pkgs, lib, ... }: {
   imports = [
     ../../features/home-manager/base.nix
     ../../features/home-manager/desktop/niri.nix

@@ -1,5 +1,5 @@
-{pkgs, config, ...}: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+{ pkgs, config, ... }: {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
   system.activationScripts.diff = {

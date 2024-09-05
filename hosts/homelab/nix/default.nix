@@ -1,4 +1,5 @@
-{nixpkgs, srvos, sops-nix, ...}: nixpkgs.lib.nixosSystem {
+{ nixpkgs, srvos, sops-nix, ... }:
+nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
 
   modules = [

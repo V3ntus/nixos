@@ -1,4 +1,5 @@
-{nixpkgs, srvos, proxmox-nixos, sops-nix, ...}: nixpkgs.lib.nixosSystem rec {
+{ nixpkgs, srvos, proxmox-nixos, sops-nix, ... }:
+nixpkgs.lib.nixosSystem rec {
   system = "x86_64-linux";
 
   modules = [

@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
@@ -14,9 +14,7 @@
   services.resolved.enable = lib.mkForce false;
 
   networking.hostName = "net";
-  networking.nameservers = [
-    "9.9.9.9"
-  ];
+  networking.nameservers = [ "9.9.9.9" ];
 
   services.technitium-dns-server = {
     enable = true;

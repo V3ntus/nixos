@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{ config, pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./nvidia.nix
@@ -20,9 +15,7 @@
   ];
 
   sops.secrets = {
-    "wireguard/joe-work/privkey" = {
-      sopsFile = ../../users/secrets.yaml;
-    };
+    "wireguard/joe-work/privkey" = { sopsFile = ../../users/secrets.yaml; };
   };
 
   users.users.joe.packages = [
@@ -30,13 +23,9 @@
     pkgs.jetbrains.pycharm-professional
   ];
 
-  networking.wg-quick.interfaces.wg0.address = [
-    "10.143.245.4/24"
-    "fd11:5ee:bad:c0de::4/64"
-  ];
-  networking.wg-quick.interfaces.wg0.dns = [
-    "192.168.2.6"
-    "9.9.9.9"
-  ];
-  networking.wg-quick.interfaces.wg0.privateKeyFile = config.sops.secrets."wireguard/joe-work/privkey".path;
+  networking.wg-quick.interfaces.wg0.address =
+    [ "10.143.245.4/24" "fd11:5ee:bad:c0de::4/64" ];
+  networking.wg-quick.interfaces.wg0.dns = [ "192.168.2.6" "9.9.9.9" ];
+  networking.wg-quick.interfaces.wg0.privateKeyFile =
+    config.sops.secrets."wireguard/joe-work/privkey".path;
 }

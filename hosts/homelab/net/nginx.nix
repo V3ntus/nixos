@@ -5,14 +5,15 @@ let
     # forceSSL = true;
     # enableACME = true;
   };
-  proxy = ip: port: base {
-    "/" = {
-      proxyPass = "http://" + ip + ":" + toString port + "/";
-      extraConfig = ''
-        proxy_pass_header Authorization;
-      '';
+  proxy = ip: port:
+    base {
+      "/" = {
+        proxyPass = "http://" + ip + ":" + toString port + "/";
+        extraConfig = ''
+          proxy_pass_header Authorization;
+        '';
+      };
     };
-  };
   virtualHosts = {
     "proxmox.gladiusso.com" = proxy "192.168.2.3" 8006;
     "dns.gladiusso.com" = proxy "127.0.0.1" 5380;
@@ -26,10 +27,7 @@ let
     "radarr.gladiusso.com" = proxy "192.168.2.4" 7878;
   };
 in {
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   services.nginx = {
     enable = true;
