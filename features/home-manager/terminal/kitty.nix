@@ -8,7 +8,7 @@
       size = 13;
     };
 
-    theme = "Gruvbox Material Dark Medium";
+    themeFile = "GruvboxMaterialDarkMedium";
 
     settings = {
       background_opacity = lib.mkForce "0.85";

@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   programs.wofi = {
     enable = true;
     settings = {
@@ -17,7 +17,7 @@
       image_size = 40;
       gtk_dark = true;
     };
-    style = ''
+    style = lib.mkForce ''
       @define-color accent #cba6f7
       @define-color txt #cad3f5;
       @define-color bg #24273a;
