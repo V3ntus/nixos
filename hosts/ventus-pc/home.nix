@@ -19,6 +19,7 @@
     teams-for-linux
     tidal-hifi
     jetbrains.pycharm-professional
+    jetbrains.rust-rover
   ];
 
   programs.niri.settings.outputs = {
