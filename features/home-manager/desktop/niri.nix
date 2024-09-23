@@ -8,6 +8,7 @@
     grim
     slurp
     swappy
+    xwayland-satellite
   ];
 
   programs.niri = {
@@ -27,6 +28,7 @@
         { command = [ "waybar" ]; }
         { command = [ "wl-paste" "-t" "text" "-w" "cliphist" "store" ]; }
         { command = [ "wl-paste" "-t" "image" "-w" "cliphist" "store" ]; }
+        { command = [ "xwayland-satellite" ]; }
         {
           command =
             [ "bash" "${config.xdg.dataFile."change_wallpaper.sh".source}" ];
@@ -81,7 +83,7 @@
         let
           sh = spawn "sh" "-c";
           screenshot = ''
-            grim -g "$(slurp -d)" - | tee >(swappy -f - -o - | wl-copy) | wl-copy'';
+            grim -g "$(slurp -d)" - | tee >(swappy -f - -o - | wl-copy)'';
           terminal = "kitty";
           menu = [ "wofi" "--show" "drun" ];
           lock = "hyprlock";

@@ -1,38 +1,37 @@
-{ lib, pkgs, osConfig, ... }: {
+{ lib, pkgs, ... }: {
   programs.hyprlock = {
     enable = true;
     settings = {
       general = {
         grace = 5;
-        hide_cursor = true;
+        hide_cursor = false;
+        immediate_render = true;
+        disable_loading_bar = true;
       };
 
       background = [{
-        blur_passes = 2;
-        blur_size = 6;
+          color = "rgb(0, 0, 0)";
+          path = "screenshot";
+          blur_passes = 2;
+          blur_size = 6;
       }];
 
       input-field = [{
-        size = "250, 60";
+        size = "200, 50";
+        position = "0, -80";
+        dots_center = true;
+        fade_on_empty = false;
         placeholder_text = "";
       }];
 
       label = [
         {
-          text = "Hello";
-          font_size = 64;
-          text_align = "center";
-          halign = "center";
-          valign = "center";
-          position = "0, 160";
-        }
-        {
           text = "$TIME";
-          font_size = 32;
+          font_size = 100;
           text_align = "center";
           halign = "center";
           valign = "center";
-          position = "0, 75";
+          position = "0, 50";
         }
       ];
     };
@@ -42,24 +41,21 @@
     enable = true;
     settings = {
       general = {
-        lock_cmd = "${lib.getExe pkgs.hyprlock}";
-        before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
+        lock_cmd = "pgrep hyprlock || ${lib.getExe pkgs.hyprlock}";
+        before_sleep_cmd = "pgrep hyprlock || ${lib.getExe pkgs.hyprlock}";
       };
 
-      listener = [{
-        timeout = 300;
-        on-timeout = "${lib.getExe pkgs.hyprlock}";
-      }] ++ (if osConfig.hardware.nvidia.modesetting.enable then
-        [ ]
-      else
-        [
-          # This causes problems with Nvidia, only use if no modesetting
-          {
-            timeout = 305;
-            on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-            on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-          }
-        ]);
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = "${lib.getExe pkgs.hyprlock}";
+        }
+        {
+          timeout = 315;
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+      ];
     };
   };
 }
