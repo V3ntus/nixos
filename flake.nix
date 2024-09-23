@@ -12,7 +12,7 @@
     stylix.url = "github:danth/stylix";
 
     waybar = {
-      url = "github:Alexays/Waybar";
+      url = "github:Alexays/Waybar/0.11.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

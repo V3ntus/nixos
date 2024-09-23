@@ -16,6 +16,7 @@ in {
 
   users.users.joe = {
     name = "joe";
+    home = "/home/joe";
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets."users/joe/password".path;
     openssh.authorizedKeys.keys = [
