@@ -28,7 +28,7 @@
         { command = [ "waybar" ]; }
         { command = [ "wl-paste" "-t" "text" "-w" "cliphist" "store" ]; }
         { command = [ "wl-paste" "-t" "image" "-w" "cliphist" "store" ]; }
-        { command = [ "xwayland-satellite" ]; }
+        { command = [ "sleep 5; xwayland-satellite" ]; }
         {
           command =
             [ "bash" "${config.xdg.dataFile."change_wallpaper.sh".source}" ];
@@ -41,7 +41,10 @@
 
         # Input flags
         warp-mouse-to-focus = true;
-        focus-follows-mouse = { enable = true; };
+        focus-follows-mouse = {
+          enable = true;
+          max-scroll-amount = "10%";
+        };
         workspace-auto-back-and-forth = true;
       };
 
