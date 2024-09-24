@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  options,
   ...
 }: {
   imports = [
@@ -9,7 +10,6 @@
     ./programs.nix
     ./networking.nix
     ./nginx.nix
-    ./wireguard.nix
 
     ../../features/nixos/common
 
@@ -24,14 +24,14 @@
     };
     listenAddresses = [
       {
-        addr = "172.232.31.102"; # 10.143.245.1
+        addr = "10.143.245.1";
         port = 22;
       }
     ];
   };
 
   services.endlessh-go = {
-    enable = false;
+    enable = true;
     listenAddress = "172.232.31.102";
     port = 22;
     prometheus = {
@@ -65,13 +65,8 @@
     nginxStatusUrl = "http://localhost/nginx_status";
   };
 
+  services.ntp.enable = true;
+  networking.timeServers = options.networking.timeServers.default;
+
   system.stateVersion = "23.11";
-
-  # sops.secrets = {
-  #   "wireguard/joe-work/privkey" = { sopsFile = ../../users/secrets.yaml; };
-  # };
-
-  # networking.wg-quick.interfaces.wg0.address = [ "10.143.245.4/24" "fd11:5ee:bad:c0de::4/64" ];
-  # networking.wg-quick.interfaces.wg0.dns = [ "192.168.2.6" "9.9.9.9" ];
-  # networking.wg-quick.interfaces.wg0.privateKeyFile = config.sops.secrets."wireguard/joe-work/privkey".path;
 }
