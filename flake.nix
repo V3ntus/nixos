@@ -49,11 +49,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    proxmox-nixos = { url = "github:V3ntus/proxmox-nixos"; };
+    comin = {
+      url = "github:nlewo/comin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, waybar, apple-fonts, sops-nix
-    , neovim, swww, niri, srvos, proxmox-nixos, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, stylix, waybar, apple-fonts, sops-nix
+    , neovim, swww, niri, srvos,comin, ... }@inputs: let
+      gitHubRepo = "https://github.com/V3ntus/nixos";
+    in {
       overlays.niri = (final: prev: { niri = niri.overlays.niri; });
 
       nixosConfigurations = {
@@ -66,6 +71,17 @@
             stylix.nixosModules.stylix
             niri.nixosModules.niri
             sops-nix.nixosModules.sops
+            comin.nixosModules.comin
+            ({...}: {
+              services.comin = {
+                enable = true;
+                remotes = [{
+                  name = "origin";
+                  url = gitHubRepo;
+                  branches.main.name = "main";
+                }];
+              };
+            })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -89,6 +105,17 @@
             stylix.nixosModules.stylix
             niri.nixosModules.niri
             sops-nix.nixosModules.sops
+            comin.nixosModules.comin
+            ({...}: {
+              services.comin = {
+                enable = true;
+                remotes = [{
+                  name = "origin";
+                  url = gitHubRepo;
+                  branches.main.name = "main";
+                }];
+              };
+            })
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -101,7 +128,7 @@
           ];
         };
       } // import ./hosts/homelab {
-        inherit nixpkgs srvos proxmox-nixos sops-nix;
+        inherit nixpkgs srvos sops-nix comin;
       };
     };
 }
