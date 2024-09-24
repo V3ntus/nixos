@@ -27,7 +27,7 @@ let
     "radarr.gladiusso.com" = proxy "192.168.2.4" 7878;
   };
 in {
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [80 443];
 
   services.nginx = {
     enable = true;

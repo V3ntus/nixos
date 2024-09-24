@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -9,20 +13,24 @@
         disable_loading_bar = true;
       };
 
-      background = [{
+      background = [
+        {
           color = "rgb(0, 0, 0)";
           path = "screenshot";
           blur_passes = 2;
           blur_size = 6;
-      }];
+        }
+      ];
 
-      input-field = [{
-        size = "200, 50";
-        position = "0, -80";
-        dots_center = true;
-        fade_on_empty = false;
-        placeholder_text = "";
-      }];
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          dots_center = true;
+          fade_on_empty = false;
+          placeholder_text = "";
+        }
+      ];
 
       label = [
         {

@@ -1,5 +1,9 @@
-{ lib, pkgs, ... }: {
-  home.packages = with pkgs; [ fzf fastfetch delta ];
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [fzf fastfetch delta];
 
   programs.atuin = {
     enable = true;
@@ -27,7 +31,7 @@
 
   programs.btop = {
     enable = true;
-    settings = { color_theme = lib.mkDefault "gruvbox_dark_v2"; };
+    settings = {color_theme = lib.mkDefault "gruvbox_dark_v2";};
   };
 
   programs.git = {
@@ -50,7 +54,7 @@
     };
   };
 
-  programs.lazygit = { enable = true; };
+  programs.lazygit = {enable = true;};
 
   programs.eza = {
     enable = true;
@@ -66,9 +70,9 @@
     ];
   };
 
-  programs.yazi = { enable = true; };
+  programs.yazi = {enable = true;};
 
-  programs.zoxide = { enable = true; };
+  programs.zoxide = {enable = true;};
 
   programs.zsh = {
     enable = true;
@@ -76,7 +80,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    sessionVariables = { EDITOR = "vim"; };
+    sessionVariables = {EDITOR = "vim";};
 
     shellAliases = {
       y = "yazi";
@@ -92,15 +96,14 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "z" "fzf" "git" ];
+      plugins = ["z" "fzf" "git"];
     };
   };
 
   programs.starship = {
     enable = true;
     settings = {
-      format =
-        "[](color_orange)$os$username[](bg:color_yellow fg:color_orange)$directory[](fg:color_yellow bg:color_aqua)$git_branch$git_status[](fg:color_aqua bg:color_blue)[](fg:color_blue bg:color_bg3)$docker_context$conda[](fg:color_bg3 bg:color_bg1)$time[ ](fg:color_bg1)$line_break$c$rust$golang$nodejs$php$java$kotlin$haskell$python$nix_shell$character";
+      format = "[](color_orange)$os$username[](bg:color_yellow fg:color_orange)$directory[](fg:color_yellow bg:color_aqua)$git_branch$git_status[](fg:color_aqua bg:color_blue)[](fg:color_blue bg:color_bg3)$docker_context$conda[](fg:color_bg3 bg:color_bg1)$time[ ](fg:color_bg1)$line_break$c$rust$golang$nodejs$php$java$kotlin$haskell$python$nix_shell$character";
 
       palette = "gruvbox_dark";
 
@@ -174,8 +177,7 @@
 
       git_status = {
         style = "bg:color_aqua";
-        format =
-          "[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)";
+        format = "[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)";
       };
 
       nodejs = {
@@ -240,8 +242,7 @@
 
       conda = {
         style = "bg:color_bg3";
-        format =
-          "[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)";
+        format = "[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)";
       };
 
       time = {

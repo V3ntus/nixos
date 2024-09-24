@@ -1,11 +1,14 @@
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   stylix = {
     enable = true;
     image = ../../../wallpapers/forest.jpg;
     autoEnable = true;
     polarity = "dark";
-    base16Scheme =
-      "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
 
     fonts = rec {
       serif = {

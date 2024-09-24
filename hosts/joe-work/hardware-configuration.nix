@@ -1,5 +1,9 @@
-{ config, lib, ... }: {
-  boot.kernelModules = [ "kvm-intel" ];
+{
+  config,
+  lib,
+  ...
+}: {
+  boot.kernelModules = ["kvm-intel"];
   boot.extraModprobeConfig = ''
     options nvidia NVreg_PreserveVideoMemoryAllocations=1
   '';
@@ -14,7 +18,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
 

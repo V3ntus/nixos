@@ -1,5 +1,8 @@
-{ neovim, pkgs, ... }:
-let
+{
+  neovim,
+  pkgs,
+  ...
+}: let
   toLua = str: ''
     lua << EOF
     ${str}
@@ -11,6 +14,5 @@ let
     EOF
   '';
 in {
-  home.packages =
-    [ pkgs.neovide neovim.packages.x86_64-linux.default pkgs.nodejs ];
+  home.packages = [pkgs.neovide neovim.packages.x86_64-linux.default pkgs.nodejs];
 }

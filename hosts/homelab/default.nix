@@ -1,4 +1,10 @@
-{ nixpkgs, srvos, sops-nix, comin, ... }: {
+{
+  nixpkgs,
+  srvos,
+  sops-nix,
+  comin,
+  ...
+}: {
   nix = import ./nix {
     inherit nixpkgs;
     inherit srvos;
@@ -24,4 +30,3 @@
     inherit comin;
   };
 }
-

@@ -7,8 +7,7 @@
       startUrl = "https://home.gladiusso.com";
 
       background = {
-        image =
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/640px-Moraine_Lake_17092005.jpg";
+        image = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/640px-Moraine_Lake_17092005.jpg";
         blur = "sm";
         brightness = 50;
         opacity = 50;
@@ -40,7 +39,7 @@
     };
 
     widgets = [
-      { logo = { }; }
+      {logo = {};}
       {
         search = {
           provider = "google";
@@ -103,8 +102,7 @@
               widget = {
                 type = "truenas";
                 url = "http://files.gladiusso.com";
-                key =
-                  "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
+                key = "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
                 enablePools = true;
                 nasType = "scale";
               };
@@ -194,4 +192,3 @@
     ];
   };
 }
-

@@ -1,4 +1,10 @@
-{ nixpkgs, srvos, sops-nix, comin, ... }:
+{
+  nixpkgs,
+  srvos,
+  sops-nix,
+  comin,
+  ...
+}:
 nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
 
@@ -14,11 +20,13 @@ nixpkgs.lib.nixosSystem {
     ({...}: {
       services.comin = {
         enable = true;
-        remotes = [{
-          name = "origin";
-          url = "https://github.com/V3ntus/nixos";
-          branches.main.name = "main";
-        }];
+        remotes = [
+          {
+            name = "origin";
+            url = "https://github.com/V3ntus/nixos";
+            branches.main.name = "main";
+          }
+        ];
       };
     })
 

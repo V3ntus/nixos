@@ -1,4 +1,8 @@
-{ pkgs, config, ... }: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   sops.secrets = {
     "users/root/password" = {
       sopsFile = ./secrets.yaml;

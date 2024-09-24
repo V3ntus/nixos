@@ -1,4 +1,5 @@
-let preferredOutput = "DP-4";
+let
+  preferredOutput = "DP-4";
 in {
   imports = [
     ./disks.nix
@@ -14,7 +15,7 @@ in {
     ../../users/joe.nix
   ];
 
-  programs.steam.gamescopeSession.args = [ "-O ${preferredOutput}" ];
+  programs.steam.gamescopeSession.args = ["-O ${preferredOutput}"];
 
-  programs.gamescope.args = [ "-O ${preferredOutput}" ];
+  programs.gamescope.args = ["-O ${preferredOutput}"];
 }
