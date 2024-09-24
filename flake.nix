@@ -128,6 +128,21 @@
           ];
         };
       } // import ./hosts/homelab {
+        gladiusso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/gladiusso
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.joe = import ./hosts/gladiusso/home.nix;
+            }
+          ];
+        };
+      }
         inherit nixpkgs srvos sops-nix comin;
       };
     };
