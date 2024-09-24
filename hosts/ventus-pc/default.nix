@@ -15,6 +15,11 @@ in {
     ../../users/joe.nix
   ];
 
+  networking = {
+    hostName = "ventus-pc";
+    domain = "gladiusso.com";
+  };
+
   programs.steam.gamescopeSession.args = ["-O ${preferredOutput}"];
 
   programs.gamescope.args = ["-O ${preferredOutput}"];

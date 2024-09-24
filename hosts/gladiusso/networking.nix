@@ -1,11 +1,27 @@
 {pkgs, ...}: {
   networking = {
+    hostName = "vps";
+    domain = "gladiusso.com";
+
     usePredictableInterfaceNames = false;
     useDHCP = false;
+
+    defaultGateway = {
+      address = "172.232.31.1";
+      interface = "eth0";
+    };
 
     interfaces = {
       eth0 = {
         useDHCP = false;
+        ipv4 = {
+          addresses = [
+            {
+              address = "172.232.31.102";
+              prefixLength = 24;
+            }
+          ];
+        };
       };
     };
 
