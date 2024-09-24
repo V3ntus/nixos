@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [ ./common.nix ./addons/waybar.nix ];
 
   home.packages = with pkgs; [
@@ -28,7 +28,7 @@
         { command = [ "waybar" ]; }
         { command = [ "wl-paste" "-t" "text" "-w" "cliphist" "store" ]; }
         { command = [ "wl-paste" "-t" "image" "-w" "cliphist" "store" ]; }
-        { command = [ "sleep 5; xwayland-satellite" ]; }
+        # { command = [ "${lib.getExe pkgs.xwayland-satellite}" ]; }  # TODO: debug why this doesnt start
         {
           command =
             [ "bash" "${config.xdg.dataFile."change_wallpaper.sh".source}" ];
