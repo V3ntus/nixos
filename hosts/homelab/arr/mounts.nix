@@ -8,5 +8,9 @@
       device = "files.gladiusso.com:/mnt/main/Movies";
       fsType = "nfs";
     };
+    "/mnt/TV" = {
+      device = "files.gladiusso.com:/mnt/main/TV";
+      fsType = "nfs";
+    };
   };
 }

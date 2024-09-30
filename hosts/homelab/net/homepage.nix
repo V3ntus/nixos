@@ -187,6 +187,18 @@
               };
             };
           }
+	  {
+	    "Sonarr" = {
+	      icon = "sonarr.png";
+	      description = "TV show tracker";
+	      href = "http://sonarr.gladiusso.com";
+	      widget = {
+		type = "sonarr";
+		url = "http://192.168.2.4:8989";
+		key = "8bff919c991d4a6a8337bbfa60145ace";
+	      };
+	    };
+	  }
         ];
       }
     ];
