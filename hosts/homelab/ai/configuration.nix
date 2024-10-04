@@ -19,7 +19,10 @@ in {
     ./ai_services.nix
   ];
 
-  environment.systemPackages = with pkgs; [nvtopPackages.nvidia];
+  environment.systemPackages = with pkgs; [
+    nvtopPackages.nvidia
+    ffmpeg_7-headless
+  ];
 
   # Use NVIDIA drivers
   hardware.graphics.enable = true;
@@ -60,7 +63,9 @@ in {
     address = "192.168.2.1";
     interface = "ens18";
   };
-  networking.firewall.allowedTCPPorts = [config.services.open-webui.port];
+  networking.firewall.allowedTCPPorts = [
+    config.services.ollama.port
+  ];
 
   # GRUB definition for BIOS legacy
   boot.loader.grub = {

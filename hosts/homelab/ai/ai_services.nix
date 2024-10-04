@@ -4,6 +4,7 @@
     enable = true;
     acceleration = "cuda";
     host = "0.0.0.0";
+    port = 11434;
   };
 
   # Open WebUI LLM
@@ -11,6 +12,7 @@
     enable = true;
     port = 8081;
     host = "0.0.0.0";
+    openFirewall = true;
     # environment = {
     #  GLOBAL_LOG_LEVEL = "DEBUG";
     #  MAIN_LOG_LEVEL = "DEBUG";
