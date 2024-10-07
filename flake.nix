@@ -27,7 +27,7 @@
     };
 
     neovim = {
-      url = "github:V3ntus/nixvim-config";
+      url = "github:V3ntus/nixvim-config/rewrite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
