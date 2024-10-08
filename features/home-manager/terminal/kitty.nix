@@ -15,7 +15,7 @@
     themeFile = "GruvboxMaterialDarkMedium";
 
     settings = {
-      background_opacity = lib.mkForce "0.85";
+      background_opacity = lib.mkForce "0.90";
       background_blur = 8;
       window_padding_width = 10;
       scrollback_lines = 10000;
