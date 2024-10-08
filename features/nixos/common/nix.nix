@@ -9,6 +9,8 @@
   environment.systemPackages = with pkgs; [
     alejandra
     nvd
+    nil
+    statix
   ];
 
   system.activationScripts.diff = {

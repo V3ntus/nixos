@@ -7,6 +7,8 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
+  time.hardwareClockInLocalTime = true;
+
   boot = {
     loader = {
       grub = {

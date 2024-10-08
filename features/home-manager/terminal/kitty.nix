@@ -16,6 +16,7 @@
 
     settings = {
       background_opacity = lib.mkForce "0.85";
+      background_blur = 8;
       window_padding_width = 10;
       scrollback_lines = 10000;
       enable_audio_bell = false;
