@@ -62,7 +62,7 @@
           }
           {
             # router
-            publicKey = "ibBgUSKPHCN39nrUbSIAh/2xaRqmu3Zu6MakvKi+yGM=";
+            publicKey = "16W+vD2mNGcdmQlAN/b/uPOuwk1IVN+oLfUflC7YkG0=";
             presharedKeyFile = "/etc/wireguard/configs/router.psk";
             allowedIPs = ["192.168.2.0/24" "10.143.245.3/32" "fd11:5ee:bad:c0de::3/128"];
           }
