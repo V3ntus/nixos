@@ -89,7 +89,7 @@
             };
           }
 	  {
-	    "Portainer" = {
+	    "Portainer" = {  # docker-container
 	      icon = "portainer.png";
 	      description = "Docker management web UI";
 	      href = "https://192.168.2.7:9443";
@@ -163,6 +163,13 @@
               };
             };
           }
+	  {
+	    "Actual Budget" = {  # docker-container
+	      icon = "si-6B46C1";
+	      description = "Budgeting tracker";
+	      href = "http://budget.gladiusso.com";
+	    };
+	  }
         ];
       }
       {
