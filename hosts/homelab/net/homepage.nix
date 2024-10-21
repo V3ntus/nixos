@@ -62,16 +62,10 @@
       {
         "Network" = [
           {
-            "Mikrotik" = {
-              icon = "mikrotik.png";
-              description = "Mikrotik Network Router";
-              href = "http://192.168.2.1";
-              widget = {
-                type = "mikrotik";
-                url = "http://192.168.2.1";
-                username = "api";
-                password = "coolpassword";
-              };
+            "Unifi" = {
+              icon = "unifi.png";
+              description = "Unifi Site Manager";
+              href = "https://unifi.ui.com";
             };
           }
           {
