@@ -16,6 +16,7 @@ let
     };
   virtualHosts = {
     "proxmox.gladiusso.com" = proxy "192.168.2.3" 8006;
+    "portainer.gladiusso.com" = proxy "192.168.2.7" 9443;
     "dns.gladiusso.com" = proxy "127.0.0.1" 5380;
     "home.gladiusso.com" = proxy "127.0.0.1" 8082;
     "chatgpt.gladiusso.com" = proxy "192.168.2.12" 8081;

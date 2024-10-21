@@ -88,6 +88,19 @@
               href = "http://dns.gladiusso.com";
             };
           }
+	  {
+	    "Portainer" = {
+	      icon = "portainer.png";
+	      description = "Docker management web UI";
+	      href = "http://portainer.gladiusso.com";
+	      widget = {
+		type = "portainer";
+		url = "http://portainer.gladiusso.com";
+		"env" = 2;
+		key = "ptr_akuEyo34aXsXPCXR54/0ER8g+9o3Np0kR335AoItQg8=";
+	      };
+	    };
+	  }
           {
             "TrueNAS" = {
               icon = "truenas.png";
