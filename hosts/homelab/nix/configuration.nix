@@ -17,6 +17,11 @@ rec {
     };
   };
 
+  networking.nameservers = [
+    "192.168.2.6"
+    "9.9.9.9"
+  ];
+
   services.nix-serve = {
     enable = true;
     openFirewall = true;
