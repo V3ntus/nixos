@@ -92,10 +92,10 @@
 	    "Portainer" = {
 	      icon = "portainer.png";
 	      description = "Docker management web UI";
-	      href = "http://portainer.gladiusso.com";
+	      href = "https://192.168.2.7:9443";
 	      widget = {
 		type = "portainer";
-		url = "http://portainer.gladiusso.com";
+		url = "https://192.168.2.7:9443";
 		"env" = 2;
 		key = "ptr_akuEyo34aXsXPCXR54/0ER8g+9o3Np0kR335AoItQg8=";
 	      };
