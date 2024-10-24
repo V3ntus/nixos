@@ -16,13 +16,13 @@ let
     };
   virtualHosts = {
     "proxmox.gladiusso.com" = proxy "192.168.2.3" 8006;
-    "portainer.gladiusso.com" = proxy "192.168.2.7" 9443;  # docker-container
+    "portainer.gladiusso.com" = proxy "192.168.2.7" 9443; # docker-container
     "dns.gladiusso.com" = proxy "127.0.0.1" 5380;
     "home.gladiusso.com" = proxy "127.0.0.1" 8082;
 
     "chatgpt.gladiusso.com" = proxy "192.168.2.12" 8081;
-    "photos.gladiusso.com" = proxy "192.168.2.5" 30041;
-    "budget.gladiusso.com" = proxy "192.168.2.7" 5006;  # docker-container
+    "photos.gladiusso.com" = proxy "192.168.2.8" 2283;
+    "budget.gladiusso.com" = proxy "192.168.2.7" 5006; # docker-container
     "recipes.gladiusso.com" = proxy "192.168.2.8" 8001;
 
     "jellyfin.gladiusso.com" = proxy "192.168.2.4" 8096;

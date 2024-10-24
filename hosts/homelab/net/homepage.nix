@@ -60,15 +60,15 @@
 
     bookmarks = [
       {
-	"Bookmarks" = [
-	  {
-	    "YouTube" = [
-	      {
-		icon = "youtube.svg";
-		href = "https://youtube.com";
-	      }
-	    ];
-	  }
+        "Bookmarks" = [
+          {
+            "YouTube" = [
+              {
+                icon = "youtube.svg";
+                href = "https://youtube.com";
+              }
+            ];
+          }
           {
             "Reddit" = [
               {
@@ -93,20 +93,20 @@
               }
             ];
           }
-	];
+        ];
       }
       {
-	"Misc" = [
-	  {
-	    "NixOS Configs" = [
-	      {
-		icon = "github.svg";
-		href = "https://github.com/V3ntus/nixos";
-		description = "NixOS homelab/host configuration repo";
-	      }
-	    ];
-	  }
-	];
+        "Misc" = [
+          {
+            "NixOS Configs" = [
+              {
+                icon = "github.svg";
+                href = "https://github.com/V3ntus/nixos";
+                description = "NixOS homelab/host configuration repo";
+              }
+            ];
+          }
+        ];
       }
     ];
 
@@ -140,19 +140,20 @@
               href = "http://dns.gladiusso.com";
             };
           }
-	  {
-	    "Portainer" = {  # docker-container
-	      icon = "portainer.png";
-	      description = "Docker management web UI";
-	      href = "https://192.168.2.7:9443";
-	      widget = {
-		type = "portainer";
-		url = "https://192.168.2.7:9443";
-		"env" = 2;
-		key = "ptr_akuEyo34aXsXPCXR54/0ER8g+9o3Np0kR335AoItQg8=";
-	      };
-	    };
-	  }
+          {
+            "Portainer" = {
+              # docker-container
+              icon = "portainer.png";
+              description = "Docker management web UI";
+              href = "https://192.168.2.7:9443";
+              widget = {
+                type = "portainer";
+                url = "https://192.168.2.7:9443";
+                "env" = 2;
+                key = "ptr_akuEyo34aXsXPCXR54/0ER8g+9o3Np0kR335AoItQg8=";
+              };
+            };
+          }
           {
             "TrueNAS" = {
               icon = "truenas.png";
@@ -215,25 +216,26 @@
               };
             };
           }
-	  {
-	    "Tandoor" = {
-	      icon = "tandoor.svg";
-	      description = "Tandoor recipe management";
-	      href = "http://recipes.gladiusso.com";
-	      widget = {
-		type = "tandoor";
-		url = "http://recipes.gladiusso.com";
-		key = "tda_da032849_5bb5_41c2_a896_705fa678af18";
-	      };
-	    };
-	  }
-	  {
-	    "Actual Budget" = {  # docker-container
-	      icon = "si-6B46C1";
-	      description = "Budgeting tracker";
-	      href = "http://budget.gladiusso.com";
-	    };
-	  }
+          {
+            "Tandoor" = {
+              icon = "tandoor.svg";
+              description = "Tandoor recipe management";
+              href = "http://recipes.gladiusso.com";
+              widget = {
+                type = "tandoor";
+                url = "http://recipes.gladiusso.com";
+                key = "tda_da032849_5bb5_41c2_a896_705fa678af18";
+              };
+            };
+          }
+          {
+            "Actual Budget" = {
+              # docker-container
+              icon = "si-6B46C1";
+              description = "Budgeting tracker";
+              href = "http://budget.gladiusso.com";
+            };
+          }
         ];
       }
       {
@@ -265,18 +267,18 @@
               };
             };
           }
-	  {
-	    "Sonarr" = {
-	      icon = "sonarr.png";
-	      description = "TV show tracker";
-	      href = "http://sonarr.gladiusso.com";
-	      widget = {
-		type = "sonarr";
-		url = "http://192.168.2.4:8989";
-		key = "8bff919c991d4a6a8337bbfa60145ace";
-	      };
-	    };
-	  }
+          {
+            "Sonarr" = {
+              icon = "sonarr.png";
+              description = "TV show tracker";
+              href = "http://sonarr.gladiusso.com";
+              widget = {
+                type = "sonarr";
+                url = "http://192.168.2.4:8989";
+                key = "8bff919c991d4a6a8337bbfa60145ace";
+              };
+            };
+          }
         ];
       }
     ];
