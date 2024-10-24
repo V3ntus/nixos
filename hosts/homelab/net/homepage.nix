@@ -212,7 +212,7 @@
               widget = {
                 type = "immich";
                 url = "http://photos.gladiusso.com";
-                key = "uHsYBMJcMMTimCN0waLJTJz7YH8x2TZyN48kq1LbnnU";
+                key = "Abfr3ZpazaDQyQVR1fnXi37bc5mjCnWOtzei8EsM";
               };
             };
           }
