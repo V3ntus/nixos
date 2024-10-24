@@ -29,4 +29,10 @@
     inherit sops-nix;
     inherit comin;
   };
+  apps = import ./apps {
+    inherit nixpkgs;
+    inherit srvos;
+    inherit sops-nix;
+    inherit comin;
+  };
 }

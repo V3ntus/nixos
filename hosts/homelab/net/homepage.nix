@@ -58,6 +58,58 @@
       }
     ];
 
+    bookmarks = [
+      {
+	"Bookmarks" = [
+	  {
+	    "YouTube" = [
+	      {
+		icon = "youtube.svg";
+		href = "https://youtube.com";
+	      }
+	    ];
+	  }
+          {
+            "Reddit" = [
+              {
+                icon = "reddit.svg";
+                href = "https://reddit.com";
+              }
+            ];
+          }
+          {
+            "Instagram" = [
+              {
+                icon = "instagram.svg";
+                href = "https://instagram.com";
+              }
+            ];
+          }
+          {
+            "Facebook" = [
+              {
+                icon = "facebook.svg";
+                href = "https://facebook.com";
+              }
+            ];
+          }
+	];
+      }
+      {
+	"Misc" = [
+	  {
+	    "NixOS Configs" = [
+	      {
+		icon = "github.svg";
+		href = "https://github.com/V3ntus/nixos";
+		description = "NixOS homelab/host configuration repo";
+	      }
+	    ];
+	  }
+	];
+      }
+    ];
+
     services = [
       {
         "Network" = [
@@ -163,6 +215,18 @@
               };
             };
           }
+	  {
+	    "Tandoor" = {
+	      icon = "tandoor.svg";
+	      description = "Tandoor recipe management";
+	      href = "http://recipes.gladiusso.com";
+	      widget = {
+		type = "tandoor";
+		url = "http://recipes.gladiusso.com";
+		key = "tda_da032849_5bb5_41c2_a896_705fa678af18";
+	      };
+	    };
+	  }
 	  {
 	    "Actual Budget" = {  # docker-container
 	      icon = "si-6B46C1";
