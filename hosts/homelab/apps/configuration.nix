@@ -11,8 +11,6 @@
     ../../../users/joe.nix
   ];
 
-  services.resolved.enable = lib.mkForce false;
-
   networking = {
     hostName = "apps";
     nameservers = ["192.168.2.6" "9.9.9.9"];
