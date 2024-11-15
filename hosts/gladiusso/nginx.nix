@@ -3,6 +3,7 @@
     enable = true;
     package = pkgs.nginxStable.override {openssl = pkgs.libressl;};
     statusPage = true; # for Longview
+    recommendedProxySettings = true;
 
     virtualHosts = {
       "gladiusso.com" = {
@@ -26,6 +27,14 @@
         root = "/var/www/dev.gladiusso.com";
       };
 
+      "mc.gladiusso.com" = {
+        addSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://192.168.2.11:8100";
+        };
+      };
+
       "backthehox.com" = {
         addSSL = true;
         enableACME = true;
@@ -43,6 +52,6 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "joe@gladiusso.com";
-    certs."gladiusso.com".extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com"];
+    certs."gladiusso.com".extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com"];
   };
 }
