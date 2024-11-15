@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  boot.kernel.sysctl = {
+    "net.ipv4.conf.all.forwarding" = 1;
+    "net.ipv4.ip_forward" = 1;
+  };
+
   networking = {
     hostName = "vps";
     domain = "gladiusso.com";
@@ -29,12 +34,27 @@
       enable = true;
       externalInterface = "eth0";
       internalInterfaces = ["wg0"];
+      forwardPorts = [
+	{
+	  sourcePort = 25565;
+	  proto = "tcp";
+	  destination = "192.168.2.11:25565";
+	}
+      ];
     };
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [80 443 22 2112];
+      allowedTCPPorts = [80 443 22 2112 25565];
       allowedUDPPorts = [51820];
+      extraCommands = ''
+	iptables -A FORWARD -i wg0 -j ACCEPT
+	iptables -A FORWARD -o wg0 -j ACCEPT
+
+	iptables -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination 192.168.2.11:25565
+
+	iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
+      '';
     };
 
     nameservers = [
