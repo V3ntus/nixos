@@ -26,4 +26,3 @@
     mediaLocation = "/mnt/Pictures";
   };
 }
-
