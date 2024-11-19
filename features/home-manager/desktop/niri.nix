@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  lib,
+  inputs,
   ...
 }: {
   imports = [./common.nix ./addons/waybar.nix];
@@ -13,8 +13,13 @@
     grim
     slurp
     swappy
-    xwayland-satellite
   ];
+
+  nixpkgs.overlays = [
+    inputs.niri.overlays.niri
+  ];
+
+  disabledModules = ["programs/wayland/niri.nix"];
 
   programs.niri = {
     settings = {
@@ -33,7 +38,6 @@
         {command = ["waybar"];}
         {command = ["wl-paste" "-t" "text" "-w" "cliphist" "store"];}
         {command = ["wl-paste" "-t" "image" "-w" "cliphist" "store"];}
-        # { command = [ "${lib.getExe pkgs.xwayland-satellite}" ]; }  # TODO: debug why this doesnt start
         {
           command = ["bash" "${config.xdg.dataFile."change_wallpaper.sh".source}"];
         }
