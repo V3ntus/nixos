@@ -2,7 +2,7 @@
   description = "V3ntus's NixOS central configs";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
