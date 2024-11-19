@@ -5,6 +5,10 @@
     acceleration = "cuda";
     host = "0.0.0.0";
     port = 11434;
+    environmentVariables = {
+      OLLAMA_KEEP_ALIVE = "-1";
+      OLLAMA_FLASH_ATTENTION = "1";
+    };
   };
 
   # Open WebUI LLM
