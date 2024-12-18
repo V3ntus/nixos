@@ -70,6 +70,8 @@
   } @ inputs: let
     gitHubRepo = "https://github.com/V3ntus/nixos";
   in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
     overlays.niri = final: prev: {niri = niri.overlays.niri;};
 
     nixosConfigurations =
