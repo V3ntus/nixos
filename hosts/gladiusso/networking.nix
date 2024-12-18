@@ -35,29 +35,29 @@
       externalInterface = "eth0";
       internalInterfaces = ["wg0"];
       forwardPorts = [
-	# Minecraft servers
+        # Minecraft servers
         {
           sourcePort = 25565;
           proto = "tcp";
           destination = "192.168.2.11:25565";
         }
-	{
-	  sourcePort = 25566;
-	  proto = "tcp";
-	  destination = "192.168.2.11:25566";
-	}
+        {
+          sourcePort = 25566;
+          proto = "tcp";
+          destination = "192.168.2.11:25566";
+        }
 
-	# Voice chat
+        # Voice chat
         {
           sourcePort = 24454;
           proto = "udp";
           destination = "192.168.2.11:24454";
         }
-	{
-	  sourcePort = 24455;
-	  proto = "udp";
-	  destination = "192.168.2.11:24455";
-	}
+        {
+          sourcePort = 24455;
+          proto = "udp";
+          destination = "192.168.2.11:24455";
+        }
       ];
     };
 
@@ -66,16 +66,16 @@
       allowedTCPPorts = [80 443 22 2112 25565 25566];
       allowedUDPPorts = [24454 24455 51820];
       extraCommands = ''
-        iptables -A FORWARD -i wg0 -j ACCEPT
-        iptables -A FORWARD -o wg0 -j ACCEPT
+               iptables -A FORWARD -i wg0 -j ACCEPT
+               iptables -A FORWARD -o wg0 -j ACCEPT
 
-        iptables -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination 192.168.2.11:25565
-	iptables -t nat -A PREROUTING -p tcp --dport 25566 -j DNAT --to-destination 192.168.2.11:25566
+               iptables -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination 192.168.2.11:25565
+        iptables -t nat -A PREROUTING -p tcp --dport 25566 -j DNAT --to-destination 192.168.2.11:25566
 
-        iptables -t nat -A PREROUTING -p udp --dport 24454 -j DNAT --to-destination 192.168.2.11:24454
-	iptables -t nat -A PREROUTING -p udp --dport 24455 -j DNAT --to-destination 192.168.2.11:24455
+               iptables -t nat -A PREROUTING -p udp --dport 24454 -j DNAT --to-destination 192.168.2.11:24454
+        iptables -t nat -A PREROUTING -p udp --dport 24455 -j DNAT --to-destination 192.168.2.11:24455
 
-        iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
+               iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
       '';
     };
 
@@ -125,6 +125,11 @@
             publicKey = "tLk67ojfxPFVZ0Abbw4O5ISsPQyQ64fQgniBYeOHygE=";
             presharedKeyFile = "/etc/wireguard/configs/danielles_phone.psk";
             allowedIPs = ["10.143.245.6/32" "fd11:5ee:bad:c0de::6/128"];
+          }
+          {
+            # tablet
+            publicKey = "JO5UmYioA48q8xbwZW8mlSuOPI8eUN5c166hsONlphc=";
+            allowedIPs = ["10.143.245.7/32" "fd11:5ee:bad:c0de::7/128"];
           }
         ];
       };
