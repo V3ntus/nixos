@@ -11,7 +11,7 @@
     ../../../users/joe.nix
   ];
 
-  services.resolved.enable = lib.mkForce false;
+  services.resolved.enable = true;
 
   networking.hostName = "net";
   networking.nameservers = ["9.9.9.9"];
