@@ -3,6 +3,8 @@ rec {
     ../lxc-hardware-configuration.nix
     ../ssh.nix
 
+    ../../../features/nixos/terminal/nvim.nix
+    ../../../features/nixos/terminal/ohmyzsh.nix
     ../../../features/nixos/common/sops.nix
     ../../../users/root.nix
     ../../../users/joe.nix

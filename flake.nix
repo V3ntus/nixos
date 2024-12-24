@@ -126,7 +126,7 @@
         };
       }
       // import ./hosts/homelab {
-        inherit nixpkgs srvos sops-nix comin;
+        inherit nixpkgs srvos sops-nix comin neovim;
       };
   };
 }

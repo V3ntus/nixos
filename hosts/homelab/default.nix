@@ -3,6 +3,7 @@
   srvos,
   sops-nix,
   comin,
+  neovim,
   ...
 }: {
   nix = import ./nix {
@@ -10,6 +11,7 @@
     inherit srvos;
     inherit sops-nix;
     inherit comin;
+    inherit neovim;
   };
   net = import ./net {
     inherit nixpkgs;

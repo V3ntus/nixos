@@ -3,10 +3,13 @@
   srvos,
   sops-nix,
   comin,
+  neovim,
   ...
 }:
 nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
+
+  specialArgs = {inherit neovim;};
 
   modules = [
     sops-nix.nixosModules.sops
