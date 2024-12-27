@@ -38,6 +38,8 @@
     }
   ];
 
+  programs.screen.enable = true;
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/43345740-955b-4550-8d6a-5d8c15eb28b7";
     fsType = "ext4";

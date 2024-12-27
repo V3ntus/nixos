@@ -12,5 +12,9 @@
       device = "files.gladiusso.com:/mnt/main/TV";
       fsType = "nfs";
     };
+    "/mnt/Music" = {
+      device = "files.gladiusso.com:/mnt/main/Music";
+      fsType = "nfs";
+    };
   };
 }

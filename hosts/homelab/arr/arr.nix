@@ -14,8 +14,18 @@
     openFirewall = true;
   };
 
+  services.lidarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.prowlarr = {
     enable = true;
+    openFirewall = true;
+  };
+
+  services.flaresolverr = {
+    enable = false;  # not working because of selenium/chromium 127+
     openFirewall = true;
   };
 }

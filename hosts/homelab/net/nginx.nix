@@ -30,6 +30,7 @@ let
     "prowlarr.gladiusso.com" = proxy "192.168.2.4" 9696;
     "radarr.gladiusso.com" = proxy "192.168.2.4" 7878;
     "sonarr.gladiusso.com" = proxy "192.168.2.4" 8989;
+    "lidarr.gladiusso.com" = proxy "192.168.2.4" 8686;
 
     "adsb.gladiusso.com" = {
       locations."/" = {
