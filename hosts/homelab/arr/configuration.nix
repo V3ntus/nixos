@@ -10,6 +10,7 @@
     ./mounts.nix
     ./transmission.nix
     ./arr.nix
+    ./soularr.nix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -25,6 +26,12 @@
   };
 
   networking.nameservers = ["192.168.2.6" "9.9.9.9"];
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    5030
+    50300
+  ];
 
   networking.defaultGateway = {
     address = "192.168.2.1";

@@ -25,7 +25,7 @@
   };
 
   services.flaresolverr = {
-    enable = false;  # not working because of selenium/chromium 127+
+    enable = false; # not working because of selenium/chromium 127+
     openFirewall = true;
   };
 }
