@@ -14,7 +14,7 @@
   services.resolved.enable = true;
 
   networking.hostName = "net";
-  networking.nameservers = ["9.9.9.9"];
+  networking.nameservers = ["localhost" "9.9.9.9"];
 
   services.technitium-dns-server = {
     enable = true;

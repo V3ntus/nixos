@@ -161,7 +161,7 @@
               href = "http://files.gladiusso.com/";
               widget = {
                 type = "truenas";
-                url = "http://files.gladiusso.com";
+                url = "http://192.168.2.5";
                 key = "2-zxkm2qUW2QEYpI5ir7uH4FbWCCcRACMQWpUQcc7p1IVFiguAw2mupH5uy1NJb8s5";
                 enablePools = true;
                 nasType = "scale";
@@ -211,7 +211,7 @@
               href = "http://photos.gladiusso.com";
               widget = {
                 type = "immich";
-                url = "http://photos.gladiusso.com";
+                url = "http://192.168.2.8:3001";
                 key = "Abfr3ZpazaDQyQVR1fnXi37bc5mjCnWOtzei8EsM";
               };
             };
@@ -223,7 +223,7 @@
               href = "http://recipes.gladiusso.com";
               widget = {
                 type = "tandoor";
-                url = "http://recipes.gladiusso.com";
+                url = "http://192.168.2.8:8001";
                 key = "tda_da032849_5bb5_41c2_a896_705fa678af18";
               };
             };
@@ -277,6 +277,25 @@
                 url = "http://192.168.2.4:8989";
                 key = "8bff919c991d4a6a8337bbfa60145ace";
               };
+            };
+          }
+          {
+            "Lidarr" = {
+              icon = "lidarr.png";
+              description = "Music tracker";
+              href = "http://lidarr.gladiusso.com";
+              widget = {
+                type = "lidarr";
+                url = "http://192.168.2.4:8686";
+                key = "722f86739c174f3487c520c29c34a09a";
+              };
+            };
+          }
+          {
+            "slskd" = {
+              icon = "soulseek.png";
+              description = "Soulseek P2P music sharing";
+              href = "http://slskd.gladiusso.com";
             };
           }
         ];
