@@ -1,0 +1,9 @@
+directory: /mnt/Music
+library: /mnt/Music/library.db
+import:
+  incremental: yes
+  move: yes
+  quiet: yes
+  log: /mnt/Music/missed.log
+
+detail: yes
