@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -56,6 +57,7 @@
 
   outputs = {
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     stylix,
     waybar,
@@ -126,7 +128,7 @@
         };
       }
       // import ./hosts/homelab {
-        inherit nixpkgs srvos sops-nix comin neovim;
+        inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim;
       };
   };
 }

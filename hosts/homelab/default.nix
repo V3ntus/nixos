@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  nixpkgs-unstable,
   srvos,
   sops-nix,
   comin,
@@ -27,6 +28,7 @@
   };
   arr = import ./arr {
     inherit nixpkgs;
+    inherit nixpkgs-unstable;
     inherit srvos;
     inherit sops-nix;
     inherit comin;

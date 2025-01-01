@@ -13,7 +13,7 @@
         disable_loading_bar = true;
       };
 
-      background = [
+      background = lib.mkForce [
         {
           color = "rgb(0, 0, 0)";
           path = "screenshot";
@@ -22,7 +22,7 @@
         }
       ];
 
-      input-field = [
+      input-field = lib.mkDefault [
         {
           size = "200, 50";
           position = "0, -80";
@@ -32,7 +32,7 @@
         }
       ];
 
-      label = [
+      label = lib.mkDefault [
         {
           text = "$TIME";
           font_size = 100;

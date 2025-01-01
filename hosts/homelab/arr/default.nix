@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  nixpkgs-unstable,
   srvos,
   sops-nix,
   comin,
@@ -29,6 +30,14 @@ nixpkgs.lib.nixosSystem {
         ];
       };
     })
+
+    {
+      nixpkgs.overlays = [
+        (final: prev: {
+          beets = nixpkgs-unstable.legacyPackages.x86_64-linux.beets;
+        })
+      ];
+    }
 
     ./configuration.nix
   ];
