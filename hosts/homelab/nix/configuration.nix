@@ -19,6 +19,7 @@ rec {
     };
   };
 
+  networking.hostName = "nix";
   networking.nameservers = [
     "192.168.2.6"
     "9.9.9.9"

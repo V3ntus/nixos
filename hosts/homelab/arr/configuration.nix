@@ -25,6 +25,7 @@
     device = "/dev/vda";
   };
 
+  networking.hostName = "arr";
   networking.nameservers = ["192.168.2.6" "9.9.9.9"];
 
   networking.firewall.allowedTCPPorts = [
