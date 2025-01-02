@@ -137,13 +137,16 @@
         inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim;
       };
 
-      deploy.nodes = builtins.map (host: {
-        hostname = "${host}.gladiusso.com";
-        profiles = {
-          system = {
-            user = "root";
-            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${host}";
-            remoteBuild = false;  # If deploying from nix.gladiusso.com, build on that hoset
+    deploy.nodes = builtins.listToAttrs (builtins.map (host: {
+        name = "${host}";
+        value = {
+          hostname = "${host}.gladiusso.com";
+          profiles = {
+            system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${host}";
+              remoteBuild = false; # If deploying from nix.gladiusso.com, build on that hoset
+            };
           };
         };
       }) [
@@ -152,6 +155,6 @@
         "ai"
         "arr"
         "apps"
-      ];
+      ]);
   };
 }
