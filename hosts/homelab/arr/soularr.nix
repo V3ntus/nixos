@@ -40,7 +40,7 @@
   };
 
   systemd.services."beets-import-soulseek" = {
-    script = "set -eu && ${lib.getExe pkgs.beets} import /mnt/Download/Music";
+    script = "set -eu && ${lib.getExe pkgs.beets} import /mnt/Download/Music --quiet";
     serviceConfig = {
       Type = "oneshot";
       User = "root";
