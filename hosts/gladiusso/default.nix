@@ -11,7 +11,11 @@
     ./networking.nix
     ./nginx.nix
 
-    ../../features/nixos/common
+    ../../features/nixos/common/hardware.nix
+    ../../features/nixos/common/locale.nix
+    ../../features/nixos/common/nix.nix
+    ../../features/nixos/common/security.nix
+    ../../features/nixos/common/sops.nix
 
     ../../users/joe.nix
     ../../users/root.nix
