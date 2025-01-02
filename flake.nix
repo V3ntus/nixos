@@ -5,8 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    deploy-rs.url = "github:serokell/deploy-rs";
+
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,8 +58,10 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixpkgs-unstable,
+    deploy-rs,
     home-manager,
     stylix,
     waybar,
@@ -73,6 +77,8 @@
     gitHubRepo = "https://github.com/V3ntus/nixos";
   in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
     overlays.niri = final: prev: {niri = niri.overlays.niri;};
 
@@ -130,5 +136,22 @@
       // import ./hosts/homelab {
         inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim;
       };
+
+      deploy.nodes = builtins.map (host: {
+        hostname = "${host}.gladiusso.com";
+        profiles = {
+          system = {
+            user = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."${host}";
+            remoteBuild = false;  # If deploying from nix.gladiusso.com, build on that hoset
+          };
+        };
+      }) [
+        "nix"
+        "net"
+        "ai"
+        "arr"
+        "apps"
+      ];
   };
 }

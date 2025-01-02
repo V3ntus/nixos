@@ -19,6 +19,8 @@ rec {
     };
   };
 
+  programs.zsh.shellAliases.deploy = "nix run github:serokell/deploy-rs";
+
   networking.hostName = "nix";
   networking.nameservers = [
     "192.168.2.6"
