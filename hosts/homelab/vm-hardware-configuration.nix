@@ -16,6 +16,12 @@
 
   networking.useDHCP = lib.mkDefault false;
 
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+  };
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   system.stateVersion = lib.mkDefault "24.11";
