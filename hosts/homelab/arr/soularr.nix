@@ -27,6 +27,7 @@
 
   environment.systemPackages = with pkgs; [
     beets
+    ffmpeg
   ];
 
   systemd.timers."beets-import-soulseek" = {
