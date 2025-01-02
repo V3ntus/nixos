@@ -12,7 +12,7 @@
       publicKey = "BHQ/UT0IgwdIMKsjJM5EYEKjpJZK+YI76LbCPWDCrSE=";
       presharedKeyFile = config.sops.secrets."wireguard/vps/psk".path;
       allowedIPs = ["0.0.0.0/0" "::/0"];
-      endpoint = "45.79.41.205:51820";
+      endpoint = "172.232.31.102:51820";
       persistentKeepalive = 25;
     }
   ];
