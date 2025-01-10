@@ -9,6 +9,7 @@ let
     base {
       "/" = {
         proxyPass = "http://" + ip + ":" + toString port + "/";
+        proxyWebsockets = true;
         extraConfig = ''
           proxy_pass_header Authorization;
         '';
@@ -19,6 +20,7 @@ let
     "portainer.gladiusso.com" = proxy "192.168.2.7" 9443; # docker-container
     "dns.gladiusso.com" = proxy "127.0.0.1" 5380;
     "home.gladiusso.com" = proxy "127.0.0.1" 8082;
+    "ha.gladiusso.com" = proxy "192.168.2.14" 8123;
 
     "chatgpt.gladiusso.com" = proxy "192.168.2.12" 8081;
     "photos.gladiusso.com" = proxy "192.168.2.8" 3001;
