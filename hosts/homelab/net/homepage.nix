@@ -229,11 +229,19 @@
             };
           }
           {
-            "Actual Budget" = {
-              # docker-container
-              icon = "si-6B46C1";
-              description = "Budgeting tracker";
-              href = "http://budget.gladiusso.com";
+            "Home Assistant" = {
+              icon = "home-assistant.svg";
+              description = "Smart home hub";
+              href = "http://ha.gladiusso.com";
+              widget = {
+                type = "homeassistant";
+                url = "http://192.168.2.14:8123";
+                key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlZmQxZTYzM2VmNmM0YTg5OWFkNjU5OTA2OTI1NDYxOCIsImlhdCI6MTczNjU3NDc3MSwiZXhwIjoyMDUxOTM0NzcxfQ.jinfo_PweNpVK5zBklO2ZWnkN6Qm0R4MbtgKkpnPM04";
+                fields = [
+                  "people_home"
+                  "lights_on"
+                ];
+              };
             };
           }
         ];
