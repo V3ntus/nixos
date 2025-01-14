@@ -122,7 +122,7 @@
           }
           {
             # Danielle's Phone
-            publicKey = "tLk67ojfxPFVZ0Abbw4O5ISsPQyQ64fQgniBYeOHygE=";
+            publicKey = "c7CRT+4L+Uk7xEZ4yGoC7w+UHv0UVKTYoMBkrSJJWRU=";
             presharedKeyFile = "/etc/wireguard/configs/danielles_phone.psk";
             allowedIPs = ["10.143.245.6/32" "fd11:5ee:bad:c0de::6/128"];
           }
