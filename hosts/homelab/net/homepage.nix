@@ -211,7 +211,7 @@
               href = "http://photos.gladiusso.com";
               widget = {
                 type = "immich";
-                url = "http://192.168.2.8:3001";
+                url = "http://192.168.2.8:2283";
                 key = "Abfr3ZpazaDQyQVR1fnXi37bc5mjCnWOtzei8EsM";
               };
             };
