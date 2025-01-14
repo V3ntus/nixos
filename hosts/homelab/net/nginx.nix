@@ -23,7 +23,7 @@ let
     "ha.gladiusso.com" = proxy "192.168.2.14" 8123;
 
     "chatgpt.gladiusso.com" = proxy "192.168.2.12" 8081;
-    "photos.gladiusso.com" = proxy "192.168.2.8" 3001;
+    "photos.gladiusso.com" = proxy "192.168.2.8" 2283;
     "budget.gladiusso.com" = proxy "192.168.2.7" 5006; # docker-container
     "recipes.gladiusso.com" = proxy "192.168.2.8" 8001;
 
