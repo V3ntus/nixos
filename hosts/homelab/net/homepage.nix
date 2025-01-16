@@ -244,6 +244,17 @@
               };
             };
           }
+          {
+            "Minecraft" = {
+              icon = "minecraft.svg";
+              description = "Private Minecraft servers for friends";
+              href = "https://mc.gladiusso.com";
+              widget = {
+                type = "minecraft";
+                url = "udp://mc.gladiusso.com:25565";
+              };
+            };
+          }
         ];
       }
       {
