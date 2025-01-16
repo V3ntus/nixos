@@ -131,6 +131,12 @@
             publicKey = "JO5UmYioA48q8xbwZW8mlSuOPI8eUN5c166hsONlphc=";
             allowedIPs = ["10.143.245.7/32" "fd11:5ee:bad:c0de::7/128"];
           }
+          {
+            # Danielle's PC
+            publicKey = "pgCJP7X/oN717jia5axFIpsOSblZ1+yH1NuEa8Z6vAY=";
+            presharedKeyFile = "/etc/wireguard/configs/danielles_pc.psk";
+            allowedIPs = ["10.143.245.8/32" "fd11:5ee:bad:c0de::8/128"];
+          }
         ];
       };
     };
