@@ -109,12 +109,6 @@
             allowedIPs = ["192.168.2.0/24" "10.143.245.3/32" "fd11:5ee:bad:c0de::3/128"];
           }
           {
-            # workpc
-            publicKey = "JxTqEBDxoGuQ8XyjmL+qJXO9WU4a0BJFVc4iTMnzPhA=";
-            presharedKeyFile = "/etc/wireguard/configs/workpc.psk";
-            allowedIPs = ["10.143.245.4/32" "fd11:5ee:bad:c0de::4/128"];
-          }
-          {
             # macbook
             publicKey = "yjrwH9aqXBU4gd/V8ObWEfzO9PKt4b2VriIk/yCs8VA=";
             presharedKeyFile = "/etc/wireguard/configs/macbook.psk";
@@ -136,6 +130,12 @@
             publicKey = "pgCJP7X/oN717jia5axFIpsOSblZ1+yH1NuEa8Z6vAY=";
             presharedKeyFile = "/etc/wireguard/configs/danielles_pc.psk";
             allowedIPs = ["10.143.245.8/32" "fd11:5ee:bad:c0de::8/128"];
+          }
+          {
+            # Danielle's laptop
+            publicKey = "1iiNSCG+4Zbz/B+5wCBITw5b19TalvMbUVwJ1v11rys=";
+            presharedKeyFile = "/etc/wireguard/configs/danielles_laptop.psk";
+            allowedIPs = ["10.143.245.9/32" "fd11:5ee:bad:c0de::9/128"];
           }
         ];
       };
