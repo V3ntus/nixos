@@ -8,6 +8,7 @@
     environmentVariables = {
       OLLAMA_KEEP_ALIVE = "-1";
       OLLAMA_FLASH_ATTENTION = "1";
+      OLLAMA_ORIGINS = "chrome-extension://*";
     };
   };
 
