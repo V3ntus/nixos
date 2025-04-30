@@ -7,14 +7,15 @@
     ./homepage.nix
 
     ../../../features/nixos/common/sops.nix
+    ../../../features/nixos/common/security.nix
     ../../../users/root.nix
     ../../../users/joe.nix
   ];
 
-  services.resolved.enable = true;
+  services.resolved.enable = false;
 
   networking.hostName = "net";
-  networking.nameservers = ["localhost" "9.9.9.9"];
+  networking.nameservers = ["127.0.0.1" "9.9.9.9"];
 
   services.technitium-dns-server = {
     enable = true;
