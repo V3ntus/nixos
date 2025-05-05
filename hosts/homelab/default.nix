@@ -16,12 +16,14 @@
   };
   net = import ./net {
     inherit nixpkgs;
+    inherit nixpkgs-unstable;
     inherit srvos;
     inherit sops-nix;
     inherit comin;
   };
   ai = import ./ai {
     inherit nixpkgs;
+    inherit nixpkgs-unstable;
     inherit srvos;
     inherit sops-nix;
     inherit comin;

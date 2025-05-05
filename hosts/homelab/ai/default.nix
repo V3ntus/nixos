@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  nixpkgs-unstable,
   srvos,
   sops-nix,
   comin,
@@ -8,7 +9,25 @@
 nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
 
+  specialArgs = {
+    inherit nixpkgs-unstable;
+  };
+
   modules = [
+    {
+      nixpkgs.overlays = [
+        (final: prev: let
+          pkgs-unstable = import nixpkgs-unstable {
+            config.allowUnfree = true;
+            system = "x86_64-linux";
+          };
+        in {
+          # ollama = pkgs-unstable.ollama;
+          # open-webui = pkgs-unstable.open-webui;
+        })
+      ];
+    }
+
     sops-nix.nixosModules.sops
 
     srvos.nixosModules.server

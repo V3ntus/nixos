@@ -1,9 +1,14 @@
 {
   pkgs,
   config,
+  nixpkgs-unstable,
   ...
 }: let
   nvidiaVersion = "535.161.07";
+  unstable-pkgs = import nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
 in {
   imports = [
     ../vm-hardware-configuration.nix
@@ -18,6 +23,9 @@ in {
 
     ./ai_services.nix
   ];
+
+  services.ollama.package = unstable-pkgs.ollama;
+  services.open-webui.package = unstable-pkgs.open-webui;
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.nvidia
