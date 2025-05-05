@@ -1,4 +1,4 @@
-{lib, ...}: {
+{nixpkgs-unstable, ...}: {
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
@@ -20,6 +20,7 @@
   services.technitium-dns-server = {
     enable = true;
     openFirewall = true;
+    package = nixpkgs-unstable.legacyPackages.x86_64-linux.technitium-dns-server;
   };
 
   fileSystems."/" = {
