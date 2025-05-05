@@ -2,7 +2,7 @@
   base = locations: {
     inherit locations;
 
-    # forceSSL = true;
+    forceSSL = true;
     useACMEHost = "healthcheckacme.gladiusso.com";
     acmeRoot = "/var/lib/acme/acme-challenge";
   };
@@ -15,7 +15,7 @@
           proxy_pass_header Authorization;
         '';
       };
-    }; 
+    };
 
   virtualHosts = {
     "proxmox.gladiusso.com" = proxy "192.168.2.3" 8006;
@@ -35,11 +35,13 @@
     "radarr.gladiusso.com" = proxy "192.168.2.4" 7878;
     "sonarr.gladiusso.com" = proxy "192.168.2.4" 8989;
     "lidarr.gladiusso.com" = proxy "192.168.2.4" 8686;
+    "bookmarks.gladiusso.com" = proxy "192.168.2.7" 3000;
+    "cnc.gladiusso.com" = proxy "192.168.2.19" 80;
 
     "adsb.gladiusso.com" = {
       useACMEHost = "healthcheckacme.gladiusso.com";
       acmeRoot = "/var/lib/acme/acme-challenge";
-      locations = { 
+      locations = {
         "/" = {
           root = ./html;
           index = "adsb.html";

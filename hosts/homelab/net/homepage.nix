@@ -137,7 +137,7 @@
             "Technitium" = {
               icon = "azure-dns.png";
               description = "Technitium DNS server and network adblocker";
-              href = "http://dns.gladiusso.com";
+              href = "https://dns.gladiusso.com";
             };
           }
           {
@@ -158,7 +158,7 @@
             "TrueNAS" = {
               icon = "truenas.png";
               description = "Network attached storage";
-              href = "http://files.gladiusso.com/";
+              href = "https://files.gladiusso.com/";
               widget = {
                 type = "truenas";
                 url = "http://192.168.2.5";
@@ -172,7 +172,7 @@
             "Transmission" = {
               icon = "flood.png";
               description = "Transmission Torrent client daemon";
-              href = "http://transmission.gladiusso.com/";
+              href = "https://transmission.gladiusso.com/";
               widget = {
                 type = "transmission";
                 url = "http://192.168.2.4:9091";
@@ -185,7 +185,7 @@
             "Prowlarr" = {
               icon = "prowlarr.png";
               description = "Indexer manager/proxy";
-              href = "http://prowlarr.gladiusso.com/";
+              href = "https://prowlarr.gladiusso.com/";
               widget = {
                 type = "prowlarr";
                 url = "http://192.168.2.4:9696";
@@ -201,14 +201,14 @@
             "Open WebUI" = {
               icon = "ollama.png";
               description = "ChatGPT-like LLM interface for Ollama";
-              href = "http://chatgpt.gladiusso.com";
+              href = "https://chatgpt.gladiusso.com";
             };
           }
           {
             "Immich" = {
               icon = "immich.png";
               description = "Photos and videos library";
-              href = "http://photos.gladiusso.com";
+              href = "https://photos.gladiusso.com";
               widget = {
                 type = "immich";
                 url = "http://192.168.2.8:2283";
@@ -218,9 +218,9 @@
           }
           {
             "Tandoor" = {
-              icon = "tandoor.svg";
+              icon = "tandoor-recipes.svg";
               description = "Tandoor recipe management";
-              href = "http://recipes.gladiusso.com";
+              href = "https://recipes.gladiusso.com";
               widget = {
                 type = "tandoor";
                 url = "http://192.168.2.8:8001";
@@ -252,6 +252,18 @@
               widget = {
                 type = "minecraft";
                 url = "udp://mc.gladiusso.com:25565";
+              };
+            };
+          }
+          {
+            "Linkwarden" = {
+              icon = "linkwarden.png";
+              description = "Bookmarks manager";
+              href = "https://bookmarks.gladiusso.com";
+              widget = {
+                type = "linkwarden";
+                url = "https://bookmarks.gladiusso.com";
+                key = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..NdxL5Hf2du1XqSTY.5wtCJ8UTUJn9s9Cq01gUaBfnG_8bIqff-39tEfn_ThESLO5XdnlBORyEqwGQbB7Q0CuacnwMDQOx871w88yFdosHDtooK_C_gutWvCGpO-hTj3fCpL0Q.1HsR3l3S4p99UNmiCcgSxw";
               };
             };
           }
