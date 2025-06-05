@@ -267,6 +267,19 @@
               };
             };
           }
+          {
+            "Octoprint" = {
+              icon = "octoprint.png";
+              description = "CNC 3D printer dashboard";
+              href = "https://cnc.gladiusso.com";
+              widget = {
+                type = "octoprint";
+                url = "https://cnc.gladiusso.com";
+                key = "nS0H-rxKXiVu6uJSp3DGr2irLHVyqkLm2p53DSuRMFg";
+                fields = ["printer_state" "temp_tool" "temp_bed" "job_completion"];
+              };
+            };
+          }
         ];
       }
       {
