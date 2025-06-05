@@ -1,7 +1,25 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = 1;
     "net.ipv4.ip_forward" = 1;
+  };
+
+  sops.secrets = {
+    "misc/cloudflared" = {
+      sopsFile = ../../users/secrets.yaml;
+      owner = config.services.cloudflared.user;
+      group = config.services.cloudflared.group;
+    };
+  };
+
+  services.cloudflared = {
+    enable = false;
+    tunnels = {
+      "e6f35697-85ed-4dea-836e-f5c8918f2369" = {
+        credentialsFile = "${config.sops.secrets."misc/cloudflared".path}";
+        default = "http_status:404";
+      };
+    };
   };
 
   networking = {
