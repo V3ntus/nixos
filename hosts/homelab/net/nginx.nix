@@ -1,4 +1,4 @@
-{lib, ...}: let
+{lib, pkgs, ...}: let
   base = locations: {
     inherit locations;
 
@@ -39,6 +39,9 @@
     "cnc.gladiusso.com" = proxy { ip = "192.168.2.19"; port = 80; extraConfig = ''
       client_max_body_size 1G;
     ''; };
+    
+    "wazuh.security.gladiusso.com" = proxy { ip = "192.168.2.13"; port = 443; };
+    "netflow.security.gladiusso.com" = proxy { ip ="192.168.2.13"; port = 3000; };
 
     "adsb.gladiusso.com" = {
       useACMEHost = "healthcheckacme.gladiusso.com";
@@ -75,7 +78,14 @@ in {
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
+    preStart = "/bin/sh -c 'until ${pkgs.host.outPath}/bin/host -A ca.gladiusso.com; do sleep 1; done'";
+
     inherit virtualHosts;
+  };
+
+  systemd.services.nginx = {
+    after = [ "technitium-dns-server.service" ];
+    wants = [ "technitium-dns-server.service" ];
   };
 
   security.acme = {
