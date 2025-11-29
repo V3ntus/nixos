@@ -26,6 +26,9 @@ rec {
     "192.168.2.6"
     "9.9.9.9"
   ];
+  networking.search = [
+    "gladiusso.com"
+  ];
 
   services.nix-serve = {
     enable = true;
