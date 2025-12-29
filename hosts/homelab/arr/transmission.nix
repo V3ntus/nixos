@@ -19,4 +19,8 @@
       rpc-authentication-required = true;
     };
   };
+
+  systemd.services.transmission = {
+    after = [ "mnt-Download.mount" ];
+  };
 }

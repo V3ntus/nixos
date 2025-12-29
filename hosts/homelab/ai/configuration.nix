@@ -58,6 +58,7 @@ in {
 
   # Static IP assignment
   networking.hostName = "ai";
+  networking.nameservers = [ "192.168.2.6" "9.9.9.9" ];
   networking.networkmanager.enable = true;
   networking.interfaces.ens18 = {
     ipv4.addresses = [
