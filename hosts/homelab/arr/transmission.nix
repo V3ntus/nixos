@@ -21,6 +21,6 @@
   };
 
   systemd.services.transmission = {
-    after = [ "mnt-Download.mount" ];
+    after = ["mnt-Download.mount"];
   };
 }

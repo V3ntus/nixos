@@ -24,20 +24,20 @@
     openFirewall = true;
   };
 
-  systemd.services = { 
+  systemd.services = {
     radarr = {
-      after = [ "mnt-Download.mount" "mnt-Movies.mount" ];
-      wants = [ "mnt-Download.mount" "mnt-Movies.mount" ];
+      after = ["mnt-Download.mount" "mnt-Movies.mount"];
+      wants = ["mnt-Download.mount" "mnt-Movies.mount"];
     };
 
     sonarr = {
-      after = [ "mnt-Download.mount" "mnt-TV.mount" ];
-      wants = [ "mnt-Download.mount" "mnt-TV.mount" ];
+      after = ["mnt-Download.mount" "mnt-TV.mount"];
+      wants = ["mnt-Download.mount" "mnt-TV.mount"];
     };
 
     lidarr = {
-      after = [ "mnt-Download.mount" "mnt-Music.mount" ];
-      wants = [ "mnt-Download.mount" "mnt-Music.mount" ];
+      after = ["mnt-Download.mount" "mnt-Music.mount"];
+      wants = ["mnt-Download.mount" "mnt-Music.mount"];
     };
   };
 }

@@ -1,7 +1,7 @@
 {
   systemd.services."jellyfin" = {
-    after = [ "mnt-Movies.mount" "mnt-TV.mount" "mnt-Music.mount" ];
-    wants = [ "mnt-Movies.mount" "mnt-TV.mount" "mnt-Music.mount" ];
+    after = ["mnt-Movies.mount" "mnt-TV.mount" "mnt-Music.mount"];
+    wants = ["mnt-Movies.mount" "mnt-TV.mount" "mnt-Music.mount"];
   };
 
   fileSystems = {
@@ -12,7 +12,7 @@
     "/mnt/Movies" = {
       device = "files.gladiusso.com:/mnt/main/Movies";
       fsType = "nfs";
-      options = [ "noatime" "nodiratime" ];
+      options = ["noatime" "nodiratime"];
     };
     "/mnt/TV" = {
       device = "files.gladiusso.com:/mnt/main/TV";

@@ -1,4 +1,8 @@
-{lib, pkgs, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   base = locations: {
     inherit locations;
 
@@ -6,42 +10,99 @@
     useACMEHost = "healthcheckacme.gladiusso.com";
     acmeRoot = "/var/lib/acme/acme-challenge";
   };
-  proxy = {ip, port, extraConfig ? ""}:
+  proxy = {
+    ip,
+    port,
+    extraConfig ? "",
+    proto ? "http",
+  }:
     base {
       "/" = {
-        proxyPass = "http://" + ip + ":" + toString port + "/";
+        proxyPass = proto + "://" + ip + ":" + toString port + "/";
         proxyWebsockets = true;
-        extraConfig = ''
-          proxy_pass_header Authorization;
-        '' + extraConfig;
+        extraConfig =
+          ''
+            proxy_pass_header Authorization;
+            proxy_pass_header Host;
+          ''
+          + extraConfig;
       };
     };
 
   virtualHosts = {
-    "proxmox.gladiusso.com" = proxy { ip = "192.168.2.3"; port = 8006; };
-    "portainer.gladiusso.com" = proxy { ip = "192.168.2.7"; port = 9443; }; # docker-container
-    "dns.gladiusso.com" = proxy { ip = "127.0.0.1"; port = 5380; };
-    "home.gladiusso.com" = proxy { ip = "127.0.0.1"; port = 8082; };
-    "ha.gladiusso.com" = proxy { ip = "192.168.2.14"; port = 8123; };
+    "proxmox.gladiusso.com" = proxy {
+      ip = "192.168.2.3";
+      port = 8006;
+    };
+    "portainer.gladiusso.com" = proxy {
+      ip = "192.168.2.7";
+      port = 9443;
+    }; # docker-container
+    "dns.gladiusso.com" = proxy {
+      ip = "127.0.0.1";
+      port = 5380;
+    };
+    "home.gladiusso.com" = proxy {
+      ip = "127.0.0.1";
+      port = 8082;
+    };
+    "ha.gladiusso.com" = proxy {
+      ip = "192.168.2.14";
+      port = 8123;
+    };
 
-    "chatgpt.gladiusso.com" = proxy { ip = "192.168.2.12"; port = 8081; };
-    "photos.gladiusso.com" = proxy { ip = "192.168.2.8"; port = 2283; };
-    "budget.gladiusso.com" = proxy { ip = "192.168.2.7"; port = 5006; }; # docker-container
-    "recipes.gladiusso.com" = proxy { ip = "192.168.2.8"; port = 8001; };
+    "chatgpt.gladiusso.com" = proxy {
+      ip = "192.168.2.12";
+      port = 8081;
+    };
+    "photos.gladiusso.com" = proxy {
+      ip = "192.168.2.8";
+      port = 2283;
+    };
+    "budget.gladiusso.com" = proxy {
+      ip = "192.168.2.7";
+      port = 5006;
+    }; # docker-container
+    "recipes.gladiusso.com" = proxy {
+      ip = "192.168.2.8";
+      port = 8001;
+    };
 
-    "jellyfin.gladiusso.com" = proxy { ip = "192.168.2.12"; port = 8096; };
-    "transmission.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 9091; };
-    "prowlarr.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 9696; };
-    "radarr.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 7878; };
-    "sonarr.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 8989; };
-    "lidarr.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 8686; };
-    "bookmarks.gladiusso.com" = proxy { ip = "192.168.2.7"; port = 3000; };
-    "cnc.gladiusso.com" = proxy { ip = "192.168.2.19"; port = 80; extraConfig = ''
-      client_max_body_size 1G;
-    ''; };
-    
-    "wazuh.security.gladiusso.com" = proxy { ip = "192.168.2.13"; port = 443; };
-    "netflow.security.gladiusso.com" = proxy { ip ="192.168.2.13"; port = 3000; };
+    "jellyfin.gladiusso.com" = proxy {
+      ip = "192.168.2.12";
+      port = 8096;
+    };
+    "transmission.gladiusso.com" = proxy {
+      ip = "192.168.2.4";
+      port = 9091;
+    };
+    "prowlarr.gladiusso.com" = proxy {
+      ip = "192.168.2.4";
+      port = 9696;
+    };
+    "radarr.gladiusso.com" = proxy {
+      ip = "192.168.2.4";
+      port = 7878;
+    };
+    "sonarr.gladiusso.com" = proxy {
+      ip = "192.168.2.4";
+      port = 8989;
+    };
+    "lidarr.gladiusso.com" = proxy {
+      ip = "192.168.2.4";
+      port = 8686;
+    };
+    "bookmarks.gladiusso.com" = proxy {
+      ip = "192.168.2.7";
+      port = 3000;
+    };
+    "cnc.gladiusso.com" = proxy {
+      ip = "192.168.2.19";
+      port = 80;
+      extraConfig = ''
+        client_max_body_size 1G;
+      '';
+    };
 
     "adsb.gladiusso.com" = {
       useACMEHost = "healthcheckacme.gladiusso.com";
@@ -84,8 +145,8 @@ in {
   };
 
   systemd.services.nginx = {
-    after = [ "technitium-dns-server.service" ];
-    wants = [ "technitium-dns-server.service" ];
+    after = ["technitium-dns-server.service"];
+    wants = ["technitium-dns-server.service"];
   };
 
   security.acme = {
