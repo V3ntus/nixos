@@ -22,6 +22,8 @@ in {
     ../../../users/joe.nix
 
     ./ai_services.nix
+    ./jellyfin.nix
+    ./mounts.nix
   ];
 
   services.ollama.package = unstable-pkgs.ollama;

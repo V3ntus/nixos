@@ -29,7 +29,7 @@
     "budget.gladiusso.com" = proxy { ip = "192.168.2.7"; port = 5006; }; # docker-container
     "recipes.gladiusso.com" = proxy { ip = "192.168.2.8"; port = 8001; };
 
-    "jellyfin.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 8096; };
+    "jellyfin.gladiusso.com" = proxy { ip = "192.168.2.12"; port = 8096; };
     "transmission.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 9091; };
     "prowlarr.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 9696; };
     "radarr.gladiusso.com" = proxy { ip = "192.168.2.4"; port = 7878; };
