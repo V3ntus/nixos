@@ -1,4 +1,18 @@
 {pkgs, ...}: {
+  systemd.services.wedding-server = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    description = "wedding NextJS server";
+    path = [ "/run/current-system/sw" pkgs.nodejs_23 ];
+    serviceConfig = {
+      Type = "exec";
+      User = "joe";
+      Environment="PORT=3001";
+      WorkingDirectory="/var/www/wedding.gladiusso.com";
+      ExecStart = ''${pkgs.nodejs_23}/bin/npm run start'';
+    };
+  };
+
   services.nginx = {
     enable = true;
     package = pkgs.nginxStable.override {openssl = pkgs.libressl;};
@@ -32,6 +46,14 @@
         enableACME = true;
         locations."/" = {
           proxyPass = "http://192.168.2.11:8100";
+        };
+      };
+
+      "wedding.gladiusso.com" = {
+        addSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://localhost:3001";
         };
       };
 
