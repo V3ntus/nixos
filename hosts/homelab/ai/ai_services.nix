@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   # Ollama config
   services.ollama = {
     enable = true;

@@ -1,0 +1,88 @@
+diff --color -ruNb ./kernel/nvidia-drm/nvidia-drm-drv.c ../modified/kernel/nvidia-drm/nvidia-drm-drv.c
+--- ./kernel/nvidia-drm/nvidia-drm-drv.c	2024-02-22 01:23:26.000000000 +0000
++++ ../modified/kernel/nvidia-drm/nvidia-drm-drv.c	2026-01-28 04:03:50.746707307 +0000
+@@ -98,6 +98,11 @@
+ #include <drm/drm_atomic_helper.h>
+ #endif
+ 
++#include <linux/version.h>
++#if LINUX_VERSION_CODE >+ KERNEL_VERSION(6, 12, 0)
++#include <drm/drm_client.h>
++#endif
++
+ static int nv_drm_revoke_modeset_permission(struct drm_device *dev,
+                                             struct drm_file *filep,
+                                             NvU32 dpyId);
+@@ -204,7 +209,9 @@
+     .atomic_check  = nv_drm_atomic_check,
+     .atomic_commit = nv_drm_atomic_commit,
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 12, 0)
+     .output_poll_changed = nv_drm_output_poll_changed,
++#endif
+ };
+ 
+ static void nv_drm_event_callback(const struct NvKmsKapiEvent *event)
+@@ -1504,6 +1511,10 @@
+     .read           = drm_read,
+ 
+     .llseek         = noop_llseek,
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++    .fop_flags      = FOP_UNSIGNED_OFFSET,
++#endif
+ };
+ 
+ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
+@@ -1704,6 +1715,19 @@
+ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++static int hotplug_helper_client_hotplug(struct drm_client_dev *client)
++{
++    nv_drm_output_poll_changed(client->dev);
++    return 0;
++}
++
++static const struct drm_client_funcs nv_hotplug_helper_client_funcs = {
++    .owner      = THIS_MODULE,
++    .hotplug    = hotplug_helper_client_hotplug,
++};
++#endif
++
+ 
+ 
+ /*
+@@ -1767,6 +1791,16 @@
+         goto failed_drm_register;
+     }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++    struct drm_client_dev *client = kzalloc(sizeof(*client), GFP_KERNEL);
++    if (client == NULL || drm_client_init(dev, client, "nv-hotplug-helper", &nv_hotplug_helper_client_funcs)) {
++    printk(KERN_WARNING "Failed to initialize the nv-hotplug-helper DRM client\n");
++    goto failed_drm_client_init;
++  }
++
++  drm_client_register(client);
++#endif
++
+ #if defined(NV_DRM_FBDEV_GENERIC_AVAILABLE)
+     if (nv_drm_fbdev_module_param &&
+         drm_core_check_feature(dev, DRIVER_MODESET)) {
+@@ -1804,6 +1838,14 @@
+     drm_dev_unregister(dev);
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++failed_drm_client_init:
++
++    kfree(client);
++    drm_dev_unregister(dev);
++
++#endif
++
+ failed_drm_register:
+ 
+     nv_drm_dev_free(dev);

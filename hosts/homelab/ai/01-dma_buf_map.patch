@@ -1,0 +1,18 @@
+diff --color -ruNb ./kernel/conftest.sh ../modified/kernel/conftest.sh
+--- ./kernel/conftest.sh	2026-01-28 03:33:01.980361731 +0000
++++ ../modified/kernel/conftest.sh	2026-01-28 03:37:11.734853229 +0000
+@@ -5155,8 +5155,13 @@
+             #
+             CODE="
+             #include <drm/drm_gem.h>
++            #if defined(NV_LINUX_IOSYS_MAP_H_PRESENT)
++              typedef struct iosys_map nv_sysio_map_t;
++            #else
++              typedef struct dma_buf_map nv_sysio_map_t;
++            #endif
+             int conftest_drm_gem_object_vmap_has_map_arg(
+-                    struct drm_gem_object *obj, struct dma_buf_map *map) {
++                    struct drm_gem_object *obj, nv_sysio_map_t *map) {
+                 return obj->funcs->vmap(obj, map);
+             }"
+ 

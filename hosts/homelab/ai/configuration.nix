@@ -1,14 +1,10 @@
 {
   pkgs,
   config,
-  nixpkgs-unstable,
   ...
 }: let
-  nvidiaVersion = "535.161.07";
-  unstable-pkgs = import nixpkgs-unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
+  nvidiaVersion = "550.54.14";
+  gridVersion = "17.0";
 in {
   imports = [
     ../vm-hardware-configuration.nix
@@ -26,9 +22,6 @@ in {
     ./mounts.nix
   ];
 
-  services.ollama.package = unstable-pkgs.ollama;
-  services.open-webui.package = unstable-pkgs.open-webui;
-
   environment.systemPackages = with pkgs; [
     nvtopPackages.nvidia
     ffmpeg_7-headless
@@ -38,6 +31,7 @@ in {
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   nixpkgs.config.nvidia.acceptLicense = true;
+  nixpkgs.config.cudaSupport = true;
 
   # NVIDIA vGPU guest configuration
   hardware.nvidia = {
@@ -51,10 +45,15 @@ in {
     # Explicitly use the GRID drivers from NVIDIA
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = nvidiaVersion;
-      url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU16.4/NVIDIA-Linux-x86_64-${nvidiaVersion}-grid.run";
-      sha256_64bit = "sha256-o8dyPjc09cdigYWqkWJG6H/AP71bH65pfwFTS/7V9GM=";
+      url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU${gridVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}-grid.run";
+      sha256_64bit = "sha256-AhyxF+FOxUWiTbP0DmZMX6a7lQ3XX6rb5XPBAYeMmeM=";
       useSettings = false;
       usePersistenced = false;
+      patches = [
+        ./00-follow_pfn.patch
+        ./01-dma_buf_map.patch
+        ./02-drm-hotplug-helper.patch
+      ];
     };
   };
 

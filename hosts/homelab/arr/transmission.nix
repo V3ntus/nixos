@@ -3,6 +3,8 @@
     enable = true;
     webHome = pkgs.flood-for-transmission;
 
+    package = pkgs.transmission_4;
+
     openFirewall = true;
     openPeerPorts = true;
     openRPCPort = true;

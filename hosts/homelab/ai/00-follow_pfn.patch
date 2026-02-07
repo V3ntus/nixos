@@ -1,0 +1,64 @@
+diff --color -ruNb ./kernel/conftest.sh ../modified/kernel/conftest.sh
+--- ./kernel/conftest.sh	2024-02-22 02:47:51.000000000 +0000
++++ ../modified/kernel/conftest.sh	2026-01-28 03:11:14.187315469 +0000
+@@ -5197,23 +5197,23 @@
+             compile_check_conftest "$CODE" "NV_PCI_CLASS_MULTIMEDIA_HD_AUDIO_PRESENT" "" "generic"
+         ;;
+ 
+-        unsafe_follow_pfn)
++        follow_pfn)
+             #
+-            # Determine if unsafe_follow_pfn() is present.
++            # Determine if follow_pfn() is present.
+             #
+-            # unsafe_follow_pfn() was added by commit 69bacee7f9ad
+-            # ("mm: Add unsafe_follow_pfn") in v5.13-rc1.
++            # follow_pfn() was added by commit 69bacee7f9ad
++            # ("mm: Add follow_pfn") in v5.13-rc1.
+             #
+             # Note: this commit never made it to the linux kernel, so
+-            # unsafe_follow_pfn() never existed.
++            # follow_pfn() never existed.
+             #
+             CODE="
+             #include <linux/mm.h>
+-            void conftest_unsafe_follow_pfn(void) {
+-                unsafe_follow_pfn();
++            void conftest_follow_pfn(void) {
++                follow_pfn();
+             }"
+ 
+-            compile_check_conftest "$CODE" "NV_UNSAFE_FOLLOW_PFN_PRESENT" "" "functions"
++            compile_check_conftest "$CODE" "NV_FOLLOW_PFN_PRESENT" "" "functions"
+         ;;
+ 
+         drm_plane_atomic_check_has_atomic_state_arg)
+diff --color -ruNb ./kernel/nvidia/nvidia.Kbuild ../modified/kernel/nvidia/nvidia.Kbuild
+--- ./kernel/nvidia/nvidia.Kbuild	2024-02-22 02:22:32.000000000 +0000
++++ ../modified/kernel/nvidia/nvidia.Kbuild	2026-01-28 03:11:44.567618537 +0000
+@@ -161,7 +161,7 @@
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += vga_tryget
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += cc_platform_has
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += seq_read_iter
+-NV_CONFTEST_FUNCTION_COMPILE_TESTS += unsafe_follow_pfn
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += follow_pfn
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_gem_object_get
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += drm_gem_object_put_unlocked
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += add_memory_driver_managed
+diff --color -ruNb ./kernel/nvidia/os-mlock.c ../modified/kernel/nvidia/os-mlock.c
+--- ./kernel/nvidia/os-mlock.c	2024-02-22 02:22:32.000000000 +0000
++++ ../modified/kernel/nvidia/os-mlock.c	2026-01-28 03:12:55.504326187 +0000
+@@ -30,10 +30,10 @@
+                                 unsigned long address,
+                                 unsigned long *pfn)
+ {
+-#if defined(NV_UNSAFE_FOLLOW_PFN_PRESENT)
+-    return unsafe_follow_pfn(vma, address, pfn);
+-#else
++#if defined(NV_FOLLOW_PFN_PRESENT)
+     return follow_pfn(vma, address, pfn);
++#else
++    return -1;
+ #endif
+ }
+ 

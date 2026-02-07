@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   imports = [./common.nix ./addons/waybar.nix];
@@ -15,11 +14,7 @@
     swappy
   ];
 
-  nixpkgs.overlays = [
-    inputs.niri.overlays.niri
-  ];
-
-  disabledModules = ["programs/wayland/niri.nix"];
+  # disabledModules = ["programs/wayland/niri.nix"];
 
   programs.niri = {
     settings = {
@@ -48,7 +43,7 @@
         keyboard = {xkb = {layout = "us";};};
 
         # Input flags
-        warp-mouse-to-focus = true;
+        warp-mouse-to-focus.enable = true;
         focus-follows-mouse = {
           enable = true;
           max-scroll-amount = "10%";

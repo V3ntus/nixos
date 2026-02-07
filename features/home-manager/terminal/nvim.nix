@@ -7,6 +7,7 @@
     neovide
     neovim.packages.x86_64-linux.default
     nodejs
-    nerdfonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.meslo-lg
   ];
 }

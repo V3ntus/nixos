@@ -2,20 +2,20 @@
   description = "V3ntus's NixOS central configs";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix.url = "github:danth/stylix";
 
     waybar = {
-      url = "github:Alexays/Waybar/0.11.0";
+      url = "github:Alexays/Waybar/0.14.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   systemd.services.wedding-server = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
     description = "wedding NextJS server";
-    path = [ "/run/current-system/sw" pkgs.nodejs_23 ];
+    path = ["/run/current-system/sw" pkgs.nodejs_24];
     serviceConfig = {
       Type = "exec";
       User = "joe";
-      Environment="PORT=3001";
-      WorkingDirectory="/var/www/wedding.gladiusso.com";
-      ExecStart = ''${pkgs.nodejs_23}/bin/npm run start'';
+      Environment = "PORT=3001";
+      WorkingDirectory = "/var/www/wedding.gladiusso.com";
+      ExecStart = ''${pkgs.nodejs_24}/bin/npm run start'';
     };
   };
 

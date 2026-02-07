@@ -99,7 +99,7 @@
       plugins = ["z" "fzf" "git"];
     };
 
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       fastfetch
     '';
   };
@@ -109,7 +109,7 @@
     settings = {
       format = "[](color_orange)$os$username@$hostname[](bg:color_yellow fg:color_orange)$directory[](fg:color_yellow bg:color_aqua)$git_branch$git_status[](fg:color_aqua bg:color_blue)[](fg:color_blue bg:color_bg3)$docker_context$conda[](fg:color_bg3 bg:color_bg1)$time[ ](fg:color_bg1)$line_break$c$rust$golang$nodejs$php$java$kotlin$haskell$python$nix_shell$character";
 
-      palette = "gruvbox_dark";
+      palette = lib.mkForce "gruvbox_dark";
 
       palettes.gruvbox_dark = {
         color_fg0 = "#fbf1c7";
