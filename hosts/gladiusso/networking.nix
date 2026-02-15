@@ -67,7 +67,7 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [80 443 22 2112 25565 25566];
+      allowedTCPPorts = [80 443 22 993 2112 25565 25566];
       allowedUDPPorts = [24454 24455 51820];
       extraCommands = ''
                iptables -A FORWARD -i wg0 -j ACCEPT
@@ -101,9 +101,9 @@
         privateKeyFile = "/etc/wireguard/privatekey";
         peers = [
           {
-            # pixel8
-            publicKey = "O9CfCNnSuvNh/Ei/p28BtwqPFE2MSVKGq5J82dy2vlE=";
-            presharedKeyFile = "/etc/wireguard/configs/pixel8.psk";
+            # phone
+            publicKey = "IDTGMcFAOVt1FpOB0NLxLKrw2daqlAEN0Fn6rU76OSQ=";
+            presharedKeyFile = "/etc/wireguard/configs/phone.psk";
             allowedIPs = ["10.143.245.2/32" "fd11:5ee:bad:c0de::2/128"];
           }
           {
@@ -123,11 +123,6 @@
             publicKey = "c7CRT+4L+Uk7xEZ4yGoC7w+UHv0UVKTYoMBkrSJJWRU=";
             presharedKeyFile = "/etc/wireguard/configs/danielles_phone.psk";
             allowedIPs = ["10.143.245.6/32" "fd11:5ee:bad:c0de::6/128"];
-          }
-          {
-            # tablet
-            publicKey = "JO5UmYioA48q8xbwZW8mlSuOPI8eUN5c166hsONlphc=";
-            allowedIPs = ["10.143.245.7/32" "fd11:5ee:bad:c0de::7/128"];
           }
           {
             # Danielle's PC
