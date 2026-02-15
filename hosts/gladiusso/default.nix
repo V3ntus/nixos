@@ -24,14 +24,40 @@
   services.openssh = {
     enable = true;
     settings = {
-      PermitRootLogin = "yes";
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
     };
     listenAddresses = [
       {
         addr = "10.143.245.1";
         port = 22;
       }
+      {
+        addr = "172.232.31.102";
+        port = 993;
+      }
     ];
+    extraConfig = ''
+      Match Address 10.143.245.3
+        PermitRootLogin without-password
+    '';
+    banner = ''
+       ________  ________  ___   ___  ________
+      |\   ____\|\   ____\|\  \ |\  \|\   __  \
+      \ \  \___|\ \  \___|\ \  \\_\  \ \  \|\  \
+       \ \  \    \ \_____  \ \______  \ \  \\\  \
+        \ \  \____\|____|\  \|_____|\  \ \  \\\  \
+         \ \_______\____\_\  \     \ \__\ \_______\
+          \|_______|\_________\     \|__|\|_______|
+                   \|_________|
+
+      ----------------------------------------------
+
+      Unauthorized use of this system is prohibited.
+            All network activity is monitored.
+
+      ----------------------------------------------
+    '';
   };
 
   services.endlessh-go = {
