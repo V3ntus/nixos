@@ -1,6 +1,7 @@
 {
   services.homepage-dashboard = {
     enable = true;
+    allowedHosts = "localhost:8082,127.0.0.1:8082,home.gladiusso.com";
 
     settings = {
       title = "Joe and Danielle's Homepage";
