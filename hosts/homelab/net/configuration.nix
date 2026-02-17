@@ -2,6 +2,7 @@
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
+    ../rsyslogd.nix
 
     ./nginx.nix
     ./homepage.nix

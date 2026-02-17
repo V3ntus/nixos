@@ -9,6 +9,7 @@ in {
   imports = [
     ../vm-hardware-configuration.nix
     ../ssh.nix
+    ../rsyslogd.nix
 
     ../../../features/nixos/common/sops.nix
     ../../../features/nixos/common/locale.nix

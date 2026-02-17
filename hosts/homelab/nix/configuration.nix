@@ -2,6 +2,7 @@ rec {
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
+    ../rsyslogd.nix
 
     ../../../features/nixos/terminal/nvim.nix
     ../../../features/nixos/terminal/ohmyzsh.nix

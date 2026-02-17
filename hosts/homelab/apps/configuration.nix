@@ -2,6 +2,7 @@
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
+    ../rsyslogd.nix
 
     ./kitchen.nix
     ./photos.nix
