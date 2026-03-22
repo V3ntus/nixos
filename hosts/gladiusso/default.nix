@@ -38,7 +38,7 @@
       }
     ];
     extraConfig = ''
-      Match Address 10.143.245.3
+      Match Address 10.143.245.0/24
         PermitRootLogin without-password
     '';
     banner = ''
