@@ -13,6 +13,20 @@
     };
   };
 
+  systemd.services.dev_gladiusso_com-server = {
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    description = "dev.gladiusso.com NextJS server";
+    path = ["/run/current-system/sw" pkgs.nodejs_24];
+    serviceConfig = {
+      Type = "exec";
+      User = "joe";
+      Environment = "PORT=3002";
+      WorkingDirectory = "/var/www/dev.gladiusso.com";
+      ExecStart = ''${pkgs.nodejs_24}/bin/npm run start'';
+    };
+  };
+
   services.nginx = {
     enable = true;
     package = pkgs.nginxStable.override {openssl = pkgs.libressl;};
@@ -38,7 +52,9 @@
       "dev.gladiusso.com" = {
         addSSL = true;
         enableACME = true;
-        root = "/var/www/dev.gladiusso.com";
+        locations."/" = {
+          proxyPass = "http://localhost:3002";
+        };
       };
 
       "mc.gladiusso.com" = {
