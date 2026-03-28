@@ -84,40 +84,6 @@
 
     nixosConfigurations =
       {
-        # Gaming PC at home
-        ventus-pc = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {inherit inputs;};
-          modules = [
-            ./hosts/ventus-pc
-            stylix.nixosModules.stylix
-            niri.nixosModules.niri
-            sops-nix.nixosModules.sops
-            comin.nixosModules.comin
-            ({...}: {
-              services.comin = {
-                enable = true;
-                remotes = [
-                  {
-                    name = "origin";
-                    url = gitHubRepo;
-                    branches.main.name = "main";
-                  }
-                ];
-              };
-            })
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit neovim apple-fonts swww waybar;
-              };
-              home-manager.users.joe = import ./hosts/ventus-pc/home.nix;
-            }
-          ];
-        };
-
         gladiusso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {inherit inputs;};
