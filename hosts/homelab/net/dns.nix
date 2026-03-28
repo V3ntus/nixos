@@ -41,10 +41,6 @@
           ip = "192.168.2.13";
         }
         {
-          host = "spacebar";
-          ip = "192.168.2.20";
-        }
-        {
           host = "vps";
           ip = "10.143.245.1";
         }
@@ -107,10 +103,6 @@ in {
           ads = [
             "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext"
             "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
-            ''
-              # Custom inline list
-              snu.lge.com
-            ''
           ];
         };
       };

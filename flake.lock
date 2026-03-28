@@ -289,24 +289,6 @@
         "type": "github"
       }
     },
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems_3"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -634,31 +616,6 @@
         "type": "github"
       }
     },
-    "pion-webrtc": {
-      "inputs": {
-        "flake-utils": [
-          "spacebar_server",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "spacebar_server",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773624569,
-        "narHash": "sha256-CKfTu9nDD85yv7hHxCKl8tGv4R+/Yj44ANAwvqSO2q4=",
-        "owner": "spacebarchat",
-        "repo": "pion-webrtc",
-        "rev": "5382e83ccbb0305a91b9ae92eae2ee9f5ac39398",
-        "type": "github"
-      },
-      "original": {
-        "owner": "spacebarchat",
-        "repo": "pion-webrtc",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "apple-fonts": "apple-fonts",
@@ -670,7 +627,6 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
-        "spacebar_server": "spacebar_server",
         "srvos": "srvos",
         "stylix": "stylix",
         "swww": "swww",
@@ -719,28 +675,6 @@
         "type": "github"
       }
     },
-    "spacebar_server": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pion-webrtc": "pion-webrtc"
-      },
-      "locked": {
-        "lastModified": 1774630159,
-        "narHash": "sha256-jWYPNoab9rqCM0Gb+RtTpXfrJ/g4XsnOoy2JwjWhSno=",
-        "owner": "spacebarchat",
-        "repo": "server",
-        "rev": "7c07c9b6fde0d539c5c3a6cf7afc022a9d3b7da6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "spacebarchat",
-        "repo": "server",
-        "type": "github"
-      }
-    },
     "srvos": {
       "inputs": {
         "nixpkgs": [
@@ -772,7 +706,7 @@
         "gnome-shell": "gnome-shell",
         "nixpkgs": "nixpkgs_4",
         "nur": "nur",
-        "systems": "systems_4",
+        "systems": "systems_3",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
@@ -844,21 +778,6 @@
       }
     },
     "systems_3": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_4": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
