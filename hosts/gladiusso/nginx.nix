@@ -65,6 +65,19 @@
         };
       };
 
+      "spacebar.gladiusso.com" = {
+        addSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://192.168.2.20:3001";
+          proxyWebsockets = true;
+          extraConfig = ''
+            proxy_pass_header Authorization;
+            proxy_pass_header Host;
+          '';
+        };
+      };
+
       "wedding.gladiusso.com" = {
         addSSL = true;
         enableACME = true;
@@ -90,6 +103,6 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "joe@gladiusso.com";
-    certs."gladiusso.com".extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com"];
+    certs."gladiusso.com".extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "spacebar.gladiusso.com"];
   };
 }

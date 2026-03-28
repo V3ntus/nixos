@@ -46,6 +46,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spacebar_server = {
+      url = "github:spacebarchat/server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     srvos = {
       url = "github:nix-community/srvos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,6 +77,7 @@
     niri,
     srvos,
     comin,
+    spacebar_server,
     ...
   } @ inputs: let
     gitHubRepo = "https://github.com/V3ntus/nixos";
@@ -134,7 +140,7 @@
         };
       }
       // import ./hosts/homelab {
-        inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim;
+        inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim spacebar_server;
       };
 
     deploy.nodes = builtins.listToAttrs (builtins.map (host: {

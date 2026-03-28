@@ -144,11 +144,6 @@ in {
     inherit virtualHosts;
   };
 
-  systemd.services.nginx = {
-    after = ["technitium-dns-server.service"];
-    wants = ["technitium-dns-server.service"];
-  };
-
   security.acme = {
     acceptTerms = true;
     defaults = {

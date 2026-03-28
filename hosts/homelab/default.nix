@@ -5,6 +5,7 @@
   sops-nix,
   comin,
   neovim,
+  spacebar_server,
   ...
 }: {
   nix = import ./nix {
@@ -39,5 +40,12 @@
     inherit srvos;
     inherit sops-nix;
     inherit comin;
+  };
+  spacebar = import ./spacebar {
+    inherit nixpkgs;
+    inherit srvos;
+    inherit sops-nix;
+    inherit comin;
+    inherit spacebar_server;
   };
 }
