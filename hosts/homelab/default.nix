@@ -40,4 +40,10 @@
     inherit sops-nix;
     inherit comin;
   };
+  matrix = import ./matrix {
+    inherit nixpkgs;
+    inherit srvos;
+    inherit sops-nix;
+    inherit comin;
+  };
 }

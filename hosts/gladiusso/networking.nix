@@ -62,6 +62,23 @@
           proto = "udp";
           destination = "192.168.2.11:24455";
         }
+
+        # Matrix
+        {
+          sourcePort = "49000:50000";
+          proto = "udp";
+          destination = "192.168.2.20:49000-51000";
+        }
+        {
+          sourcePort = 3478;
+          proto = "udp";
+          destination = "192.168.2.20:3478";
+        }
+        {
+          sourcePort = 3478;
+          proto = "tcp";
+          destination = "192.168.2.20:3478";
+        }
       ];
     };
 
@@ -70,16 +87,20 @@
       allowedTCPPorts = [80 443 22 993 2112 25565 25566];
       allowedUDPPorts = [24454 24455 51820];
       extraCommands = ''
-               iptables -A FORWARD -i wg0 -j ACCEPT
-               iptables -A FORWARD -o wg0 -j ACCEPT
+        iptables -A FORWARD -i wg0 -j ACCEPT
+        iptables -A FORWARD -o wg0 -j ACCEPT
 
-               iptables -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination 192.168.2.11:25565
+        iptables -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination 192.168.2.11:25565
         iptables -t nat -A PREROUTING -p tcp --dport 25566 -j DNAT --to-destination 192.168.2.11:25566
 
-               iptables -t nat -A PREROUTING -p udp --dport 24454 -j DNAT --to-destination 192.168.2.11:24454
+        iptables -t nat -A PREROUTING -p udp --dport 24454 -j DNAT --to-destination 192.168.2.11:24454
         iptables -t nat -A PREROUTING -p udp --dport 24455 -j DNAT --to-destination 192.168.2.11:24455
 
-               iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
+        iptables -t nat -A PREROUTING -p tcp --dport 3478 -j DNAT --to-destination 192.168.2.20:3478
+        iptables -t nat -A PREROUTING -p udp --dport 3478 -j DNAT --to-destination 192.168.2.20:3478
+        iptables -t nat -A PREROUTING -p udp --dport 49000:50000 -j DNAT --to-destination 192.168.2.20:49000-51000
+
+        iptables -t nat -A POSTROUTING -o wg0 -j MASQUERADE
       '';
     };
 

@@ -66,6 +66,7 @@
         "recipes"
         "sonarr"
         "transmission"
+        "admin.matrix"
       ] (r: {
         host = r;
         ip = "192.168.2.6";

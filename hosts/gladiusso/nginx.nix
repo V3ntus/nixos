@@ -1,4 +1,50 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  matrixFqdn = "matrix.gladiusso.com";
+  baseUrl = "https://${matrixFqdn}";
+  clientConfig = {
+    "m.homeserver".base_url = baseUrl;
+    # "m.identity_server".base_url = baseUrl;
+    "org.matrix.msc3575.proxy".url = baseUrl;
+    "org.matrix.msc4143.rtc_foci" = [
+      {
+        type = "livekit";
+        livekit_service_url = "${baseUrl}/livekit/jwt";
+      }
+    ];
+  };
+  serverConfig."m.server" = "${matrixFqdn}:443";
+  mkWellKnown = data: ''
+    default_type application/json;
+    add_header Access-Control-Allow-Origin *;
+    return 200 '${builtins.toJSON data}';
+  '';
+
+  matrixExtraConfig = ''
+      proxy_set_header X-Forwarded-For $remote_addr;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_set_header Host $host;
+      proxy_hide_header Access-Control-Allow-Origin;
+
+      add_header 'Access-Control-Allow-Origin' '*' always;
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+      add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type' always;
+      if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS';
+        add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type';
+        add_header 'Content-Length' '0';
+        return 204;
+    }
+  '';
+in {
+  sops.secrets."matrix/cert_sync_key" = {
+    sopsFile = ../../users/secrets.yaml;
+  };
+
   systemd.services.wedding-server = {
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
@@ -38,6 +84,8 @@
         addSSL = true;
         enableACME = true;
         root = "/var/www/gladiusso.com";
+        locations = {
+        };
       };
 
       "music.gladiusso.com" = {
@@ -73,6 +121,60 @@
         };
       };
 
+      "element.matrix.gladiusso.com" = {
+        addSSL = true;
+        enableACME = true;
+        root = pkgs.element-web.override {
+          conf = {
+            default_server_config = clientConfig;
+          };
+        };
+      };
+
+      "matrix.gladiusso.com" = {
+        addSSL = true;
+        enableACME = true;
+        locations = {
+          "/" = {
+            extraConfig = ''
+              return 404;
+            '';
+          };
+          "/_matrix" = {
+            proxyPass = "http://192.168.2.20:8008";
+            extraConfig = matrixExtraConfig;
+          };
+          "/_synapse/admin" = {
+            proxyPass = "http://192.168.2.20:8008";
+            extraConfig = matrixExtraConfig;
+          };
+          "/_synapse/client" = {
+            proxyPass = "http://192.168.2.20:8008";
+            extraConfig = matrixExtraConfig;
+          };
+          "^~ /livekit/jwt/" = {
+            priority = 400;
+            proxyPass = "http://192.168.2.20:${toString config.services.lk-jwt-service.port}/";
+          };
+          "^~ /livekit/sfu/" = {
+            extraConfig = ''
+              proxy_send_timeout 120;
+              proxy_read_timeout 120;
+              proxy_buffering off;
+
+              proxy_set_header Accept-Encoding gzip;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+            priority = 400;
+            proxyPass = "http://192.168.2.20:${toString config.services.livekit.settings.port}/";
+            proxyWebsockets = true;
+          };
+          "= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
+          "= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
+        };
+      };
+
       "backthehox.com" = {
         addSSL = true;
         enableACME = true;
@@ -90,6 +192,12 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "joe@gladiusso.com";
-    certs."gladiusso.com".extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com"];
+    certs."gladiusso.com" = {
+      extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "matrix.gladiusso.com" "element.matrix.gladiusso.com"];
+      postRun = ''
+        cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -pkey"
+        cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -cert"
+      '';
+    };
   };
 }

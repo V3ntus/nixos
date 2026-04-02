@@ -103,6 +103,10 @@
         client_max_body_size 1G;
       '';
     };
+    "admin.matrix.gladiusso.com" = proxy {
+      ip = "192.168.2.20";
+      port = 80;
+    };
 
     "adsb.gladiusso.com" = {
       useACMEHost = "healthcheckacme.gladiusso.com";
