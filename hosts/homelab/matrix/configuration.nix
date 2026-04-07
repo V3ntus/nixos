@@ -18,6 +18,10 @@
         ;;
     esac
   '';
+  getMatrixAccessToken = pkgs.writeShellScriptBin "get_matrix_access_token" ''
+    #!${pkgs.bashInteractive}/bin/bash
+    ${pkgs.curl}/bin/curl -XPOST -d "{\"type\": \"m.login.password\", \"user\": \"$1\", \"password\": \"$2\"}" $3
+    '';
 in {
   imports = [
     ./db.nix
@@ -36,6 +40,7 @@ in {
 
   environment.systemPackages = [
     deployCert
+    getMatrixAccessToken
   ];
 
   users.users.certsync = {

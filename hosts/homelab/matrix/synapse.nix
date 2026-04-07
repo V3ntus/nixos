@@ -8,6 +8,12 @@
   baseUrl = "https://${fqdn}";
   livekitKeyFile = "/run/livekit.key";
 in {
+  # WARNING: the libolm library is deprecated upstream and is insecure. Allowing this package was an informed decision
+  # https://gitlab.matrix.org/matrix-org/olm/-/blob/6d4b5b07887821a95b144091c8497d09d377f985/README.md#important-libolm-is-now-deprecated
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+
   users.groups."matrix-coturn" = {
     members = [
       "matrix-synapse"
@@ -100,6 +106,8 @@ in {
     unitConfig.ConditionPathExists = "!${livekitKeyFile}";
   };
 
+  systemd.services.lk-jwt-service.environment.LIVEKIT_FULL_ACCESS_HOMESERVERS = fqdn;
+
   services.draupnir = {
     enable = true;
     settings = {
@@ -111,7 +119,37 @@ in {
     };
   };
 
-  systemd.services.lk-jwt-service.environment.LIVEKIT_FULL_ACCESS_HOMESERVERS = fqdn;
+  services.maubot = {
+    enable = true; # buggy pos
+    pythonPackages = with pkgs.python313Packages; [
+      pytz
+      pillow
+      requests
+      python-dateutil
+    ];
+    settings = {
+      homeservers = {
+       "matrix.gladiusso.com" = {
+          url = baseUrl;
+        };
+      };
+      server = {
+        public_url = baseUrl;
+        hostname = "0.0.0.0";
+      };
+    };
+    plugins = with config.services.maubot.package.plugins; [
+      # reminder
+      # bofh
+      # biblebot
+      # giphy
+      # gifme
+      # memegen
+      # social-media-download
+      # trump
+      # urlpreview
+    ];
+  };
 
   services.matrix-synapse = {
     enable = true;
@@ -140,6 +178,12 @@ in {
       ];
       turn_uris = ["turn:${fqdn}:3478?transport=udp" "turn:${fqdn}:3478?transport=tcp"];
       turn_user_lifetime = "1h";
+      room_list_publication_rules = [
+        {
+          user_id = "@joe:matrix.gladiusso.com";
+          action = "allow";
+        }
+      ];
     };
     extraConfigFiles = [
       config.sops.templates."matrix-synapse-secrets.yaml".path
@@ -170,6 +214,12 @@ in {
     allowedUDPPortRanges = range;
     allowedUDPPorts = [3478 5349];
     allowedTCPPortRanges = [];
-    allowedTCPPorts = [3478 5349 8008 config.services.lk-jwt-service.port];
+    allowedTCPPorts = [
+      3478
+      5349
+      8008
+      config.services.lk-jwt-service.port
+      config.services.maubot.settings.server.port
+    ];
   };
 }
