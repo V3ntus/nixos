@@ -121,12 +121,22 @@ in {
         };
       };
 
-      "element.matrix.gladiusso.com" = {
+      "element.gladiusso.com" = {
         addSSL = true;
         enableACME = true;
         root = pkgs.element-web.override {
           conf = {
             default_server_config = clientConfig;
+            default_theme = "dark";
+            disable_guests = true;
+            integrations_ui_url = "https://scalar.vector.im/";
+            integrations_rest_url = "https://scalar.vector.im/api";
+            integrations_widgets_urls = [
+              "https://scalar.vector.im/_matrix/integrations/v1"
+              "https://scalar.vector.im/api"
+              "https://scalar-staging.vector.im/_matrix/integrations/v1"
+              "https://scalar-staging.vector.im/api"
+            ];
           };
         };
       };
@@ -143,6 +153,10 @@ in {
           "/_matrix" = {
             proxyPass = "http://192.168.2.20:8008";
             extraConfig = matrixExtraConfig;
+          };
+          "/_matrix/maubot/" = {
+            proxyPass = "http://192.168.2.20:${toString config.services.maubot.settings.server.port}";
+            proxyWebsockets = true;
           };
           "/_synapse/admin" = {
             proxyPass = "http://192.168.2.20:8008";
@@ -193,7 +207,7 @@ in {
     acceptTerms = true;
     defaults.email = "joe@gladiusso.com";
     certs."gladiusso.com" = {
-      extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "matrix.gladiusso.com" "element.matrix.gladiusso.com"];
+      extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "matrix.gladiusso.com" "element.gladiusso.com"];
       postRun = ''
         cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -pkey"
         cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -cert"

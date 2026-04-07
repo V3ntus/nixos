@@ -34,7 +34,7 @@
       }
       {
         addr = "172.232.31.102";
-        port = 993;
+        port = 143;
       }
     ];
     extraConfig = ''
