@@ -25,5 +25,7 @@
     set tabsize 2
   '';
 
+  home-manager.backupFileExtension = "backup";
+
   system.stateVersion = lib.mkDefault "23.11";
 }

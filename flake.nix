@@ -34,15 +34,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    swww.url = "github:LGFae/swww";
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    thorium = {
-      url = "github:V3ntus/nix-thorium/f592c6d8e3cda35f5d0b8da39c5f06fa5b774e35";
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    matui = {
+      url = "github:pkulak/matui";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -68,7 +81,7 @@
     apple-fonts,
     sops-nix,
     neovim,
-    swww,
+    awww,
     niri,
     srvos,
     comin,
@@ -95,6 +108,24 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.joe = import ./hosts/gladiusso/home.nix;
+            }
+          ];
+        };
+        husky = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/husky
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.joe = import ./hosts/husky/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit neovim;
+                inherit inputs;
+              };
             }
           ];
         };

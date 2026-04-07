@@ -25,8 +25,10 @@
         modules-left = [
           "custom/appmenuicon"
           "hyprland/workspaces"
+          "ext/workspaces"
           "wlr/taskbar"
           "hyprland/window"
+          "dwl/window"
           "custom/empty"
         ];
 
@@ -58,6 +60,14 @@
           on-click = "activate";
         };
 
+        "ext/workspaces" = {
+          format = "{icon}";
+          ignore-hidden = true;
+          on-click = "activate";
+          on-click-right = "deactivate";
+          sort-by-id = true;
+        };
+
         "wlr/taskbar" = {
           format = "{icon}";
           icon-size = 18;
@@ -73,6 +83,10 @@
             "(.*) Microsoft Teams" = "$1";
           };
           separate-outputs = true;
+        };
+
+        "dwl/window" = {
+          format = "[{layout}] {title}";
         };
 
         "custom/empty" = {format = "";};
