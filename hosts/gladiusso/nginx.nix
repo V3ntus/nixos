@@ -29,6 +29,8 @@
       proxy_set_header Host $host;
       proxy_hide_header Access-Control-Allow-Origin;
 
+      client_max_body_size 50M;
+
       add_header 'Access-Control-Allow-Origin' '*' always;
       add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
       add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type' always;

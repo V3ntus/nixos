@@ -84,7 +84,7 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [80 443 22 993 2112 25565 25566];
+      allowedTCPPorts = [80 443 22 143 2112 25565 25566];
       allowedUDPPorts = [24454 24455 51820];
       extraCommands = ''
         iptables -A FORWARD -i wg0 -j ACCEPT
