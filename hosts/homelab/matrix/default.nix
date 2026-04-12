@@ -18,7 +18,7 @@ nixpkgs.lib.nixosSystem {
     ({...}: {
       services.comin = {
         enable = true;
-        hostname = "net";
+        hostname = "matrix";
         remotes = [
           {
             name = "origin";
