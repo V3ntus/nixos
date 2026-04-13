@@ -3,6 +3,7 @@
     ../lxc-hardware-configuration.nix
     ../ssh.nix
     ../rsyslogd.nix
+    ../prometheus_exporter.nix
 
     ./nginx.nix
     ./dns.nix

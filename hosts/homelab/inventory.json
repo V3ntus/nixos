@@ -1,0 +1,61 @@
+{
+  "domain": "gladiusso.com",
+  "nameservers": [
+    "192.168.2.6",
+    "9.9.9.9"
+  ],
+  "hosts": {
+    "pve": {
+      "ip": "192.168.2.3",
+      "description": "Proxmox host"
+    },
+    "arr": {
+      "ip": "192.168.2.4",
+      "description": "*arr stack for media management"
+    },
+    "files": {
+      "ip": "192.168.2.5",
+      "description": "TrueNAS instance"
+    },
+    "net": {
+      "ip": "192.168.2.6",
+      "description": "Nginx reverse proxy concentrator"
+    },
+    "monitor": {
+      "ip": "192.168.2.7",
+      "description": "Grafana homelab monitoring stack"
+    },
+    "apps": {
+      "ip": "192.168.2.8",
+      "description": "Miscellaneous apps"
+    },
+    "nix": {
+      "ip": "192.168.2.10",
+      "description": "Centralized Nix deployment and build host"
+    },
+    "games": {
+      "ip": "192.168.2.11",
+      "description": "Dedicated game server host"
+    },
+    "ai": {
+      "ip": "192.168.2.12",
+      "description": "GPU allocated instance for LLM and transcoding"
+    },
+    "security": {
+      "ip": "192.168.2.13",
+      "description": "SecurityOnion ELK stack"
+    },
+    "ca": {
+      "ip": "192.168.2.18",
+      "description": "Internal certificate authority"
+    },
+    "cnc": {
+      "ip": "192.168.2.19",
+      "description": "Octoprint host"
+    },
+    "matrix": {
+      "ip": "192.168.2.20",
+      "description": "Matrix Synapse chat host"
+    }
+  }
+}

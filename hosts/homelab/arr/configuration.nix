@@ -3,6 +3,7 @@
     ../vm-hardware-configuration.nix
     ../ssh.nix
     ../rsyslogd.nix
+    ../prometheus_exporter.nix
 
     ../../../features/nixos/common/sops.nix
     ../../../users/root.nix

@@ -46,4 +46,10 @@
     inherit sops-nix;
     inherit comin;
   };
+  monitor = import ./monitor {
+    inherit nixpkgs;
+    inherit srvos;
+    inherit sops-nix;
+    inherit comin;
+  };
 }

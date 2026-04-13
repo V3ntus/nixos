@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  inventory = import ../inventory.nix;
   base = locations: {
     inherit locations;
 
@@ -104,8 +105,12 @@
       '';
     };
     "admin.matrix.gladiusso.com" = proxy {
-      ip = "192.168.2.20";
+      ip = inventory.hosts.matrix.ip;
       port = 80;
+    };
+    "grafana.gladiusso.com" = proxy {
+      ip = inventory.hosts.monitor.ip;
+      port = 3000;
     };
 
     "adsb.gladiusso.com" = {

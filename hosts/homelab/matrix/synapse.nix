@@ -129,7 +129,7 @@ in {
     ];
     settings = {
       homeservers = {
-       "matrix.gladiusso.com" = {
+        "matrix.gladiusso.com" = {
           url = baseUrl;
         };
       };

@@ -3,6 +3,7 @@ rec {
     ../lxc-hardware-configuration.nix
     ../ssh.nix
     ../rsyslogd.nix
+    ../prometheus_exporter.nix
 
     ../../../features/nixos/terminal/nvim.nix
     ../../../features/nixos/terminal/ohmyzsh.nix

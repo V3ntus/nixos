@@ -1,4 +1,5 @@
 {lib, ...}: let
+  inventory = import ../inventory.nix;
   unboundHost = "127.0.0.1:5335";
 
   gladiusso_com = {
@@ -44,6 +45,10 @@
           host = "vps";
           ip = "10.143.245.1";
         }
+        {
+          host = "monitor";
+          ip = inventory.hosts.monitor.ip;
+        }
       ]
       ++ lib.lists.forEach [
         "adsb"
@@ -52,6 +57,7 @@
         "chatgpt"
         "cnc"
         "dns"
+        "grafana"
         "ha"
         "healthcheckacme"
         "home"

@@ -21,7 +21,7 @@
   getMatrixAccessToken = pkgs.writeShellScriptBin "get_matrix_access_token" ''
     #!${pkgs.bashInteractive}/bin/bash
     ${pkgs.curl}/bin/curl -XPOST -d "{\"type\": \"m.login.password\", \"user\": \"$1\", \"password\": \"$2\"}" $3
-    '';
+  '';
 in {
   imports = [
     ./db.nix
@@ -31,6 +31,7 @@ in {
     ../lxc-hardware-configuration.nix
     ../ssh.nix
     ../rsyslogd.nix
+    ../prometheus_exporter.nix
 
     ../../../features/nixos/common/sops.nix
     ../../../features/nixos/common/security.nix
