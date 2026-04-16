@@ -10,6 +10,7 @@
     ./programs.nix
     ./networking.nix
     ./nginx.nix
+    ./fail2ban.nix
 
     ../../features/nixos/common/hardware.nix
     ../../features/nixos/common/locale.nix
@@ -17,7 +18,6 @@
     ../../features/nixos/common/security.nix
     ../../features/nixos/common/sops.nix
 
-    ../../users/joe.nix
     ../../users/root.nix
   ];
 
@@ -93,6 +93,17 @@
     enable = true;
     apiKeyFile = "/var/lib/longview/apiKeyFile";
     nginxStatusUrl = "http://localhost/nginx_status";
+  };
+
+  networking.firewall.interfaces."wg0".allowedTCPPorts = [
+    9000
+  ];
+
+  services.prometheus.exporters.node = {
+    enable = true;
+    port = 9000;
+    listenAddress = "10.143.245.1";
+    enabledCollectors = (import ../homelab/prometheus_exporter.nix).services.prometheus.exporters.node.enabledCollectors;
   };
 
   services.ntp.enable = true;

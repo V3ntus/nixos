@@ -54,7 +54,7 @@ in {
     path = ["/run/current-system/sw" pkgs.nodejs_24];
     serviceConfig = {
       Type = "exec";
-      User = "joe";
+      DynamicUser = true;
       Environment = "PORT=3001";
       WorkingDirectory = "/var/www/wedding.gladiusso.com";
       ExecStart = ''${pkgs.nodejs_24}/bin/npm run start'';
@@ -68,7 +68,7 @@ in {
     path = ["/run/current-system/sw" pkgs.nodejs_24];
     serviceConfig = {
       Type = "exec";
-      User = "joe";
+      DynamicUser = true;
       Environment = "PORT=3002";
       WorkingDirectory = "/var/www/dev.gladiusso.com";
       ExecStart = ''${pkgs.nodejs_24}/bin/npm run start'';
@@ -83,15 +83,13 @@ in {
 
     virtualHosts = {
       "gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         root = "/var/www/gladiusso.com";
-        locations = {
-        };
       };
 
       "music.gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         root = "/var/www/music.gladiusso.com";
         locations."/pages/" = {
@@ -100,7 +98,7 @@ in {
       };
 
       "dev.gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:3002";
@@ -108,7 +106,7 @@ in {
       };
 
       "mc.gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         locations."/" = {
           proxyPass = "http://192.168.2.11:8100";
@@ -116,7 +114,7 @@ in {
       };
 
       "wedding.gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:3001";
@@ -124,7 +122,7 @@ in {
       };
 
       "element.gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         root = pkgs.element-web.override {
           conf = {
@@ -144,13 +142,11 @@ in {
       };
 
       "matrix.gladiusso.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         locations = {
           "/" = {
-            extraConfig = ''
-              return 404;
-            '';
+            root = "/var/www/matrix.gladiusso.com";
           };
           "/_matrix" = {
             proxyPass = "http://192.168.2.20:8008";
@@ -192,17 +188,35 @@ in {
       };
 
       "backthehox.com" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         root = "/var/www/backthehox";
       };
 
       "thejoalition.org" = {
-        addSSL = true;
+        forceSSL = true;
         enableACME = true;
         root = "/var/www/thejoalition.org";
       };
     };
+
+    appendHttpConfig = ''
+      log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent"';
+      access_log /var/log/nginx/access.log main;
+
+      map $http_user_agent $bad_bot {
+          default 0;
+          ~*(curl|(W|w)get|scrapy|bot|Go-http-client) 1;
+      }
+
+      server {
+          if ($bad_bot) {
+              return 403;
+          }
+      }
+    '';
   };
 
   security.acme = {

@@ -1,7 +1,7 @@
 let
   inventory = import ../inventory.nix;
   target = host: port: {
-    targets = [ "${inventory.hosts.${host}.ip}:${toString port}" ];
+    targets = ["${inventory.hosts.${host}.ip}:${toString port}"];
     labels = {
       hostname = "${host}.gladiusso.com";
     };
@@ -22,6 +22,7 @@ in {
           (target "matrix" 9000)
           (target "net" 9000)
           (target "nix" 9000)
+          (target "vps" 9000)
         ];
       }
     ];

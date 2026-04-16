@@ -2,7 +2,7 @@ let
   inventory = import ../inventory.nix;
   fqdn = "grafana.${inventory.domain}";
 in {
-  networking.firewall.allowedTCPPorts = [ 3000 ];
+  networking.firewall.allowedTCPPorts = [3000];
   services.grafana = {
     enable = true;
     settings = {
