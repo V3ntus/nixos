@@ -1,0 +1,9 @@
+users:
+  joe:
+    disabled: false
+    displayname: 'Joe'
+    password: '$argon2id$v=19$m=65536,t=3,p=4$atsLUmwz9G4Ng7yYy+S5Gw$plXGuGkEV3psgkN8HOuAVhiKBHJxZswJ0lvPU1bZtoo'
+    email: 'joe@gladiusso.com'
+    groups:
+      - 'admins'
+

@@ -1,4 +1,4 @@
-rec {
+{pkgs, ...}: rec {
   imports = [
     ../lxc-hardware-configuration.nix
     ../ssh.nix
@@ -20,6 +20,10 @@ rec {
       path = "/var/lib/nix-state/secrets/cache-server-priv.pem";
     };
   };
+
+  environment.systemPackages = [
+    pkgs.sops
+  ];
 
   programs.zsh.shellAliases.deploy = "nix run github:serokell/deploy-rs";
 

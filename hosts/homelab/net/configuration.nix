@@ -5,6 +5,7 @@
     ../rsyslogd.nix
     ../prometheus_exporter.nix
 
+    ./auth.nix
     ./nginx.nix
     ./dns.nix
     ./homepage.nix
@@ -12,7 +13,6 @@
     ../../../features/nixos/common/sops.nix
     ../../../features/nixos/common/security.nix
     ../../../users/root.nix
-    ../../../users/joe.nix
   ];
 
   services.resolved.enable = false;

@@ -3,6 +3,7 @@
   config,
   ...
 }: let
+  inventory = import ../homelab/inventory.nix;
   matrixFqdn = "matrix.gladiusso.com";
   baseUrl = "https://${matrixFqdn}";
   clientConfig = {
@@ -102,7 +103,13 @@ in {
         enableACME = true;
         locations."/" = {
           proxyPass = "http://localhost:3002";
+          extraConfig = ''
+            # include ${./nginx/authelia-authrequest.conf};
+          '';
         };
+        extraConfig = ''
+          # include ${./nginx/authelia-location.conf};
+        '';
       };
 
       "mc.gladiusso.com" = {
@@ -190,6 +197,25 @@ in {
           };
           "= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
           "= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
+        };
+      };
+
+      "auth.gladiusso.com" = {
+        forceSSL = true;
+        enableACME = true;
+        locations = {
+          "/" = {
+            proxyPass = "http://${inventory.hosts.net.ip}:9091";
+            extraConfig = ''
+              include ${./nginx/proxy.conf};
+            '';
+          };
+          "/api/verify" = {
+            proxyPass = "http://${inventory.hosts.net.ip}:9091";
+          };
+          "/api/authz/" = {
+            proxyPass = "http://${inventory.hosts.net.ip}:9091";
+          };
         };
       };
 
