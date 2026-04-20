@@ -49,6 +49,10 @@
       "ip": "192.168.2.13",
       "description": "SecurityOnion ELK stack"
     },
+    "ha": {
+      "ip": "192.168.2.14",
+      "description": "Home Assistant VM"
+    },
     "ca": {
       "ip": "192.168.2.18",
       "description": "Internal certificate authority"
@@ -60,6 +64,64 @@
     "matrix": {
       "ip": "192.168.2.20",
       "description": "Matrix Synapse chat host"
+    }
+  },
+  "vhosts": {
+    "proxmox": {
+      "host": "pve",
+      "port": 8006
+    }, 
+    "home": {
+      "host": "net",
+      "port": 8082
+    },
+    "ha": {
+      "host": "ha",
+      "port": 8123
+    },
+    "chatgpt": {
+      "host": "ai",
+      "port": 8081
+    },
+    "photos": {
+      "host": "apps",
+      "port": 2283
+    },
+    "recipes": {
+      "host": "apps",
+      "port": 8001
+    },
+    "jellyfin": {
+      "host": "ai",
+      "port": 8001
+    },
+    "transmission": {
+      "host": "arr",
+      "port": 9091
+    },
+    "prowlarr": {
+      "host": "arr",
+      "port": 9696
+    },
+    "radarr": {
+      "host": "arr",
+      "port": 7878
+    },
+    "sonarr": {
+      "host": "arr",
+      "port": 8989
+    },
+    "lidarr": {
+      "host": "arr",
+      "port": 8686
+    },
+    "cnc": {
+      "host": "cnc",
+      "port": 80
+    },
+    "grafana": {
+      "host": "monitor",
+      "port": 3000
     }
   }
 }

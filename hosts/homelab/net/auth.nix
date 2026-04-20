@@ -1,4 +1,8 @@
-{pkgs, config, ...}: rec {
+{
+  pkgs,
+  config,
+  ...
+}: rec {
   sops.secrets = {
     "authelia/jwtSecret" = {
       mode = "0400";

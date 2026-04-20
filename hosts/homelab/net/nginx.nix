@@ -35,14 +35,6 @@
       ip = "192.168.2.3";
       port = 8006;
     };
-    "portainer.gladiusso.com" = proxy {
-      ip = "192.168.2.7";
-      port = 9443;
-    }; # docker-container
-    "dns.gladiusso.com" = proxy {
-      ip = "127.0.0.1";
-      port = 5380;
-    };
     "home.gladiusso.com" = proxy {
       ip = "127.0.0.1";
       port = 8082;
@@ -60,10 +52,6 @@
       ip = "192.168.2.8";
       port = 2283;
     };
-    "budget.gladiusso.com" = proxy {
-      ip = "192.168.2.7";
-      port = 5006;
-    }; # docker-container
     "recipes.gladiusso.com" = proxy {
       ip = "192.168.2.8";
       port = 8001;
@@ -151,11 +139,10 @@ in {
     preStart = "/bin/sh -c 'until ${pkgs.host.outPath}/bin/host -A ca.gladiusso.com; do sleep 1; done'";
 
     inherit virtualHosts;
-  };
 
-  systemd.services.nginx = {
-    after = ["technitium-dns-server.service"];
-    wants = ["technitium-dns-server.service"];
+    appendHttpConfig = ''
+      include ${../../../features/snippets/nginx/logging.conf};
+    '';
   };
 
   security.acme = {

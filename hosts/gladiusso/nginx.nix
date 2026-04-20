@@ -233,10 +233,7 @@ in {
     };
 
     appendHttpConfig = ''
-      log_format main '$remote_addr - $remote_user [$time_local] "$request" '
-                  '$status $body_bytes_sent "$http_referer" '
-                  '"$http_user_agent"';
-      access_log /var/log/nginx/access.log main;
+      include ${../../features/snippets/nginx/logging.conf};
 
       map $http_user_agent $bad_bot {
           default 0;
