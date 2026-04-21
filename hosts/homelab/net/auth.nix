@@ -80,10 +80,33 @@
           default_policy = "deny";
           rules = [
             {
+              domain = [
+                "jump.gladiusso.com"
+              ];
+              policy = "two_factor";
+            }
+            {
               domain = "*.gladiusso.com";
               policy = "one_factor";
             }
           ];
+        };
+
+        webauthn = {
+          disable = false;
+          enable_passkey_login = true;
+          display_name = "CS30 Auth";
+          attestation_conveyance_preference = "direct";
+          filtering = {
+            prohibit_backup_eligibility = true;
+          };
+          metadata = {
+            enabled = true;
+            validate_trust_anchor = true;
+            validate_entry = true;
+            validate_status = true;
+            validate_entry_permit_zero_aaguid = false;
+          };
         };
 
         server.endpoints.authz.auth-request = {
