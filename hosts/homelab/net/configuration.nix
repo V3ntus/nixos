@@ -9,7 +9,7 @@
     ./nginx.nix
     ./dns.nix
     ./homepage.nix
-    ./guacamole.nix
+    ./jump.nix
 
     ../../../features/nixos/common/sops.nix
     ../../../features/nixos/common/security.nix

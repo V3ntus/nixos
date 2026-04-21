@@ -112,6 +112,21 @@ in {
         '';
       };
 
+      "jump.gladiusso.com" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://${inventory.hosts.net.ip}:8182";
+          proxyWebsockets = true;
+          extraConfig = ''
+            include ${./nginx/authelia-authrequest.conf};
+          '';
+        };
+        extraConfig = ''
+          include ${./nginx/authelia-location.conf};
+        '';
+      };
+
       "mc.gladiusso.com" = {
         forceSSL = true;
         enableACME = true;
@@ -233,8 +248,6 @@ in {
     };
 
     appendHttpConfig = ''
-      include ${../../features/snippets/nginx/logging.conf};
-
       map $http_user_agent $bad_bot {
           default 0;
           ~*(curl|(W|w)get|scrapy|bot|Go-http-client) 1;
@@ -252,7 +265,7 @@ in {
     acceptTerms = true;
     defaults.email = "joe@gladiusso.com";
     certs."gladiusso.com" = {
-      extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "matrix.gladiusso.com" "element.gladiusso.com" "cinny.gladiusso.com"];
+      extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "matrix.gladiusso.com" "element.gladiusso.com" "cinny.gladiusso.com" "guacamole.gladiusso.com"];
       postRun = ''
         cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -pkey"
         cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -cert"

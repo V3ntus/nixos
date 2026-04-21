@@ -139,10 +139,6 @@ in {
     preStart = "/bin/sh -c 'until ${pkgs.host.outPath}/bin/host -A ca.gladiusso.com; do sleep 1; done'";
 
     inherit virtualHosts;
-
-    appendHttpConfig = ''
-      include ${../../../features/snippets/nginx/logging.conf};
-    '';
   };
 
   security.acme = {
