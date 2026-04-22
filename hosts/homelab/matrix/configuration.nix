@@ -27,7 +27,6 @@ in {
     ./db.nix
     ./synapse.nix
     ./nginx.nix
-    ./mastodon.nix
 
     ../lxc-hardware-configuration.nix
     ../ssh.nix

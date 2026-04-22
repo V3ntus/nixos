@@ -81,7 +81,6 @@ in {
     package = pkgs.nginxStable.override {openssl = pkgs.libressl;};
     statusPage = true; # for Longview
     recommendedProxySettings = true;
-    recommendedOptimisation = true;
 
     virtualHosts = {
       "gladiusso.com" = {
@@ -126,35 +125,6 @@ in {
         };
         extraConfig = ''
           include ${./nginx/authelia-location.conf};
-        '';
-      };
-
-      "m.gladiusso.com" = {
-        forceSSL = true;
-        enableACME = true;
-
-        locations = {
-          "/" = {
-            proxyPass = "http://${inventory.hosts.matrix.ip}";
-            extraConfig = ''
-              add_header Strict-Transport-Security "max-age=63072000; includeSubDomains";
-            '';
-          };
-
-          "^~ /system/" = {
-            extraConfig = ''
-              add_header X-Content-Type-Options nosniff;
-              add_header Content-Security-Policy "default-src 'none'; form-action 'none'";
-            '';
-          }; 
-        };
-
-        extraConfig = ''
-          proxy_set_header X-Forwarded-Proto https;
-          keepalive_timeout 70;
-          sendfile on;
-          client_max_body_size 99m;
-          proxy_read_timeout 120;
         '';
       };
 
