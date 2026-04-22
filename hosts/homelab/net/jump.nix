@@ -14,6 +14,7 @@ in {
         {
           ListenInterface = "0.0.0.0";
           ListenPort = jumpPort;
+          ReadTimeout = 300;
           ServerMessage = "CS30 Jump Server";
         }
       ];
@@ -26,4 +27,3 @@ in {
     };
   };
 }
-

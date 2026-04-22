@@ -120,6 +120,7 @@ in {
           proxyWebsockets = true;
           extraConfig = ''
             include ${./nginx/authelia-authrequest.conf};
+            proxy_read_timeout 300;
           '';
         };
         extraConfig = ''
@@ -265,7 +266,16 @@ in {
     acceptTerms = true;
     defaults.email = "joe@gladiusso.com";
     certs."gladiusso.com" = {
-      extraDomainNames = ["music.gladiusso.com" "dev.gladiusso.com" "mc.gladiusso.com" "matrix.gladiusso.com" "element.gladiusso.com" "cinny.gladiusso.com" "guacamole.gladiusso.com"];
+      extraDomainNames = [
+        "music.gladiusso.com"
+        "dev.gladiusso.com"
+        "mc.gladiusso.com"
+        "matrix.gladiusso.com"
+        "element.gladiusso.com"
+        "cinny.gladiusso.com"
+        "jump.gladiusso.com"
+        "bsky.gladiusso.com"
+      ];
       postRun = ''
         cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -pkey"
         cat /var/lib/acme/gladiusso.com/key.pem | ssh -i ${config.sops.secrets."matrix/cert_sync_key".path} certsync@192.168.2.20 "deploy_cert -cert"
