@@ -32,6 +32,14 @@ in {
         ];
       }
       {
+        job_name = "blocky";
+        static_configs = [
+          {
+            targets = ["${inventory.hosts.net.ip}:4000"];
+          }
+        ];
+      }
+      {
         job_name = "blackbox";
         metrics_path = "/metrics";
         static_configs = [

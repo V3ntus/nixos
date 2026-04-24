@@ -79,13 +79,21 @@
       });
   };
 in {
-  networking.firewall.allowedUDPPorts = [53 853];
+  networking.firewall = {
+    allowedTCPPorts = [4000];
+    allowedUDPPorts = [53 853];
+  };
   services.blocky = {
     enable = true;
     settings = {
       ports = {
         dns = 53;
         tls = 853;
+        http = "0.0.0.0:4000";
+      };
+
+      prometheus = {
+        enable = true;
       };
 
       upstreams = {
@@ -106,10 +114,15 @@ in {
       };
 
       blocking = {
+        clientGroupsBlock = {
+          default = [
+            "ads"
+          ];
+        };
         denylists = {
           ads = [
             "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext"
-            "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
           ];
         };
       };
