@@ -1,156 +1,21 @@
 {
-  lib,
   pkgs,
+  config,
   ...
 }: let
-  inventory = import ../inventory.nix;
-  base = locations: {
-    inherit locations;
-
-    forceSSL = true;
-    useACMEHost = "healthcheckacme.gladiusso.com";
-    acmeRoot = "/var/lib/acme/acme-challenge";
-  };
-  proxy = {
-    ip,
-    port,
-    extraConfig ? "",
-    proto ? "http",
-  }:
-    base {
-      "/" = {
-        proxyPass = proto + "://" + ip + ":" + toString port + "/";
-        proxyWebsockets = true;
-        extraConfig =
-          ''
-            proxy_pass_header Authorization;
-            proxy_pass_header Host;
-          ''
-          + extraConfig;
+  nginxConfig = import ../../../features/snippets/nginx {
+    virtualHosts =
+      (import ../../../features/snippets/nginx/sites/internal {inherit pkgs config;})
+      // {
+        "proxmox.gladiusso.com" = import ../../../features/snippets/nginx/sites/proxmox.nix;
       };
-    };
-
-  virtualHosts = {
-    "proxmox.gladiusso.com" = proxy {
-      ip = "192.168.2.3";
-      port = 8006;
-    };
-    "home.gladiusso.com" = proxy {
-      ip = "127.0.0.1";
-      port = 8082;
-    };
-    "ha.gladiusso.com" = proxy {
-      ip = "192.168.2.14";
-      port = 8123;
-    };
-
-    "chatgpt.gladiusso.com" = proxy {
-      ip = "192.168.2.12";
-      port = 8081;
-    };
-    "photos.gladiusso.com" = proxy {
-      ip = "192.168.2.8";
-      port = 2283;
-    };
-    "recipes.gladiusso.com" = proxy {
-      ip = "192.168.2.8";
-      port = 8001;
-    };
-
-    "jellyfin.gladiusso.com" = proxy {
-      ip = "192.168.2.12";
-      port = 8096;
-    };
-    "transmission.gladiusso.com" = proxy {
-      ip = "192.168.2.4";
-      port = 9091;
-    };
-    "prowlarr.gladiusso.com" = proxy {
-      ip = "192.168.2.4";
-      port = 9696;
-    };
-    "radarr.gladiusso.com" = proxy {
-      ip = "192.168.2.4";
-      port = 7878;
-    };
-    "sonarr.gladiusso.com" = proxy {
-      ip = "192.168.2.4";
-      port = 8989;
-    };
-    "lidarr.gladiusso.com" = proxy {
-      ip = "192.168.2.4";
-      port = 8686;
-    };
-    "bookmarks.gladiusso.com" = proxy {
-      ip = "192.168.2.7";
-      port = 3000;
-    };
-    "cnc.gladiusso.com" = proxy {
-      ip = "192.168.2.19";
-      port = 80;
-      extraConfig = ''
-        client_max_body_size 1G;
-      '';
-    };
-    "admin.matrix.gladiusso.com" = proxy {
-      ip = inventory.hosts.matrix.ip;
-      port = 80;
-    };
-    "grafana.gladiusso.com" = proxy {
-      ip = inventory.hosts.monitor.ip;
-      port = 3000;
-    };
-
-    "adsb.gladiusso.com" = {
-      useACMEHost = "healthcheckacme.gladiusso.com";
-      acmeRoot = "/var/lib/acme/acme-challenge";
-      locations = {
-        "/" = {
-          root = ./html;
-          index = "adsb.html";
-        };
-      };
-    };
-
-    "healthcheckacme.gladiusso.com" = {
-      useACMEHost = "healthcheckacme.gladiusso.com";
-      acmeRoot = "/var/lib/acme/acme-challenge";
-      locations = {
-        "/" = {
-          extraConfig = ''
-            add_header Content-Type text/plain;
-            return 200 'healthy';
-          '';
-        };
-      };
-    };
   };
 in {
   networking.firewall.allowedTCPPorts = [80 443];
 
   users.users.nginx.extraGroups = ["acme"];
 
-  services.nginx = {
-    enable = true;
-    logError = "stderr info";
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+  services.nginx = nginxConfig;
 
-    preStart = "/bin/sh -c 'until ${pkgs.host.outPath}/bin/host -A ca.gladiusso.com; do sleep 1; done'";
-
-    inherit virtualHosts;
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults = {
-      email = "joe@gladiusso.com";
-      server = "https://ca.gladiusso.com/acme/acme/directory";
-    };
-    certs."healthcheckacme.gladiusso.com" = {
-      group = "nginx";
-      extraDomainNames = builtins.attrNames virtualHosts;
-      webroot = "/var/lib/acme/acme-challenge";
-    };
-  };
+  security.acme = import ../../../features/snippets/nginx/conf/step_ca.nix {virtualHosts = nginxConfig.virtualHosts;};
 }

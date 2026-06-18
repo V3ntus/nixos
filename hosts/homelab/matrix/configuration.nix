@@ -25,7 +25,7 @@
 in {
   imports = [
     ./db.nix
-    ./synapse.nix
+    ./matrix.nix
     ./nginx.nix
 
     ../lxc-hardware-configuration.nix

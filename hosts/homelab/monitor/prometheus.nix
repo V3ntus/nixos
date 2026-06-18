@@ -40,6 +40,14 @@ in {
         ];
       }
       {
+        job_name = "endlessh-go";
+        static_configs = [
+          {
+            targets = ["${inventory.hosts.vps.ip}:2112"];
+          }
+        ];
+      }
+      {
         job_name = "blackbox";
         metrics_path = "/metrics";
         static_configs = [

@@ -32,10 +32,6 @@
         addr = "10.143.245.1";
         port = 22;
       }
-      {
-        addr = "172.232.31.102";
-        port = 143;
-      }
     ];
     extraConfig = ''
       Match Address 10.143.245.0/24
@@ -69,7 +65,7 @@
       listenAddress = "10.143.245.1";
     };
     extraOptions = [
-      # "-geoip_supplier=ip-api"
+      "-geoip_supplier=ip-api"
     ];
   };
 
@@ -97,6 +93,7 @@
 
   networking.firewall.interfaces."wg0".allowedTCPPorts = [
     9000
+    2112
   ];
 
   services.prometheus.exporters.node = {
