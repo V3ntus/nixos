@@ -57,6 +57,7 @@
         "chatgpt"
         "cnc"
         "dns"
+        "git"
         "grafana"
         "ha"
         "healthcheckacme"

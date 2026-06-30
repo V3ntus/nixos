@@ -1,5 +1,7 @@
 {pkgs, ...}: rec {
   imports = [
+    ./git.nix
+
     ../lxc-hardware-configuration.nix
     ../ssh.nix
     ../rsyslogd.nix

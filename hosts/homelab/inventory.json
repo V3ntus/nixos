@@ -122,6 +122,10 @@
     "grafana": {
       "host": "monitor",
       "port": 3000
+    },
+    "git": {
+      "host": "nix",
+      "port": 3000
     }
   }
 }
