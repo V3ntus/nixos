@@ -82,6 +82,8 @@
             {
               domain = [
                 "jump.gladiusso.com"
+                "proxmox.gladiusso.com"
+                "pve.gladiusso.com"
               ];
               policy = "two_factor";
             }
