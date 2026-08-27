@@ -8,7 +8,7 @@
       inputs.noctalia.homeModules.default
     ];
 
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
       settings = {
         bar = {

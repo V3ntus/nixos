@@ -2,13 +2,13 @@
   description = "V3ntus's NixOS central configs";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -68,6 +68,11 @@
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    blog-gladiusso-com = {
+      url = "github:V3ntus/blog.gladiusso.com";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -85,6 +90,7 @@
     niri,
     srvos,
     comin,
+    blog-gladiusso-com,
     ...
   } @ inputs: let
     gitHubRepo = "https://github.com/V3ntus/nixos";
@@ -103,6 +109,16 @@
           modules = [
             ./hosts/gladiusso
             sops-nix.nixosModules.sops
+          ];
+        };
+
+        ovh = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/ovh
+            sops-nix.nixosModules.sops
+            blog-gladiusso-com.nixosModules.blog-gladiusso-com
           ];
         };
 

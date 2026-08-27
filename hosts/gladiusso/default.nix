@@ -26,6 +26,7 @@
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
+      Banner = ../../features/nixos/terminal/banner.txt;
     };
     listenAddresses = [
       {
@@ -36,23 +37,6 @@
     extraConfig = ''
       Match Address 10.143.245.0/24
         PermitRootLogin without-password
-    '';
-    banner = ''
-       ________  ________  ___   ___  ________
-      |\   ____\|\   ____\|\  \ |\  \|\   __  \
-      \ \  \___|\ \  \___|\ \  \\_\  \ \  \|\  \
-       \ \  \    \ \_____  \ \______  \ \  \\\  \
-        \ \  \____\|____|\  \|_____|\  \ \  \\\  \
-         \ \_______\____\_\  \     \ \__\ \_______\
-          \|_______|\_________\     \|__|\|_______|
-                   \|_________|
-
-      ----------------------------------------------
-
-      Unauthorized use of this system is prohibited.
-            All network activity is monitored.
-
-      ----------------------------------------------
     '';
   };
 

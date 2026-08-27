@@ -7,13 +7,5 @@
       "--ozone-platform=wayland"
       "--password-store=gnome-libsecret"
     ];
-    extensions = [
-      "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
-      "enamippconapkdmgfgjchkhakpfinmaj" # DeArrow
-      "hkgfoiooedgoejojocmhlaklaeopbecg" # Google's PiP
-      "gebbhagfogifgggkldgodflihgfeippi" # RYD
-      "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
-    ];
   };
 }
