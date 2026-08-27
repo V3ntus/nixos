@@ -68,11 +68,6 @@
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    blog-gladiusso-com = {
-      url = "github:V3ntus/blog.gladiusso.com";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -90,7 +85,6 @@
     niri,
     srvos,
     comin,
-    blog-gladiusso-com,
     ...
   } @ inputs: let
     gitHubRepo = "https://github.com/V3ntus/nixos";
@@ -118,7 +112,6 @@
           modules = [
             ./hosts/ovh
             sops-nix.nixosModules.sops
-            blog-gladiusso-com.nixosModules.blog-gladiusso-com
           ];
         };
 
