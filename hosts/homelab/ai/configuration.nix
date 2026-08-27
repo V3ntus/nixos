@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   ...
@@ -26,7 +27,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.nvidia
-    ffmpeg_7-headless
+    yt-dlp
   ];
 
   # Use NVIDIA drivers
@@ -37,6 +38,7 @@ in {
 
   # NVIDIA vGPU guest configuration
   hardware.nvidia = {
+    open = false;
     modesetting.enable = true;
 
     powerManagement.enable = false;
@@ -44,19 +46,22 @@ in {
 
     nvidiaSettings = false;
 
+    # Use datacenter 580 version
+    package = config.boot.kernelPackages.nvidiaPackages.dc_580;
+
     # Explicitly use the GRID drivers from NVIDIA
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = nvidiaVersion;
-      url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU${gridVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}-grid.run";
-      sha256_64bit = "sha256-AhyxF+FOxUWiTbP0DmZMX6a7lQ3XX6rb5XPBAYeMmeM=";
-      useSettings = false;
-      usePersistenced = false;
-      patches = [
-        ./00-follow_pfn.patch
-        ./01-dma_buf_map.patch
-        ./02-drm-hotplug-helper.patch
-      ];
-    };
+    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #  version = nvidiaVersion;
+    #  url = "https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU${gridVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}-grid.run";
+    #  sha256_64bit = "sha256-AhyxF+FOxUWiTbP0DmZMX6a7lQ3XX6rb5XPBAYeMmeM=";
+    #  useSettings = false;
+    #  usePersistenced = false;
+    #  patches = [
+    #    ./00-follow_pfn.patch
+    #    ./01-dma_buf_map.patch
+    #    ./02-drm-hotplug-helper.patch
+    #  ];
+    # };
   };
 
   # Static IP assignment

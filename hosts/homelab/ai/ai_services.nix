@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   # Ollama config
   services.ollama = {
-    enable = true;
-    acceleration = "cuda";
+    enable = false;
+    package = pkgs.ollama-cuda;
     host = "0.0.0.0";
     port = 11434;
     environmentVariables = {
@@ -14,7 +14,7 @@
 
   # Open WebUI LLM
   services.open-webui = {
-    enable = true;
+    enable = false;
     port = 8081;
     host = "0.0.0.0";
     openFirewall = true;
@@ -26,16 +26,16 @@
   };
 
   # Override Open WebUI service stuff
-  systemd.services.open-webui = {
-    unitConfig = {
-      StartLimitIntervalSec = 30;
-      StartLimitBurst = 3;
-    };
-    serviceConfig = {
-      Restart = "on-failure";
-      RestartSec = "5s";
-    };
-  };
+  # systemd.services.open-webui = {
+  #  unitConfig = {
+  #    StartLimitIntervalSec = 30;
+  #    StartLimitBurst = 3;
+  #  };
+  #  serviceConfig = {
+  #    Restart = "on-failure";
+  #    RestartSec = "5s";
+  #  };
+  # };
 
   # Self hosted search engine
   services.searx = {
