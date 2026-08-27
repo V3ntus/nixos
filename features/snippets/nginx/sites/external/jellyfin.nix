@@ -5,5 +5,5 @@ in
     internal = false;
     ip = u.inventory.hosts.ai.ip;
     port = 8096;
-    needAuth = true;
+    needAuth = false;
   }

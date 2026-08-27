@@ -50,7 +50,7 @@ in {
     cert = "/etc/coturn/full.pem";
     pkey = "/etc/coturn/key.pem";
     extraConfig = ''
-      external-ip=172.232.31.102/192.168.2.20
+      external-ip=15.204.95.13/192.168.2.20
       no-multicast-peers
       denied-peer-ip=0.0.0.0-0.255.255.255
       denied-peer-ip=10.0.0.0-10.255.255.255

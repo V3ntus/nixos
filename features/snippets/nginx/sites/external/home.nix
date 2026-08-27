@@ -1,6 +1,6 @@
 {...}:
 (import ../_util.nix).proxy {
-  ip = "127.0.0.1";
+  ip = "192.168.2.6";
   port = 8082;
   internal = false;
   needAuth = true;

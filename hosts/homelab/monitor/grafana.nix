@@ -14,6 +14,11 @@ in {
       owner = "grafana";
       group = "grafana";
     };
+    "misc/grafana/secret" = {
+      mode = "0400";
+      owner = "grafana";
+      group = "grafana";
+    };
   };
 
   services.grafana = {
@@ -31,6 +36,10 @@ in {
         user = "joe@gladiusso.com";
         password = "$__file{${config.sops.secrets."misc/smtp/password".path}}";
         from_address = "grafana-noreply@gladiusso.com";
+      };
+
+      security = {
+        secret_key = "$__file{${config.sops.secrets."misc/grafana/secret".path}}";
       };
     };
   };
