@@ -69,6 +69,10 @@ in {
         Environment = "PORT=3003";
         WorkingDirectory = "/var/www/blog.gladiusso.com";
         ExecStart = "${pkgs.pnpm_11}/bin/pnpm run start";
+        ReadWritePaths = [
+          "/var/www/blog.gladiusso.com/public"
+          "/var/www/blog.gladiusso.com/.next/cache/images"
+        ];
       };
     };
   };
