@@ -26,6 +26,7 @@ in {
   imports = [
     ./db.nix
     ./matrix.nix
+    ./misskey.nix
     ./nginx.nix
 
     ../lxc-hardware-configuration.nix
