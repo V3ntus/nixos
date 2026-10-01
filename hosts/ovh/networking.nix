@@ -153,8 +153,11 @@ in {
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 22 ];
+      allowedTCPPorts = [ 80 443 22 8080 ];
       allowedUDPPorts = [ 51820 ];
+      interfaces."wg1" = {
+        allowedTCPPorts = [ 22 9000 ];
+      };
       extraCommands = ''
         iptables -A FORWARD -i wg0 -j ACCEPT
         iptables -A FORWARD -o wg0 -j ACCEPT
