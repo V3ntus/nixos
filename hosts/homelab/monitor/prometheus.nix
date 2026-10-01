@@ -28,7 +28,7 @@ in {
           (nodeTarget "matrix" 9000)
           (nodeTarget "net" 9000)
           (nodeTarget "nix" 9000)
-          (nodeTarget "vps" 9000)
+          (nodeTarget "vps-ovh-or" 9000)
         ];
       }
       {

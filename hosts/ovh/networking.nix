@@ -156,7 +156,7 @@ in {
       allowedTCPPorts = [ 80 443 22 8080 ];
       allowedUDPPorts = [ 51820 ];
       interfaces."wg1" = {
-        allowedTCPPorts = [ 22 9000 ];
+        allowedTCPPorts = [ 22 9000 2112 ];
       };
       extraCommands = ''
         iptables -A FORWARD -i wg0 -j ACCEPT
