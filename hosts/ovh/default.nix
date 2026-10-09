@@ -23,6 +23,7 @@ in {
     settings = {
       PermitRootLogin = "without-password";
       PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
       Banner = ../../features/nixos/terminal/banner.txt;
     };
     listenAddresses = [
