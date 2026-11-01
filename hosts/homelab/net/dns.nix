@@ -65,7 +65,6 @@
         "jellyfin"
         "lidarr"
         "net"
-        "photos"
         "portainer"
         "prowlarr"
         "proxmox"
