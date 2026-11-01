@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   baseUrl = "https://matrix.gladiusso.com";
   client_config."m.homeserver".base_url = baseUrl;
-  synapse-admin = pkgs.synapse-admin-etkecc.withConfig {
+  synapse-admin = pkgs.ketesa.withConfig {
     restrictBaseUrl = [
       baseUrl
     ];

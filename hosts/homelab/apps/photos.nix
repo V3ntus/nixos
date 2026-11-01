@@ -20,7 +20,7 @@
   };
 
   services.immich = {
-    enable = true;
+    enable = false; # NixOS 25 marked this as insecure
     host = "0.0.0.0";
     openFirewall = true;
     mediaLocation = "/mnt/Pictures";

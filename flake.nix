@@ -59,6 +59,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    strata-nix.url = "github:Yunor743/strata.nix";
+
     srvos = {
       url = "github:nix-community/srvos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -83,6 +85,7 @@
     neovim,
     awww,
     niri,
+    strata-nix,
     srvos,
     comin,
     ...
@@ -113,29 +116,10 @@
             ./hosts/ovh
             sops-nix.nixosModules.sops
           ];
-        };
-
-        husky = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {inherit inputs;};
-          modules = [
-            ./hosts/husky
-            sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.joe = import ./hosts/husky/home.nix;
-              home-manager.extraSpecialArgs = {
-                inherit neovim;
-                inherit inputs;
-              };
-            }
-          ];
-        };
+        }; 
       }
       // import ./hosts/homelab {
-        inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim;
+        inherit nixpkgs nixpkgs-unstable srvos sops-nix comin neovim strata-nix;
       };
 
     deploy.nodes = builtins.listToAttrs (builtins.map (host: {

@@ -120,7 +120,7 @@ in {
   };
 
   services.maubot = {
-    enable = true; # buggy pos
+    enable = false; # buggy pos
     pythonPackages = with pkgs.python313Packages; [
       pytz
       pillow
@@ -158,6 +158,7 @@ in {
       registration_requires_token = true;
       server_name = config.networking.fqdn;
       public_baseurl = baseUrl;
+      url_preview_enabled = true;
       listeners = [
         {
           port = 8008;
