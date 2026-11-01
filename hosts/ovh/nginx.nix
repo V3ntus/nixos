@@ -24,7 +24,7 @@ in {
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "blog" ];
+    ensureDatabases = [ "blog" "photos" ];
     authentication = pkgs.lib.mkOverride 10 ''
       local all all trust
       host all all 127.0.0.1/32 trust
@@ -72,6 +72,23 @@ in {
         ReadWritePaths = [
           "/var/www/blog.gladiusso.com/public"
           "/var/www/blog.gladiusso.com/.next/cache/images"
+        ];
+      };
+    };
+    photos-server = {
+      wantedBy = ["multi-user.target"];
+      after = ["network.target"];
+      description = "photos NextJS server";
+      path = ["/run/current-system/sw" pkgs.nodejs_24 pkgs.pnpm_11];
+      serviceConfig = {
+        Type = "exec";
+        DynamicUser = true;
+        Environment = "PORT=3004";
+        WorkingDirectory = "/var/www/photos.gladiusso.com";
+        ExecStart = "${pkgs.pnpm_11}/bin/pnpm run start";
+        ReadWritePaths = [
+          "/var/www/photos.gladiusso.com/public"
+          "/var/www/photos.gladiusso.com/.next/cache/images"
         ];
       };
     };
